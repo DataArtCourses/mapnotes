@@ -1,0 +1,8 @@
+aiomysql
+aiomcache
+aiohttp
+asyncio
+PyYAML
+jinja2
+aiohttp-jinja2
+multidict

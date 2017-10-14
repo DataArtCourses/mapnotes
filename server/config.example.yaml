@@ -1,0 +1,15 @@
+mysql:
+  user:
+  password:
+  db:
+  host:
+  port:
+cache:
+  host:
+  port:
+application:
+  port:
+logging:
+  path:
+  log_file:
+  log_level:

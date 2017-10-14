@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>qeq</title>
+</head>
+<body>
+    <h1>Qwa!</h1>
+</body>
+
+<div class="form">
+    <input placeholder="email" id="email">
+    <input placeholder="password" id="password">
+    <button id="send">Send</button>
+</div>
+<script>
+    function json(response) {
+        return response.json()
+    }
+    var email = document.getElementById('email'),
+        password = document.getElementById('password'),
+        button = document.getElementById('send'),
+        url = '/api/users';
+
+    button.addEventListener('click', function() {
+        fetch(url,{
+            method: 'POST',
+            body: JSON.stringify({
+                email: email.value,
+                password: password.value
+            })
+        })
+            .then(json)
+            .then(function (data) {
+                console.log('Request succeeded with JSON response', data);
+            })
+            .catch(function (error) {
+                console.log('Request failed', error);
+            })
+    });
+</script>
+</html>
