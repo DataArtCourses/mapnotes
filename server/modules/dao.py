@@ -1,6 +1,7 @@
 import asyncio
 import aiomysql
 import logging
+import hashlib
 
 from abc import ABC, abstractmethod
 
@@ -25,17 +26,22 @@ class Dao(ABC):
         )
     )
 
-    async def make_query(self, query, fetchone=False, args=None, no_fetch=False):
+    async def make_query(self, query, fetchone=False, args=None, insert_fetch=False):
         async with self.pool.get() as conn:
             async with conn.cursor(aiomysql.DictCursor) as cur:
-                await cur.execute(query, args)
-                if fetchone:
-                    res = await cur.fetchone()
-                elif no_fetch:
-                    res = True
+                try:
+                    await cur.execute(query, args)
+                except Exception as e:
+                    log.error("SQL Error %s", e)
+                    res = e
                 else:
-                    res = await cur.fetchall()
-                    res = res or []
+                    if fetchone:
+                        res = await cur.fetchone()
+                    elif insert_fetch:
+                        res = cur.lastrowid
+                    else:
+                        res = await cur.fetchall()
+                        res = res or []
             await conn.commit()
         return res
 
@@ -53,7 +59,7 @@ class Dao(ABC):
     async def drop_table(self):
         query = f"DROP TABLE IF EXISTS {self.table_name};"
         await self.make_query(query)
-        # query = "DROP TABLE IF EXISTS %s;" todo why does escape don't work with DROP statement?
+        # query = "DROP TABLE IF EXISTS %s;"  # todo why does escape don't work with DROP statement?
         # await self.make_query(query, args=[self.table_name])
 
 
@@ -88,19 +94,20 @@ class UserDao(Dao):
                  "(`email`, `password`) VALUES "
                  "(%s, %s)"
                  )
-        user_id = await self.make_query(query=query, no_fetch=True, args=[email, password])
-        return user_id
-        # try:
-        #     user_id = await self.make_query(query=query, no_fetch=True, args=[email, password])
-        # except Exception as e:
-        #     log.info("Error creating user %s, error %s", email, e)
-        # else:
-        #     log.info("Created user %s with id %s", email, user_id)
+        _hash = hashlib.md5()
 
-    async def get_all(self):
-        query = f'SELECT * FROM {self.table_name}'
-        res = await self.make_query(query)
-        return res
+        _hash.update(password.encode('utf-8'))
+
+        password = _hash.hexdigest()
+
+        error = await self.make_query(query=query, insert_fetch=True, args=[email, password])
+        if isinstance(error, Exception):
+            if error.args[0] == 1062:
+                user_id = "User with this email already exists"
+                return user_id
+        else:
+            log.info("Created new user with id of %s", error)
+            return None
 
 
 class PinDao(Dao):

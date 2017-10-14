@@ -27,13 +27,11 @@ class UserView(BaseView):
 
     async def post(self):
         new_user = await self.request.json()
-        log.info(new_user)
-        user_id = await self.user_dao.create_new_user(**new_user)
-        log.info(user_id)
-        if user_id:
-            return json_response({'ok': True})
+        error = await self.user_dao.create_new_user(**new_user)
+        if error:
+            return json_response({'error': error})
         else:
-            return json_response({'ok': False})
+            return json_response({'error': None})
 
     async def put(self):
         log.info(self.request)
