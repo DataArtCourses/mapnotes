@@ -24,6 +24,6 @@ cors = aiohttp_cors.setup(application, defaults={
 aiohttp_jinja2.setup(application, loader=jinja2.FileSystemLoader(template_folder))
 
 for route in routes:
-    app = application.router.add_route(route[0], route[1], route[2], name=route[3])
-    cors.add(app)
+    cors.add(application.router.add_route(**route))
+
 
