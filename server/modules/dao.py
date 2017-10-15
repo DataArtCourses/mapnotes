@@ -100,13 +100,13 @@ class UserDao(Dao):
 
         password = _hash.hexdigest()
 
-        error = await self.make_query(query=query, insert_fetch=True, args=[email, password])
-        if isinstance(error, Exception):
-            if error.args[0] == 1062:
-                user_id = "User with this email already exists"
-                return user_id
+        res = await self.make_query(query=query, insert_fetch=True, args=[email, password])
+        if isinstance(res, Exception):
+            if res.args[0] == 1062:
+                error = "User with this email already exists"
+                return error
         else:
-            log.info("Created new user with id of %s", error)
+            log.info("Created new user with id of %s", res)
             return None
 
 

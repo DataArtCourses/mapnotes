@@ -2,9 +2,7 @@ import asyncio
 import logging
 import argparse
 
-from modules.dao import (
-    UserDao, PinDao, ChatDao, ChatMessageDao, PinMessageDao
-)
+from modules.dao import *
 
 log = logging.getLogger('application')
 log.setLevel(0)
