@@ -13,3 +13,8 @@ logging:
   path:
   log_file:
   log_level:
+email:
+  user:
+  password:
+  host:
+  port:

@@ -3,6 +3,7 @@ aiomcache
 aiohttp
 asyncio
 PyYAML
+aiosmtplib
 jinja2
 aiohttp-jinja2
 multidict
