@@ -11,6 +11,7 @@ server/.yaml
 .Python
 env/
 build/
+!/public/build
 develop-eggs/
 dist/
 downloads/
