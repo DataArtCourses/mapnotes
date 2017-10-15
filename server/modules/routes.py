@@ -1,6 +1,6 @@
 from .views import UserView, BaseView
 
 routes = [
-    ('*', '', BaseView, 'index'),
-    ('*', '/api/users', UserView,  'users')
+    ('GET', '', BaseView, 'index'),
+    ('POST', '/api/users', UserView,  'users')
 ]
