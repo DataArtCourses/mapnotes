@@ -1,4 +1,5 @@
 import logging
+import asyncio
 import aiohttp_jinja2
 
 from aiohttp import web
@@ -29,7 +30,7 @@ class UserView(BaseView):
         new_user = await self.request.json()
         error = await self.user_dao.create_new_user(**new_user)
         body = f'Hello, {new_user["email"]}'
-        await Mailer.send_mail(receiver=new_user['email'], subject='Mapified registration', body=body)
+        asyncio.ensure_future(Mailer.send_mail(receiver=new_user['email'], subject='Mapified registration', body=body))
         return json_response({'error': error})
 
     async def put(self):
