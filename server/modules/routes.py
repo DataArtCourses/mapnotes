@@ -1,6 +1,6 @@
 from .views import UserView, BaseView
 
 routes = [
-    ('*', '', BaseView, 'index'),
-    ('*', '/api/users', UserView,  'users')
+    {'method': '*', 'path': '', 'handler': BaseView, 'name': 'index'},
+    {'method': '*', 'path': '/api/users', 'handler': UserView,  'name': 'users'}
 ]

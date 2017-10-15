@@ -16,5 +16,5 @@ application = web.Application()
 aiohttp_jinja2.setup(application, loader=jinja2.FileSystemLoader(template_folder))
 
 for route in routes:
-    application.router.add_route(route[0], route[1], route[2], name=route[3])
+    application.router.add_route(**route)
 
