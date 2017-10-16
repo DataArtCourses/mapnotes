@@ -35,9 +35,8 @@ class RegistrationView(BaseView):
         new_user = await self.request.json()
         error, register_link = await self.user_dao.create_new_user(**new_user)
         if error is None:
-            body = (f'Hello, {new_user["email"]},'
-                    f'please follow this link <a href="http://{self.request.host}{self.request.path}'
-                    f'?confirm={register_link}">Click me!</a>')
+            link = f'http://{self.request.host}{self.request.path}?confirm={register_link}'
+            tpl = aiohttp_jinja2.render_string('registration.html', request=self.request, context={'link': link})
             asyncio.ensure_future(Mailer.send_mail(receiver=new_user['email'],
-                                                   subject='Mapified registration', body=body))
+                                                   subject='Mapified registration', body=tpl))
         return json_response({'error': error})
