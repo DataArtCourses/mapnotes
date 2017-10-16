@@ -8,12 +8,13 @@ import aiohttp_cors
 from aiohttp import web
 
 from .routes import routes
+from .middlewares import middleware_factory
 
 log = logging.getLogger('application')
 template_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'templates')
 
 
-application = web.Application()
+application = web.Application(middlewares=[middleware_factory])
 
 cors = aiohttp_cors.setup(application, defaults={
     "*": aiohttp_cors.ResourceOptions(

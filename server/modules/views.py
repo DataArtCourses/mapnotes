@@ -24,6 +24,12 @@ class BaseView(web.View):
         return {}
 
 
+class LoginView(BaseView):
+
+    async def get(self):
+        return json_response({})
+
+
 class RegistrationView(BaseView):
 
     async def get(self):
