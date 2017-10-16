@@ -3,9 +3,10 @@ import logging
 
 import jinja2
 import aiohttp_jinja2
+import aiohttp_cors
 
 from aiohttp import web
-import aiohttp_cors
+
 
 from .routes import routes
 
