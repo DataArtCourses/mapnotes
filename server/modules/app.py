@@ -14,16 +14,17 @@ template_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'temp
 
 
 application = web.Application()
-cors = aiohttp_cors.setup(application, defaults={
-    "*": aiohttp_cors.ResourceOptions(
-            allow_credentials=True,
-            expose_headers="*",
-            allow_headers="*",
-        )
-})
+# todo CBS don't work with CORS setup
+# cors = aiohttp_cors.setup(application, defaults={
+#     "*": aiohttp_cors.ResourceOptions(
+#             allow_credentials=True,
+#             expose_headers="*",
+#             allow_headers="*",
+#         )
+# })
 aiohttp_jinja2.setup(application, loader=jinja2.FileSystemLoader(template_folder))
 
 for route in routes:
-    cors.add(application.router.add_route(**route))
+    application.router.add_route(**route)
 
 

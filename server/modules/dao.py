@@ -2,6 +2,7 @@ import asyncio
 import aiomysql
 import logging
 import hashlib
+import time
 
 from abc import ABC, abstractmethod
 
@@ -57,8 +58,10 @@ class Dao(ABC):
         pass
 
     async def drop_table(self):
+        logging.info('Deleting %s table', self.table_name)
         query = f"DROP TABLE IF EXISTS {self.table_name};"
         await self.make_query(query)
+        logging.info('Done deleting %s table', self.table_name)
         # query = "DROP TABLE IF EXISTS %s;"  # todo why does escape don't work with DROP statement?
         # await self.make_query(query, args=[self.table_name])
 
@@ -77,6 +80,8 @@ class UserDao(Dao):
                  "`first_name` VARCHAR(255) NOT NULL DEFAULT '',"
                  "`second_name` VARCHAR(255) NOT NULL DEFAULT '',"
                  "`bio` TEXT,"
+                 "`registered` INT(1) DEFAULT 0,"
+                 "`register_link` VARCHAR(50) DEFAULT '',"
                  "`phone` VARCHAR(20) NOT NULL DEFAULT '',"
                  "`avatar_url` VARCHAR(255) NOT NULL DEFAULT '',"
                  f"PRIMARY KEY({self.pk}))"
@@ -91,22 +96,48 @@ class UserDao(Dao):
 
     async def create_new_user(self, email, password):
         query = (f"INSERT INTO `{self.table_name}` "
-                 "(`email`, `password`) VALUES "
-                 "(%s, %s)"
+                 "(`email`, `password`, `register_link`) VALUES "
+                 "(%s, %s, %s)"
                  )
         _hash = hashlib.md5()
-
         _hash.update(password.encode('utf-8'))
-
         password = _hash.hexdigest()
 
-        res = await self.make_query(query=query, insert_fetch=True, args=[email, password])
+        _hash = hashlib.blake2b()
+        _hash.update(email.encode('utf-8'))
+        _hash.update(password.encode('utf-8'))
+        _hash.update(Config.get('application', 'salt').encode('utf-8'))
+        _hash.update(str(time.time()).encode('utf-8'))
+
+        register_link = _hash.hexdigest()[:50]
+
+        res = await self.make_query(query=query, insert_fetch=True, args=[email, password, register_link])
         if isinstance(res, Exception):
             if res.args[0] == 1062:
                 error = "User with this email already exists"
-                return error
+                return error, None
         else:
             log.info("Created new user with id of %s", res)
+            return None, register_link
+
+    async def confirm_registration(self, confirm_key):
+
+        query = (f"SELECT `email`, `user_id` FROM `{self.table_name}` "
+                 f"WHERE `register_link` = %s AND `registered` = 0"
+                 )
+
+        user = await self.make_query(query=query, args=[confirm_key], fetchone=True)
+
+        if isinstance(user, Exception) or not user:
+            error = "Registration link expired or have already been activated"
+            return error
+        else:
+            query = (f"UPDATE `{self.table_name}` "
+                     f"SET `registered` = 1 "
+                     f"WHERE `user_id` = %s"
+                     )
+            await self.make_query(query=query, args=[user['user_id']])
+            log.info("User %s successfuly confirmed registration", user['email'])
             return None
 
 

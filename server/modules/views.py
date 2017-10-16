@@ -24,15 +24,20 @@ class BaseView(web.View):
         return {}
 
 
-class UserView(BaseView):
+class RegistrationView(BaseView):
+
+    async def get(self):
+        confirm_key = self.request.query.get('confirm')
+        error = await self.user_dao.confirm_registration(confirm_key)
+        return json_response({'error': error})
 
     async def post(self):
         new_user = await self.request.json()
-        error = await self.user_dao.create_new_user(**new_user)
-        body = f'Hello, {new_user["email"]}'
-        asyncio.ensure_future(Mailer.send_mail(receiver=new_user['email'], subject='Mapified registration', body=body))
+        error, register_link = await self.user_dao.create_new_user(**new_user)
+        if error is None:
+            body = (f'Hello, {new_user["email"]},'
+                    f'please follow this link <a href="http://{self.request.host}{self.request.path}'
+                    f'?confirm={register_link}">Click me!</a>')
+            asyncio.ensure_future(Mailer.send_mail(receiver=new_user['email'],
+                                                   subject='Mapified registration', body=body))
         return json_response({'error': error})
-
-    async def put(self):
-        log.info(self.request)
-        return json_response({'ok': True})

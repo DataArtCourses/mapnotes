@@ -1,9 +1,13 @@
 import asyncio
 import aiosmtplib
+import logging
 
+from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 from .config import Config
+
+log = logging.getLogger('application')
 
 
 class Mailer:
@@ -14,12 +18,17 @@ class Mailer:
                              loop=loop)
 
     @classmethod
-    async def send_mail(cls, subject, body, receiver):
+    async def send_mail(cls, subject, body, receiver, _charset='utf-8'):
 
-        message = MIMEText(body)
+        message = MIMEMultipart('alternative')
         message['From'] = Config.get('email', 'user')
         message['To'] = receiver
         message['Subject'] = subject
+
+        text = MIMEText(body, 'text', _charset=_charset)
+        html = MIMEText(body, 'html', _charset=_charset)
+        message.attach(html)
+        message.attach(text)
 
         await cls.server.connect()
         await cls.server.starttls()
@@ -27,3 +36,4 @@ class Mailer:
                                password=Config.get('email', 'password'))
         await cls.server.ehlo()
         await cls.server.send_message(message)
+        log.info('Sent email to %s', receiver)
