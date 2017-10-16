@@ -7,7 +7,6 @@ import aiohttp_cors
 
 from aiohttp import web
 
-
 from .routes import routes
 
 log = logging.getLogger('application')
