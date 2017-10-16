@@ -14,17 +14,20 @@ template_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'temp
 
 
 application = web.Application()
-# todo CBS don't work with CORS setup
-# cors = aiohttp_cors.setup(application, defaults={
-#     "*": aiohttp_cors.ResourceOptions(
-#             allow_credentials=True,
-#             expose_headers="*",
-#             allow_headers="*",
-#         )
-# })
+
+cors = aiohttp_cors.setup(application, defaults={
+    "*": aiohttp_cors.ResourceOptions(
+            allow_credentials=True,
+            expose_headers="*",
+            allow_headers="*",
+        )
+})
 aiohttp_jinja2.setup(application, loader=jinja2.FileSystemLoader(template_folder))
 
+# todo remove in PROD environment
 for route in routes:
-    application.router.add_route(**route)
-
-
+    for method in ('get', 'post', 'delete', 'put'):
+        handler = getattr(route['handler'], method, None)
+        if not handler:
+            continue
+        application.router.add_route(method, route['path'], route['handler'])
