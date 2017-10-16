@@ -25,8 +25,8 @@
  </div>
 </template>
 <script>
-import axios from 'axios'
-const API_BASE = 'http://127.0.0.1:8000/api/users'
+// import axios from 'axios'
+// const API_BASE = 'http://127.0.0.1:8000/api/users'
 
 export default {
   data () {
@@ -42,16 +42,18 @@ export default {
         .then(response => {
           // Validation success if response === true
           if (this.email && this.password) {
-            axios.post(API_BASE, {
-              email: this.email,
-              password: this.password
-            })
-            .then(response => {
-              this.$router.push({path: '/hello'})
-            })
-            .catch(e => {
-              console.error(e)
-            })
+            // axios.post(API_BASE, {
+            //   email: this.email,
+            //   password: this.password
+            // })
+            // .then(response => {
+            //   this.$router.push({path: '/messanger'})
+            // })
+            // .catch(e => {
+            //   console.error(e)
+            // })
+            console.log({'email': this.email, 'password': this.password})
+            this.$router.push({path: '/messenger'})
           }
         })
         .catch(e => {
