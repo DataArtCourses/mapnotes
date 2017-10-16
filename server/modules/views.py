@@ -1,12 +1,17 @@
+import datetime
 import logging
 import asyncio
 import aiohttp_jinja2
+import jwt
 
 from aiohttp import web
 from aiohttp.web_response import json_response
 
+from .cache import Cache
+from .config import Config
 from .dao import *
 from .mailer import Mailer
+from .exceptions import *
 
 log = logging.getLogger('application')
 
@@ -26,8 +31,21 @@ class BaseView(web.View):
 
 class LoginView(BaseView):
 
-    async def get(self):
-        return json_response({})
+    async def post(self):
+        credentials = await self.request.json()
+        try:
+            user = await self.user_dao.authorize(**credentials)
+        except (UserDoesNotExist, PasswordDoesNotMatch):
+            return json_response({'message': 'Wrong credentials'}, status=400)
+        else:
+            asyncio.ensure_future(Cache.set(user['user_id'], user, 60000))
+            payload = {
+                'user_id': user['user_id'],
+                'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=60000)
+            }
+            jwt_token = jwt.encode(payload, Config.get('application', 'salt'), 'HS256')
+            log.info('User %s has logged in', user['email'])
+            return json_response({'token': jwt_token.decode('utf-8')})
 
 
 class RegistrationView(BaseView):

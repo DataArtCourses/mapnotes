@@ -7,7 +7,7 @@ import time
 from abc import ABC, abstractmethod
 
 from .config import Config
-
+from .exceptions import *
 
 __all__ = ('UserDao', 'PinDao', 'ChatDao', 'ChatMessageDao', 'PinMessageDao')
 
@@ -101,6 +101,7 @@ class UserDao(Dao):
                  )
         _hash = hashlib.md5()
         _hash.update(password.encode('utf-8'))
+        _hash.update(email.encode('utf-8'))
         password = _hash.hexdigest()
 
         _hash = hashlib.blake2b()
@@ -139,6 +140,35 @@ class UserDao(Dao):
             await self.make_query(query=query, args=[user['user_id']])
             log.info("User %s successfuly confirmed registration", user['email'])
             return None
+
+    async def get_user(self, _id):
+
+        query = f"SELECT `id` FROM {self.table_name} WHERE `id` = %s AND `registered` = 1"
+        user = await self.make_query(query=query, args=[_id], fetchone=True)
+
+        if user:
+            return user['id']
+        else:
+            return None
+
+    async def authorize(self, email, password):
+
+        query = f"SELECT `email`, `user_id`, `password` FROM {self.table_name} WHERE `email` = %s"
+        user = await self.make_query(query=query, args=[email], fetchone=True)
+
+        if not user:
+            raise UserDoesNotExist
+        else:
+            _hash = hashlib.md5()
+            _hash.update(str(password).encode('utf-8'))
+            _hash.update(email.encode('utf-8'))
+            password = _hash.hexdigest()
+
+            if password != user['password']:
+                raise PasswordDoesNotMatch
+            else:
+                del user['password']
+                return user
 
 
 class PinDao(Dao):
