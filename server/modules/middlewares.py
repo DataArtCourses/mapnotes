@@ -17,7 +17,7 @@ async def auth_middleware(_, handler):
             except (jwt.DecodeError, jwt.ExpiredSignatureError):
                 return json_response({'message': 'Token is invalid'}, status=400)
 
-            user = await Cache.get(payload['user_id']) or await UserDao().get_user(payload['user_id'])  # todo don't create DAO object on each
+            user = await UserDao().get_user(payload['user_id'])  # todo don't create DAO object on each
             request.user = user
         return await handler(request)
     return middleware

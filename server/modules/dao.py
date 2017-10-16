@@ -143,17 +143,17 @@ class UserDao(Dao):
 
     async def get_user(self, _id):
 
-        query = f"SELECT `id` FROM {self.table_name} WHERE `id` = %s AND `registered` = 1"
+        query = f"SELECT `user_id` FROM {self.table_name} WHERE `user_id` = %s AND `registered` = 1"
         user = await self.make_query(query=query, args=[_id], fetchone=True)
 
         if user:
-            return user['id']
+            return user['user_id']
         else:
             return None
 
     async def authorize(self, email, password):
 
-        query = f"SELECT `email`, `user_id`, `password` FROM {self.table_name} WHERE `email` = %s"
+        query = f"SELECT `email`, `user_id`, `password` FROM {self.table_name} WHERE `email` = %s AND `registered` = 1"
         user = await self.make_query(query=query, args=[email], fetchone=True)
 
         if not user:
