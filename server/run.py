@@ -40,4 +40,7 @@ parser.add_argument("--host",
 args = parser.parse_args()
 
 # Server start
-web.run_app(application, port=args.port, host=args.host)
+try:
+    web.run_app(application, port=args.port, host=args.host)
+except KeyboardInterrupt:
+    application.shutdown()
