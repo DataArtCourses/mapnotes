@@ -4,3 +4,7 @@ class UserDoesNotExist(Exception):
 
 class PasswordDoesNotMatch(Exception):
     pass
+
+
+class RegistrationLinkExpired(Exception):
+    pass

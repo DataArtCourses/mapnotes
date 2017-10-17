@@ -15,7 +15,15 @@ except ImportError:
 
 
 class Cache:
-    mc = aiomcache.Client(host=Config.get('cache', 'host'), port=Config.get('cache', 'port'), loop=loop)
+    mc = None
+
+    @classmethod
+    async def connect(cls):
+        log.info('Connecting to memcache')
+        cls.mc = aiomcache.Client(host=Config.get('cache', 'host'),
+                                  port=int(Config.get('cache', 'port')),
+                                  loop=asyncio.get_event_loop())
+        log.info('Connected to memcache')
 
     @classmethod
     async def set(cls, key, value, expired_time=0):
