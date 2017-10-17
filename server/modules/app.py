@@ -31,4 +31,4 @@ for route in routes:
         handler = getattr(route['handler'], method, None)
         if not handler:
             continue
-        application.router.add_route(method, route['path'], route['handler'])
+        cors.add(application.router.add_route(method, route['path'], route['handler']))

@@ -4,7 +4,7 @@
     <form id="registarion" @submit.prevent="validateBeforeSubmit()" method="POST">
         <div>
           <input v-validate="'required|email'" name="email" type="text" placeholder="Email" v-model="email"><br>
-          <input v-validate="'required|min:8'" name="password" type="password" class="form-control" placeholder="Password"><br>
+          <input v-validate="'min:8|max:16|regex:^(?=.*[A-Za-z])(?=.*[0-9])$'" name="password" type="password" class="form-control" placeholder="Password"><br>
           <input v-validate="'required|confirmed:password'" name="password_confirmation" type="password" data-vv-as="password" placeholder="Password, Again" v-model="password">
         </div>
 
@@ -25,8 +25,8 @@
  </div>
 </template>
 <script>
-// import axios from 'axios'
-// const API_BASE = 'http://127.0.0.1:8000/api/users'
+import axios from 'axios'
+const API_BASE = 'http://127.0.0.1:8000/api/register'
 
 export default {
   data () {
@@ -42,18 +42,21 @@ export default {
         .then(response => {
           // Validation success if response === true
           if (this.email && this.password) {
-            // axios.post(API_BASE, {
-            //   email: this.email,
-            //   password: this.password
-            // })
-            // .then(response => {
-            //   this.$router.push({path: '/messanger'})
-            // })
-            // .catch(e => {
-            //   console.error(e)
-            // })
+            axios.post(API_BASE, {
+              email: this.email,
+              password: this.password
+            })
+            .then(response => {
+              console.log(response)
+              if (response.status === 200) {
+                this.$router.push({path: '/login'})
+              }
+            })
+            .catch(e => {
+              console.error(e)
+            })
             console.log({'email': this.email, 'password': this.password})
-            this.$router.push({path: '/messenger'})
+            // this.$router.push({path: '/login'})
           }
         })
         .catch(e => {

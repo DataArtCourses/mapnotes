@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/HelloWorld'
-import Registration from '@/components/Registration'
-import Messenger from '@/components/Messenger'
+import {
+  Registration,
+  Messenger,
+  Login,
+  Hello } from '@/components/'
 
 Vue.use(Router)
 
@@ -17,6 +19,11 @@ export default new Router({
       path: '/hello',
       name: 'Hello',
       component: Hello
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
     },
     {
       path: '/messenger',
