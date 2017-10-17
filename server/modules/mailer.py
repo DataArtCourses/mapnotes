@@ -43,5 +43,8 @@ class Mailer:
         await Mailer.server.ehlo()
         log.info('SMTP Server created')
 
-
-asyncio.ensure_future(Mailer.connect())
+    @staticmethod
+    async def close():
+        log.info('Disconnecting SMTP server')
+        await Mailer.server.close()
+        log.info('SMTP server disconnected')

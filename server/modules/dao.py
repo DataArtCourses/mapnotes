@@ -16,16 +16,19 @@ log = logging.getLogger('application')
 
 class Dao(ABC):
 
-    loop = asyncio.get_event_loop()
-    pool = loop.run_until_complete(
-        aiomysql.create_pool(
-            user=Config.get('mysql', 'user'),
-            db=Config.get('mysql', 'db'),
-            host=Config.get('mysql', 'host'),
-            password=Config.get('mysql', 'password'),
-            loop=loop
+    pool = None
+
+    @staticmethod
+    async def connect():
+        log.info('Connecting to Database')
+        Dao.pool = await aiomysql.create_pool(
+                user=Config.get('mysql', 'user'),
+                db=Config.get('mysql', 'db'),
+                host=Config.get('mysql', 'host'),
+                password=Config.get('mysql', 'password'),
+                loop=asyncio.get_event_loop()
         )
-    )
+        log.info('Connected to Database')
 
     async def make_query(self, query, fetchone=False, args=None, insert_fetch=False):
         async with self.pool.get() as conn:
@@ -131,7 +134,7 @@ class UserDao(Dao):
 
         if isinstance(user, Exception) or not user:
             error = "Registration link expired or have already been activated"
-            return error
+            raise RegistrationLinkExpired(error)
         else:
             query = (f"UPDATE `{self.table_name}` "
                      f"SET `registered` = 1 "
