@@ -56,7 +56,7 @@ class RegistrationView(BaseView):
             error = await self.user_dao.confirm_registration(confirm_key)
         except RegistrationLinkExpired as e:
             return json_response({'error': e}, status=400)
-        return json_response({'error': error})
+        return json_response({'error': error},)
 
     async def post(self):
         new_user = await self.request.json()

@@ -1,69 +1,100 @@
 <template>
  <div>
     <h1>Qwa!</h1>
-    <form id="registarion" @submit.prevent="validateBeforeSubmit()" method="POST">
+    <form id="registarion" @submit.prevent="validateBeforeSubmit">
         <div>
-          <input v-validate="'required|email'" name="email" type="text" placeholder="Email" v-model="email"><br>
-          <input v-validate="'min:8|max:16|regex:^(?=.*[A-Za-z])(?=.*[0-9])$'" name="password" type="password" class="form-control" placeholder="Password"><br>
-          <input v-validate="'required|confirmed:password'" name="password_confirmation" type="password" data-vv-as="password" placeholder="Password, Again" v-model="password">
+          <input name="text" type="text" placeholder="e-mail" v-model="email"><br>
+          <p v-show="wrongEmail && attemptSubmit">Wrong email</p>
+          <input name="password" type="password" placeholder="password" v-model="password"><br>
+          <p v-show="wrongPasswordLength && attemptSubmit">Password length from 8 to 16</p>
+          <p v-show="wrongPassword && attemptSubmit">In the password must be present digit and letter</p>
+          <input name="password_confirmation" type="password" placeholder="password, again" v-model="password_confirmation">
+          <p v-show="wrongPasswordConfirmation && attemptSubmit">Wrong password confirmation</p>
         </div>
-
-      <div v-show="errors.any()">
-        <div v-if="errors.has('email')"> 
-          {{ errors.first('email') }}
-        </div>
-        <div v-if="errors.has('password')">
-          {{ errors.first('password') }}
-        </div>
-        <div v-if="errors.has('password_confirmation')">
-          {{ errors.first('password_confirmation') }}
-        </div>
-      </div>
       <button type="submit">Send</button>
   </form>
+  <router-link to="/login">Sign In</router-link>
         
  </div>
 </template>
 <script>
 import axios from 'axios'
-const API_BASE = 'http://127.0.0.1:8000/api/register'
+
+const API_BASE = 'http://127.0.0.1:8000/api/'
+const reEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+const rePassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/
 
 export default {
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      password_confirmation: '',
+      attemptSubmit: false
+    }
+  },
+  computed: {
+    wrongEmail () {
+      return !reEmail.test(this.email)
+    },
+    wrongPasswordLength () {
+      return this.password.length < 8 || this.password.length > 16
+    },
+    wrongPassword () {
+      return !rePassword.test(this.password)
+    },
+    wrongPasswordConfirmation () {
+      return this.password !== this.password_confirmation
     }
   },
   methods: {
     validateBeforeSubmit () {
-      this.$validator
-        .validateAll()
+      this.attemptSubmit = true
+      if (!this.wrongEmailv && !this.wrongPasswordLength && !this.wrongPassword && !this.wrongPasswordConfirmation) {
+        axios.post(API_BASE + 'register', {
+          email: this.email,
+          password: this.password
+        })
         .then(response => {
-          // Validation success if response === true
-          if (this.email && this.password) {
-            axios.post(API_BASE, {
-              email: this.email,
-              password: this.password
-            })
-            .then(response => {
-              console.log(response)
-              if (response.status === 200) {
-                this.$router.push({path: '/login'})
-              }
-            })
-            .catch(e => {
-              console.error(e)
-            })
+          console.log(response)
+          if (response.status === 200) {
             console.log({'email': this.email, 'password': this.password})
-            // this.$router.push({path: '/login'})
+            this.$router.push({path: '/login'})
           }
         })
         .catch(e => {
-          // Catch errors
           console.error(e)
         })
+      }
     }
+    // validateBeforeSubmit () {
+    //   this.$validator
+    //     .validateAll()
+    //     .then(response => {
+    //       // Validation success if response === true
+    //       if (this.email && this.password) {
+    //         axios.post(API_BASE, {
+    //           email: this.email,
+    //           password: this.password
+    //         })
+    //         .then(response => {
+    //           console.log(response)
+    //           if (response.status === 200) {
+    //             this.$router.push({path: '/login'})
+    //           }
+    //         })
+    //         .catch(e => {
+    //           console.error(e)
+    //         })
+    //         console.log({'email': this.email, 'password': this.password})
+    //         // this.$router.push({path: '/login'})
+    //       }
+    //     })
+    //     .catch(e => {
+    //       // Catch errors
+    //       console.error(e)
+    //     })
+    // }
   }
 }
 </script>

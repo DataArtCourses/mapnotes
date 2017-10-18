@@ -9,6 +9,7 @@ import {
 Vue.use(Router)
 
 export default new Router({
+  hashbang: false,
   routes: [
     {
       path: '/',
