@@ -8,3 +8,7 @@ class PasswordDoesNotMatch(Exception):
 
 class RegistrationLinkExpired(Exception):
     pass
+
+
+class UserAlreadyExist(Exception):
+    pass

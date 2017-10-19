@@ -11,7 +11,7 @@ from aiohttp import web
 from .routes import routes
 from .middlewares import auth_middleware
 from .mailer import Mailer
-from .dao import Dao
+from .models import Base
 from .cache import Cache
 
 log = logging.getLogger('application')
@@ -21,8 +21,8 @@ template_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'temp
 async def initialize(_):
     log.info('Initializing external services')
     await asyncio.gather(Mailer.connect(),
-                         Dao.connect())
-                         # Cache.connect())
+                         Base.connect(),
+                         Cache.connect())
     log.info('External services initialized')
 
 
