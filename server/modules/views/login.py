@@ -5,10 +5,11 @@ import logging
 import jwt
 from aiohttp.web_response import json_response
 
-from server.modules.cache import Cache
-from server.modules.config import Config
+from ..cache import Cache
+from ..models import Users
+from ..config import Config
+
 from server.modules.exceptions import UserDoesNotExist, PasswordDoesNotMatch
-from server.modules.models import Users
 from server.modules.views.base import BaseView
 
 

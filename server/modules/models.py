@@ -86,7 +86,7 @@ class Users(Base):
                  "`email` VARCHAR(255) NOT NULL UNIQUE,"
                  "`password` CHAR(32) NOT NULL,"  # hashed with MD5
                  "`first_name` VARCHAR(255) NOT NULL DEFAULT '',"
-                 "`second_name` VARCHAR(255) NOT NULL DEFAULT '',"
+                 "`last_name` VARCHAR(255) NOT NULL DEFAULT '',"
                  "`bio` TEXT,"
                  "`registered` INT(1) DEFAULT 0,"
                  "`phone` VARCHAR(20) NOT NULL DEFAULT '',"
@@ -100,6 +100,17 @@ class Users(Base):
             log.error('Error creating table %s with %s', cls.table_name, e)
         else:
             log.info('Successfuly created table %s', cls.table_name)
+
+    @classmethod
+    async def get_profile(cls, user_id):
+        query = (f"SELECT `first_name`, `last_name`, `bio`, `phone`"
+                 f"FROM `{cls.table_name}` "
+                 "WHERE `registered` = 1 AND `user_id` = %s"
+                 )
+
+        profile = await cls.make_query(query=query, args=[user_id], fetchone=True)
+
+        return profile
 
     @classmethod
     async def create_new_user(cls, email, password):
