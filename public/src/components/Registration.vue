@@ -2,7 +2,7 @@
  <div>
     <h1>Qwa!</h1>
    <el-row :gutter="20">
-    <el-col :span="12" :offset="6">
+    <el-col :span="8" :offset="8">
       <el-form :label-position="labelPosition" label-width="100px" :model="formLabelAlign">
         <el-form-item label="Email">
           <p v-show="wrongEmail && attemptSubmit">Wrong email</p>
