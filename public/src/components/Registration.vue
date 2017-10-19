@@ -1,63 +1,82 @@
 <template>
  <div>
     <h1>Qwa!</h1>
-    <form id="registarion" @submit.prevent="validateBeforeSubmit()" method="POST">
-        <div>
-          <input v-validate="'required|email'" name="email" type="text" placeholder="Email" v-model="email"><br>
-          <input v-validate="'required|min:8'" name="password" type="password" class="form-control" placeholder="Password"><br>
-          <input v-validate="'required|confirmed:password'" name="password_confirmation" type="password" data-vv-as="password" placeholder="Password, Again" v-model="password">
-        </div>
+   <el-row :gutter="20">
+    <el-col :span="8" :offset="8">
+      <el-form :label-position="labelPosition" label-width="100px" :model="formLabelAlign">
+        <el-form-item label="Email">
+          <p v-show="wrongEmail && attemptSubmit">Wrong email</p>
+          <el-input name="text" type="text" placeholder="e-mail" v-model="formLabelAlign"></el-input>
+        </el-form-item>
+        <el-form-item label="Password">
+          <p v-show="wrongPasswordLength && attemptSubmit">Password length from 8 to 16</p>
+          <p v-show="wrongPassword && attemptSubmit">In the password must be present digit and letter</p>
+          <el-input name="password" type="password" placeholder="password" v-model="password"></el-input>
+        </el-form-item>
+        <el-form-item label="Password">
+          <el-input name="password_confirmation" type="password" placeholder="repeat password" v-model="password_confirmation"></el-input>
+            <p v-show="wrongPasswordConfirmation && attemptSubmit">Wrong password confirmation</p>
+        </el-form-item>
+        <el-button type="submit">Send</el-button>
+      </el-form>
+    </el-col>
+  </el-row>
 
-      <div v-show="errors.any()">
-        <div v-if="errors.has('email')"> 
-          {{ errors.first('email') }}
-        </div>
-        <div v-if="errors.has('password')">
-          {{ errors.first('password') }}
-        </div>
-        <div v-if="errors.has('password_confirmation')">
-          {{ errors.first('password_confirmation') }}
-        </div>
-      </div>
-      <button type="submit">Send</button>
-  </form>
-        
+  <router-link to="/login">Sign In</router-link>
+
  </div>
 </template>
 <script>
 import axios from 'axios'
-const API_BASE = 'http://127.0.0.1:8000/api/users'
+import ElButton from '../../node_modules/element-ui/packages/button/src/button.vue'
+
+const API_BASE = 'http://127.0.0.1:8000/api/'
+const reEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+const rePassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/
 
 export default {
+  components: {ElButton},
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      password_confirmation: '',
+      attemptSubmit: false
+    }
+  },
+  computed: {
+    wrongEmail () {
+      return !reEmail.test(this.email)
+    },
+    wrongPasswordLength () {
+      return this.password.length < 8 || this.password.length > 16
+    },
+    wrongPassword () {
+      return !rePassword.test(this.password)
+    },
+    wrongPasswordConfirmation () {
+      return this.password !== this.password_confirmation
     }
   },
   methods: {
     validateBeforeSubmit () {
-      this.$validator
-        .validateAll()
+      this.attemptSubmit = true
+      if (!this.wrongEmail && !this.wrongPasswordLength && !this.wrongPassword && !this.wrongPasswordConfirmation) {
+        axios.post(API_BASE + 'register', {
+          email: this.email,
+          password: this.password
+        })
         .then(response => {
-          // Validation success if response === true
-          if (this.email && this.password) {
-            axios.post(API_BASE, {
-              email: this.email,
-              password: this.password
-            })
-            .then(response => {
-              this.$router.push({path: '/hello'})
-            })
-            .catch(e => {
-              console.error(e)
-            })
+          console.log(response)
+          if (response.status === 200) {
+            console.log({'email': this.email, 'password': this.password})
+            this.$router.push({path: '/login'})
           }
         })
         .catch(e => {
-          // Catch errors
           console.error(e)
         })
+      }
     }
   }
 }

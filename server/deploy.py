@@ -2,7 +2,9 @@ import asyncio
 import logging
 import argparse
 
-from modules.dao import *
+from server.modules.models import (
+    Base, Users, Pins, Chats, PinMessages, ChatMessages
+)
 
 log = logging.getLogger('application')
 log.setLevel(0)
@@ -10,31 +12,26 @@ logging.root.setLevel(0)
 log.addHandler(logging.StreamHandler())
 
 
-user_dao = UserDao()
-pin_dao = PinDao()
-chat_dao = ChatDao()
-chat_message_dao = ChatMessageDao()
-pin_message_dao = PinMessageDao()
-
-
 async def db_import():
+    await Base.connect()
     logging.debug('Creating database')
-    await user_dao.create_table()
-    await pin_dao.create_table()
-    await chat_dao.create_table()
-    await chat_message_dao.create_table()
-    await pin_message_dao.create_table()
+    await Users.create_table()
+    await Pins.create_table()
+    await Chats.create_table()
+    await ChatMessages.create_table()
+    await PinMessages.create_table()
     log.info('Done creating database')
 
 
 async def drop_tables():
+    await Base.connect()
     logging.debug('Deleting all tables...')
     await asyncio.gather(
-        user_dao.drop_table(),
-        pin_dao.drop_table(),
-        chat_message_dao.drop_table(),
-        chat_dao.drop_table(),
-        pin_message_dao.drop_table()
+        Users.drop_table(),
+        Pins.drop_table(),
+        ChatMessages.drop_table(),
+        Chats.drop_table(),
+        PinMessages.drop_table()
     )
     logging.debug('Done deleting tables')
 

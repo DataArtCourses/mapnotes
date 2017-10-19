@@ -17,8 +17,8 @@ class Mailer:
                              port=int(Config.get('email', 'port')),
                              loop=loop)
 
-    @classmethod
-    async def send_mail(cls, subject, body, receiver, _charset='utf-8'):
+    @staticmethod
+    async def send_mail(subject, body, receiver, _charset='utf-8'):
 
         message = MIMEMultipart('alternative')
         message['From'] = Config.get('email', 'user')
@@ -30,10 +30,21 @@ class Mailer:
         message.attach(html)
         message.attach(text)
 
-        await cls.server.connect()
-        await cls.server.starttls()
-        await cls.server.login(username=Config.get('email', 'user'),
-                               password=Config.get('email', 'password'))
-        await cls.server.ehlo()
-        await cls.server.send_message(message)
+        await Mailer.server.send_message(message)
         log.info('Sent email to %s', receiver)
+
+    @staticmethod
+    async def connect():
+        log.info('Creating SMTP server for Mailer')
+        await Mailer.server.connect()
+        await Mailer.server.starttls()
+        await Mailer.server.login(username=Config.get('email', 'user'),
+                                  password=Config.get('email', 'password'))
+        await Mailer.server.ehlo()
+        log.info('SMTP Server created')
+
+    @staticmethod
+    async def close():
+        log.info('Disconnecting SMTP server')
+        await Mailer.server.close()
+        log.info('SMTP server disconnected')

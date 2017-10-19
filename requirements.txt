@@ -1,3 +1,4 @@
+PyJWT
 aiomysql
 aiomcache
 aiohttp
