@@ -21,14 +21,18 @@ class Base(ABC):
     @staticmethod
     async def connect():
         log.info('Connecting to Database')
-        Base.pool = await aiomysql.create_pool(
+        try:
+            Base.pool = await aiomysql.create_pool(
                 user=Config.get('mysql', 'user'),
                 db=Config.get('mysql', 'db'),
                 host=Config.get('mysql', 'host'),
                 password=Config.get('mysql', 'password'),
                 loop=asyncio.get_event_loop()
-        )
-        log.info('Connected to Database')
+            )
+        except Exception as e:
+            log.error("Error connecting to DB: %s", e)
+        else:
+            log.info('Connected to Database')
 
     @classmethod
     async def make_query(cls, query, fetchone=False, args=None, insert_fetch=False):
