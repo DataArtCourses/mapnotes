@@ -20,9 +20,6 @@
       </el-form>
     </el-col>
   </el-row>
-
-
-
  </div>
 </template>
 <script>
@@ -35,7 +32,7 @@ export default {
       if (password.length < 8 || password.length > 16) {
         callback(new Error('Password must be from 8 to 16 chars'))
       } else if (!validPassword.test(password)) {
-        callback(new Error('Password must have consists digits and letters'))
+        callback(new Error('Password must have digits and letters'))
       } else {
         callback()
       }
