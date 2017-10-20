@@ -13,6 +13,10 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/login'
+    },
+    {
+      path: '/registartion',
       name: 'Registration',
       component: Registration
     },

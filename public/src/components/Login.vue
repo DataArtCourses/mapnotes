@@ -7,7 +7,7 @@
     br
     button(type="submit") Sign in
     br
-    router-link(to="/") Registration
+    router-link(to="/registartion") Registration
 </template>
 <script>
 export default {
