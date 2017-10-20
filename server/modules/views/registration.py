@@ -35,11 +35,11 @@ class RegistrationView(BaseView):
         try:
             register_link = await Users.create_new_user(**new_user)
         except UserAlreadyExist as e:
-            return json_response({'error': e}, status=400)
+            return json_response({'error': str(e)}, status=400)
         else:
 
             link = f'http://{self.request.host}{self.request.path}?confirm={register_link}'
-            tpl = aiohttp_jinja2.render_string('registration.html', request=self.request, context={'link': link})
+            tpl = aiohttp_jinja2.render_string('letter.html', request=self.request, context={'link': link})
             asyncio.ensure_future(Cache.set(register_link, new_user['email'], 60*60*24))
             asyncio.ensure_future(Mailer.send_mail(receiver=new_user['email'],
                                                    subject='Mapified registration',
