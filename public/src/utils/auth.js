@@ -1,8 +1,8 @@
 
-export function getToken () {
+// export function getToken () {
 
-}
+// }
 
-export function setToken () {
+// export function setToken () {
 
-}
+// }

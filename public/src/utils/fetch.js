@@ -4,7 +4,7 @@ import { Message } from 'element-ui'
 import store from '../store'
 import getToken from './auth'
 
-export const BASE_API_URL = 'http://localhost:8000/api'
+const BASE_API_URL = 'http://localhost:8000/api'
 
 const service = axios.create({
   baseURL: BASE_API_URL,
@@ -36,4 +36,7 @@ service.interceptors.response.use(
   }
 )
 
-export default service
+export {
+  service,
+  BASE_API_URL
+}

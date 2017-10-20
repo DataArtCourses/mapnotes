@@ -1,18 +1,18 @@
 import { LOGIN, LOGOUT } from '../mutation-types'
 
-export const store = {
+const store = {
   isLoading: false,
   isAuth: false,
   token: ''
 }
 
-export const getters = {
+const getters = {
   isLoaded: state => state.isLoaded,
   isAuth: state => state.isAuth,
   token: state => state.token
 }
 
-export const mutations = {
+const mutations = {
   setLoading (state, toggle) {
     state.isLoading = toggle
   },
@@ -22,4 +22,10 @@ export const mutations = {
   [LOGOUT]: (state) => {
     state.isAuth = false
   }
+}
+
+export default {
+  store,
+  getters,
+  mutations
 }

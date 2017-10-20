@@ -26,7 +26,8 @@
  </div>
 </template>
 <script>
-import registration from '../api'
+import axios from 'axios'
+
 export default {
   data () {
     const validatePassword = (rule, password, callback) => {
@@ -71,32 +72,21 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!')
-          registration(email, password)
+          axios.post('http://localhost:8000/api/register', { email: this.dynamicValidateForm.email, password: this.dynamicValidateForm.password }).then(response => {
+            console.log(response)
+            if (response.status === 200) {
+              console.log({'email': this.dynamicValidateForm.email, 'password': this.dynamicValidateForm.password})
+              this.$router.push({path: '/login'})
+            }
+          }).catch(e => {
+            console.error(e)
+          })
         } else {
           console.log('error submit!!')
           return false
         }
       })
     }
-    // validateBeforeSubmit () {
-    //   if (!this.wrongEmail && !this.wrongPasswordLength && !this.wrongPassword && !this.wrongPasswordConfirmation) {
-    //     axios.post(API_BASE + 'register', {
-    //       email: this.email,
-    //       password: this.password
-    //     })
-    //     .then(response => {
-    //       console.log(response)
-    //       if (response.status === 200) {
-    //         console.log({'email': this.email, 'password': this.password})
-    //         this.$router.push({path: '/login'})
-    //       }
-    //     })
-    //     .catch(e => {
-    //       console.error(e)
-    //     })
-    //   }
-    // }
   }
 }
 </script>

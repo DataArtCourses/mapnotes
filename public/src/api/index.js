@@ -1,33 +1,39 @@
-import { fetch, BASE_API_URL } from '../utils/fetch'
+import { service, BASE_API_URL } from '../utils/fetch'
 
-export function registration (email, password) {
+function registration (email, password) {
   const data = {
     email,
     password
   }
-  return fetch({
+  return service({
     url: BASE_API_URL + '/register',
     methods: 'post',
     data
   })
 }
 
-export function login (email, password) {
+function login (email, password) {
   const data = {
     email,
     password
   }
-  return fetch({
+  return service({
     url: BASE_API_URL + '/login',
     methods: 'get',
     data
   })
 }
 
-export function getUserProfile (token) {
-  return fetch({
+function getUserProfile (token) {
+  return service({
     url: BASE_API_URL + '/login',
     methods: 'get',
     params: { token }
   })
+}
+
+export default {
+  login,
+  registration,
+  getUserProfile
 }
