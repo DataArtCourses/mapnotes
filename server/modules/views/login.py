@@ -9,8 +9,8 @@ from ..cache import Cache
 from ..models import Users
 from ..config import Config
 
-from server.modules.exceptions import UserDoesNotExist, PasswordDoesNotMatch
-from server.modules.views.base import BaseView
+from ..exceptions import UserDoesNotExist, PasswordDoesNotMatch
+from .base import BaseView
 
 
 log = logging.getLogger('application')
