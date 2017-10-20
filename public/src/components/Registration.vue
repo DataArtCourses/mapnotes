@@ -39,14 +39,14 @@ export default {
       } else {
         callback()
       }
-    }
+    };
     const validateConf = (rule, value, callback) => {
       if (value !== this.dynamicValidateForm.password) {
         callback(new Error('Two inputs don\'t match!'))
       } else {
         callback()
       }
-    }
+    };
     return {
       dynamicValidateForm: {
         email: '',
@@ -73,16 +73,21 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           axios.post('http://localhost:8000/api/register', { email: this.dynamicValidateForm.email, password: this.dynamicValidateForm.password }).then(response => {
-            console.log(response)
+            console.log(response);
             if (response.status === 200) {
-              console.log({'email': this.dynamicValidateForm.email, 'password': this.dynamicValidateForm.password})
-              this.$router.push({path: '/login'})
+              this.$message({
+                'type': 'success',
+                'message': `Almost there! To complete registration please check your email ${this.dynamicValidateForm.email}`
+              })
             }
           }).catch(e => {
-            console.error(e)
+            this.$message({
+              type: 'error',
+              message: `${e.response ? e.response.data.error : e}`
+            })
           })
         } else {
-          console.log('error submit!!')
+          console.log('error submit!!');
           return false
         }
       })
