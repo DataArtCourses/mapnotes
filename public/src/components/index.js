@@ -1,11 +1,13 @@
-import Hello from './HelloWorld'
-import Login from './Login'
-import Registration from './Registration'
-import Messenger from './Messenger'
+import Hello from './HelloWorld.vue'
+import Login from './Login.vue'
+import Registration from './Registration.vue'
+import Messenger from './Messenger.vue'
+import Navbar from './Navbar.vue'
 
 export {
   Hello,
   Login,
   Registration,
-  Messenger
+  Messenger,
+  Navbar
 }

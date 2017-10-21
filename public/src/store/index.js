@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 import app from './modules/app'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
   strict: true,
@@ -13,6 +13,6 @@ const store = new Vuex.Store({
   store: {},
   getters: {},
   mutations: {}
-})
+});
 
 export default store

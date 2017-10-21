@@ -1,7 +1,6 @@
 <template>
- <div>
-    <h1>Qwa!</h1>
-   <el-row :gutter="20">
+ <el-main>
+   <el-row>
     <el-col :span="8" :offset="7">
       <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="150px" :rules="rules">
         <el-form-item prop="email" label="Email">
@@ -15,20 +14,18 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('dynamicValidateForm')">Register</el-button>
-          <router-link to="/login">Sign In</router-link>
         </el-form-item>
       </el-form>
     </el-col>
   </el-row>
-
-
-
- </div>
+ </el-main>
 </template>
 <script>
 import axios from 'axios'
+import ElMain from '../../node_modules/element-ui/packages/main/src/main.vue';
 
 export default {
+  components: {ElMain},
   data () {
     const validatePassword = (rule, password, callback) => {
       const validPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/
@@ -87,7 +84,10 @@ export default {
             })
           })
         } else {
-          console.log('error submit!!');
+          this.$message({
+            type: 'error',
+            message: 'Please fill in all required fields.'
+          });
           return false
         }
       })

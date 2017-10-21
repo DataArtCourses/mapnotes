@@ -4,13 +4,13 @@ const store = {
   isLoading: false,
   isAuth: false,
   token: ''
-}
+};
 
 const getters = {
   isLoaded: state => state.isLoaded,
   isAuth: state => state.isAuth,
   token: state => state.token
-}
+};
 
 const mutations = {
   setLoading (state, toggle) {
@@ -22,7 +22,7 @@ const mutations = {
   [LOGOUT]: (state) => {
     state.isAuth = false
   }
-}
+};
 
 export default {
   store,

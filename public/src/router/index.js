@@ -4,20 +4,21 @@ import {
   Registration,
   Messenger,
   Login,
-  Hello } from '@/components/'
+  Hello } from '@/components/';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   hashbang: false,
   routes: [
     {
       path: '/',
-      redirect: '/login'
+      redirect: '/login',
+      name: 'login'
     },
     {
-      path: '/registartion',
-      name: 'Registration',
+      path: '/registration',
+      name: 'registration',
       component: Registration
     },
     {

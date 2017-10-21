@@ -10,7 +10,7 @@
 </template>
 <script>
 export default {
-  name: 'messanger',
+  name: 'messenger',
   data () {
     return {
       messages: [],
@@ -23,8 +23,8 @@ export default {
   methods: {
     sendMessage () {
       if (this.new_message.text) {
-        this.new_message.dateTime = Date.now()
-        this.messages.push(this.new_message)
+        this.new_message.dateTime = Date.now();
+        this.messages.push(this.new_message);
         this.new_message = {text: '', dateTime: ''}
       }
     }
