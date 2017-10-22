@@ -18,6 +18,14 @@ export default new Router({
       component: lazyLoading('auth/Registration')
     },
     {
+      path: '/profile',
+      name: 'Profile',
+      component: lazyLoading('Profile'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/hello',
       name: 'Hello',
       component: lazyLoading('HelloWorld'),

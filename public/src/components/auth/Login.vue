@@ -52,7 +52,8 @@ export default {
           axios.post('http://localhost:8000/api/login', { email: this.LoginForm.email, password: this.LoginForm.password }).then(response => {
             console.log(response);
             if (response.status === 200) {
-              this.$store.dispatch('login', {token: response.data.token, ch: this.LoginForm.checked})
+              this.$store.email = this.LoginForm.email;
+              this.$store.dispatch('login', {token: response.data.token, ch: this.LoginForm.checked});
               this.$router.push({path: '/hello'})
             }
           }).catch(e => {

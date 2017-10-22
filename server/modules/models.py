@@ -78,6 +78,7 @@ class Users(Base):
 
     table_name = 'users'
     pk = 'user_id'
+    fields = {'first_name', 'last_name', 'phone', 'bio', 'avatar_url'}
 
     @classmethod
     async def create_table(cls):
@@ -100,6 +101,14 @@ class Users(Base):
             log.error('Error creating table %s with %s', cls.table_name, e)
         else:
             log.info('Successfuly created table %s', cls.table_name)
+
+    @classmethod
+    async def update_profile(cls, user_id, first_name, last_name, bio, phone, avatar_url):
+        query = (f"UPDATE `{cls.table_name}`"
+                 "SET `first_name` = %s, `last_name` = %s, `bio` = %s, `phone` = %s, `avatar_url` = %s "
+                 "`WHERE `user_id` = %s"
+                 )
+        await cls.make_query(query=query, args=[first_name, last_name, bio, phone, avatar_url, user_id])
 
     @classmethod
     async def get_profile(cls, user_id):

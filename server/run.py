@@ -1,12 +1,13 @@
 import os
 import sys
 import logging
+import asyncio
 import argparse
 
 from aiohttp import web
 
-from modules.config import Config
-from modules.app import application
+from server.modules.config import Config
+from server.modules.app import application, on_shutdown
 
 LOG_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), Config.get('logging', 'path'))
 LOG_FILE = os.path.join(LOG_PATH, Config.get('logging', 'log_file'))
@@ -44,3 +45,5 @@ try:
     web.run_app(application, port=args.port, host=args.host)
 except KeyboardInterrupt:
     application.shutdown()
+finally:  # Sanitizing shutdown functions..
+    asyncio.get_event_loop().run_until_complete(on_shutdown())

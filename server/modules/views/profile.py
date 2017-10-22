@@ -26,5 +26,11 @@ class ProfileView(BaseView):
     async def post(self):
         log.info("User %s trying to modify self data", self.request.user['email'])
         user_data = await self.request.json()
-        user_id = self.request.user['user_id']
+        if not set(user_data.keys()) == Users.fields:
+            return json_response({'error': 'Please fill in all fields'}, status=400)
+        user_id = self.request.user.get('user_id')
+        if not user_id:
+            log.error('User in request obj has no user id')
+            return json_response({}, status=400)
+        await Users.update_profile(user_id, **user_data)
         return json_response({}, status=200)

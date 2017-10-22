@@ -1,3 +1,4 @@
+nanodb
 PyJWT
 aiomysql
 aiomcache

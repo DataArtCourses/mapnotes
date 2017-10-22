@@ -29,6 +29,8 @@ async def initialize(_):
 async def on_shutdown(_):
     log.info('Shutting down server...')
     await Mailer.close()
+    await Base.pool.close()
+    await Cache.mc.close()
 
 application = web.Application(middlewares=[auth_middleware])
 application.on_startup.append(initialize)

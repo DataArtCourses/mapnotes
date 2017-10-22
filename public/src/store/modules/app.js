@@ -17,7 +17,7 @@ const mutations = {
   },
   [LOGIN]: (state, token) => {
     setToken(token.token, token.ch);
-    state.isAuth = true
+    state.isAuth = true;
   },
   [LOGOUT]: (state) => {
     delToken();
