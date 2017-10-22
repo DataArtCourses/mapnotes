@@ -1,26 +1,18 @@
-<template>
- <div>
-    <h1>Qwa!</h1>
-   <el-row :gutter="20">
-    <el-col :span="8" :offset="7">
-      <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="150px" :rules="rules">
-        <el-form-item prop="email" label="Email">
-          <el-input v-model="dynamicValidateForm.email"></el-input>
-        </el-form-item>
-        <el-form-item prop="password" label="Password">
-          <el-input v-model="dynamicValidateForm.password" type="password"></el-input>
-        </el-form-item>
-        <el-form-item prop="checkPass" label="Password Confirm">
-          <el-input v-model="dynamicValidateForm.checkPass" type="password"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="submitForm('dynamicValidateForm')">Register</el-button>
-          <router-link to="/login">Sign In</router-link>
-        </el-form-item>
-      </el-form>
-    </el-col>
-  </el-row>
- </div>
+<template lang="pug">
+  div
+    h1 Qwa!
+    el-row(:gutter="20")
+      el-col(:span="8" :offset="7")
+        el-form(:model="RegistrationForm" ref="RegistrationForm" label-width="150px" :rules="rules")
+          el-form-item(prop="email" label="Email")
+            el-input(v-model="RegistrationForm.email")
+          el-form-item(prop="password" label="Password")
+            el-input(v-model="RegistrationForm.password" type="password")
+          el-form-item(prop="checkPass" label="Password Confirm")
+            el-input(v-model="RegistrationForm.checkPass" type="password")
+          el-form-item
+            el-button(type="primary" @click="submitForm('RegistrationForm')") Register
+            router-link(to="/login") Sign In
 </template>
 <script>
 import axios from 'axios'
@@ -38,14 +30,14 @@ export default {
       }
     };
     const validateConf = (rule, value, callback) => {
-      if (value !== this.dynamicValidateForm.password) {
+      if (value !== this.RegistrationForm.password) {
         callback(new Error('Two inputs don\'t match!'))
       } else {
         callback()
       }
     };
     return {
-      dynamicValidateForm: {
+      RegistrationForm: {
         email: '',
         password: '',
         checkPass: ''
@@ -69,12 +61,12 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          axios.post('http://localhost:8000/api/register', { email: this.dynamicValidateForm.email, password: this.dynamicValidateForm.password }).then(response => {
+          axios.post('http://localhost:8000/api/register', { email: this.RegistrationForm.email, password: this.RegistrationForm.password }).then(response => {
             console.log(response);
             if (response.status === 200) {
               this.$message({
                 'type': 'success',
-                'message': `Almost there! To complete registration please check your email ${this.dynamicValidateForm.email}`
+                'message': `Almost there! To complete registration please check your email ${this.RegistrationForm.email}`
               })
             }
           }).catch(e => {

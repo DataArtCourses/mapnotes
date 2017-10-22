@@ -1,13 +1,20 @@
-<template>
-  <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
-    <router-view/>
+<template lang="pug">
+  #app
+    navbar
+    router-view(v-loading.fullscreen.lock="this.$store.getters.isLoaded" 
+    element-loading-text="Loading..." 
+    element-loading-spinner="el-icon-loading"
+    element-loading-background="rgba(0, 0, 0, 0.8)")
   </div>
 </template>
-
 <script>
+import Navbar from './components/Navbar'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    Navbar
+  }
 }
 </script>
 

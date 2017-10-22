@@ -1,43 +1,52 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import {
-  Registration,
-  Messenger,
-  Login,
-  Hello } from '@/components/'
+
+import lazyLoading from './lazyLoading'
 
 Vue.use(Router)
 
 export default new Router({
-  hashbang: false,
   routes: [
     {
-      path: '/',
-      redirect: '/login'
+      path: '/login',
+      name: 'Login',
+      component: lazyLoading('auth/Login')
     },
     {
-      path: '/registartion',
+      path: '/registration',
       name: 'Registration',
-      component: Registration
+      component: lazyLoading('auth/Registration')
     },
     {
       path: '/hello',
       name: 'Hello',
-      component: Hello
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      component: Login
+      component: lazyLoading('HelloWorld'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/messenger',
       name: 'Messenger',
-      component: Messenger
+      component: lazyLoading('messenger/Messenger'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/map',
+      name: 'Map',
+      component: lazyLoading('map/Map'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '*',
-      redirect: '/'
+      redirect: '/hello'
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })

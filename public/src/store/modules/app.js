@@ -1,31 +1,46 @@
 import { LOGIN, LOGOUT } from '../mutation-types'
+import { setToken, getToken, delToken } from '../../utils/auth'
 
-const store = {
+const state = {
   isLoading: false,
-  isAuth: false,
-  token: ''
+  isAuth: !!getToken()
 }
 
 const getters = {
-  isLoaded: state => state.isLoaded,
-  isAuth: state => state.isAuth,
-  token: state => state.token
+  isLoaded: (state) => { return state.isLoading },
+  isAuth: (state) => { return state.isAuth }
 }
 
 const mutations = {
-  setLoading (state, toggle) {
-    state.isLoading = toggle
+  setLoading (state) {
+    state.isLoading = !state.isLoading
   },
-  [LOGIN]: (state, user) => {
+  [LOGIN]: (state, token) => {
+    setToken(token.token, token.ch)
     state.isAuth = true
   },
   [LOGOUT]: (state) => {
+    delToken()
     state.isAuth = false
   }
 }
 
+const actions = {
+  login: ({ commit }, token) => {
+    commit('setLoading')
+    commit(LOGIN, token)
+    commit('setLoading')
+  },
+  logout: ({ commit }) => {
+    commit('setLoading')
+    commit(LOGOUT)
+    commit('setLoading')
+  }
+}
+
 export default {
-  store,
+  state,
   getters,
-  mutations
+  mutations,
+  actions
 }
