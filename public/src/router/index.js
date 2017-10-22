@@ -18,14 +18,6 @@ export default new Router({
       component: lazyLoading('auth/Registration')
     },
     {
-      path: '/profile',
-      name: 'Profile',
-      component: lazyLoading('Profile'),
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
       path: '/hello',
       name: 'Hello',
       component: lazyLoading('HelloWorld'),
@@ -42,12 +34,20 @@ export default new Router({
       }
     },
     {
+      path: '/profile',
+      name: 'Profile',
+      component: lazyLoading('profile/Profile'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/map',
       name: 'Map',
-      component: lazyLoading('map/Map')
-      // meta: {
-      //   requiresAuth: true
-      // }
+      component: lazyLoading('map/Map'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '*',

@@ -22,15 +22,8 @@
 </template>
 <script>
 import axios from 'axios'
-import ElFormItem from '../../../node_modules/element-ui/packages/form/src/form-item.vue';
-import ElInput from '../../../node_modules/element-ui/packages/input/src/input.vue';
-import ElCheckbox from '../../../node_modules/element-ui/packages/checkbox/src/checkbox.vue';
 
 export default {
-  components: {
-    ElCheckbox,
-    ElInput,
-    ElFormItem},
   name: 'login',
   data () {
     return {

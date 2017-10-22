@@ -1,5 +1,5 @@
-<template>
-  <messenger></messenger>
+<template lang="pug">
+  messenger
 </template>
 <script>
 import Messenger from './messenger/Messenger'

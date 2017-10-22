@@ -6,8 +6,8 @@ import argparse
 
 from aiohttp import web
 
-from server.modules.config import Config
-from server.modules.app import application, on_shutdown
+from modules.config import Config
+from modules.app import application, on_shutdown
 
 LOG_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), Config.get('logging', 'path'))
 LOG_FILE = os.path.join(LOG_PATH, Config.get('logging', 'log_file'))

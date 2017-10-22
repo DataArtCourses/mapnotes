@@ -10,6 +10,7 @@
   import markerIcon from '../../assets/marker-icon.png'
   import markerShadow from '../../assets/marker-shadow.png'
   import markerIcon2X from '../../assets/marker-icon-2x.png'
+  import 'leaflet/dist/leaflet.css'
 
   const MAP_ICON = L.icon({
     iconUrl: markerIcon,

@@ -1,5 +1,5 @@
 <template>
-      <el-header>
+  <el-header>
     <el-menu mode="horizontal" :router="true">
       <el-row>
     <el-col :span="12" :offset="6">
@@ -10,12 +10,15 @@
         <el-menu-item index="2" :route="{name: 'Messenger'}">
           Messenger
         </el-menu-item>
-        <el-menu-item index="3" :route="{name: 'Messenger'}">
+        <el-menu-item index="3" :route="{name: 'Map'}">
           Map
+        </el-menu-item>
+        <el-menu-item index="3" :route="{name: 'Profile'}">
+          Profile
         </el-menu-item>
         <div class="profile-actions">
           <el-menu-item index="" disabled="">
-          Welcome back, {{this.$store.email}}.
+          Welcome back, {{ this.$store.email }}.
         </el-menu-item>
         <el-menu-item index="3">
           <el-button type="primary" @click="logout()">
@@ -44,14 +47,7 @@
     float: right;
   }
 </style>
-
 <script>
-import ElContainer from '../../node_modules/element-ui/packages/container/src/main.vue'
-import ElHeader from '../../node_modules/element-ui/packages/header/src/main.vue';
-import ElMenu from '../../node_modules/element-ui/packages/menu/src/menu.vue';
-import ElMenuItem from '../../node_modules/element-ui/packages/menu/src/menu-item.vue';
-import ElButton from '../../node_modules/element-ui/packages/button/src/button.vue';
-
 export default {
   methods: {
     logout () {
@@ -60,12 +56,6 @@ export default {
         path: '/login'
       });
     }
-  },
-  components: {
-    ElButton,
-    ElMenuItem,
-    ElMenu,
-    ElHeader,
-    ElContainer}
+  }
 }
 </script>

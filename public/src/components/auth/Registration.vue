@@ -6,7 +6,7 @@
         <el-form-item prop="email" label="email">
           <el-input v-model="RegistrationForm.email"></el-input>
         </el-form-item>
-        <el-form-item prop="password" label="password">
+        <el-form-item prop="password" label="Password">
           <el-input v-model="RegistrationForm.password" type="password"></el-input>
         </el-form-item>
         <el-form-item prop="checkPass" label="Password confirm">
@@ -21,15 +21,8 @@
 </template>
 <script>
 import axios from 'axios'
-import ElForm from '../../../node_modules/element-ui/packages/form/src/form.vue';
-import ElFormItem from '../../../node_modules/element-ui/packages/form/src/form-item.vue';
-import ElInput from '../../../node_modules/element-ui/packages/input/src/input.vue';
 
 export default {
-  components: {
-    ElInput,
-    ElFormItem,
-    ElForm},
   data () {
     const validatePassword = (rule, password, callback) => {
       const validPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/
