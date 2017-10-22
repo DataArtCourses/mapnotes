@@ -1,7 +1,5 @@
-<template lang="pug">
-  div(class="main")
-
-    messenger
+<template>
+  <messenger></messenger>
 </template>
 <script>
 import Messenger from './messenger/Messenger'

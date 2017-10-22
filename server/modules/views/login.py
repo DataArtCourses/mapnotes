@@ -23,7 +23,7 @@ class LoginView(BaseView):
         try:
             user = await Users.authorize(**credentials)
         except (UserDoesNotExist, PasswordDoesNotMatch):
-            return json_response({'message': 'Wrong credentials'}, status=400)
+            return json_response({'error': 'Wrong credentials'}, status=400)
         else:
             asyncio.ensure_future(Cache.set(user['user_id'], user, 60*60*24*2))  # Session in cache lasts for 2 days
             payload = {

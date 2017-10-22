@@ -4,11 +4,10 @@ export function setToken (token, remember) {
 }
 
 export function getToken () {
-  const storage = localStorage.getItem('jwtToken') || sessionStorage.getItem('jwtToken')
-  return storage
+  return localStorage.getItem('jwtToken') || sessionStorage.getItem('jwtToken');
 }
 
 export function delToken () {
-  localStorage.removeItem('jwtToken')
-  sessionStorage.removeItem('jwtToken')
+  localStorage.removeItem('jwtToken');
+  sessionStorage.removeItem('jwtToken');
 }

@@ -1,9 +1,9 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-import app from './modules/app'
+import app from './modules/app';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
   strict: true,
@@ -14,6 +14,6 @@ const store = new Vuex.Store({
   getters: {},
   mutations: {},
   actions: {}
-})
+});
 
 export default store

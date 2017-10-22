@@ -1,23 +1,36 @@
-<template lang="pug">
-  el-main
-    el-row(:gutter="20")
-      el-col(:span="8" :offset="7")
-        el-form(:model="LoginForm" ref="LoginForm" label-width="150px" )
-          el-form-item(prop="email" label="Email" :rules="rules")
-            el-input(v-model="LoginForm.email" placeholder="e-mail")
-          el-form-item(prop="password" label="Password" :rules="[{required: true}]")
-            el-input(type="password" v-model="LoginForm.password" placeholder="password")
-          el-form-item
-            el-checkbox(v-model="LoginForm.checked") Remember Me 
-            br
-            el-button(type="primary" @click="submitForm('LoginForm')") Log In
-            router-link(to="/registration") Registration
-            
+<template>
+  <el-main>
+    <el-row>
+      <el-col :span=8 :offset=7>
+        <el-form :model="LoginForm" ref="LoginForm" labelWidth="150px">
+          <el-form-item prop="email" label="Email" :rules="rules">
+            <el-input v-model="LoginForm.email" placeholder="e-mail"></el-input>
+          </el-form-item>
+          <el-form-item prop="password" label="Password" :rules="[{required: true}]">
+            <el-input type="password" v-model="LoginForm.password" placeholder="password"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-checkbox v-model="LoginForm.checked">Remember me</el-checkbox>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="submitForm('LoginForm')">Log in</el-button>
+          </el-form-item>
+        </el-form>
+      </el-col>
+    </el-row>
+  </el-main>
 </template>
 <script>
 import axios from 'axios'
+import ElFormItem from '../../../node_modules/element-ui/packages/form/src/form-item.vue';
+import ElInput from '../../../node_modules/element-ui/packages/input/src/input.vue';
+import ElCheckbox from '../../../node_modules/element-ui/packages/checkbox/src/checkbox.vue';
 
 export default {
+  components: {
+    ElCheckbox,
+    ElInput,
+    ElFormItem},
   name: 'login',
   data () {
     return {
@@ -49,7 +62,10 @@ export default {
             })
           })
         } else {
-          console.log('error submit!!');
+          this.$message({
+            type: 'error',
+            message: 'Oops! Something went wrong..'
+          });
           return false
         }
       })

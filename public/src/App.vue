@@ -1,10 +1,7 @@
-<template lang="pug">
-  #app
-    navbar
-    router-view(v-loading.fullscreen.lock="this.$store.getters.isLoaded"
-    element-loading-text="Loading..."
-    element-loading-spinner="el-icon-loading"
-    element-loading-background="rgba(0, 0, 0, 0.8)")
+<template>
+  <div id="app">
+    <navbar></navbar>
+    <router-view v-loading.fullscreen.lock="this.$store.getters.isLoaded" element-loading-text="Loading..." element-loading-background="rgba(0, 0, 0, 0.8)"></router-view>
   </div>
 </template>
 <script>
@@ -25,6 +22,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

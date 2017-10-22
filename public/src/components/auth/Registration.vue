@@ -1,23 +1,35 @@
-<template lang="pug">
-  div
-    h1 Qwa!
-    el-row(:gutter="20")
-      el-col(:span="8" :offset="7")
-        el-form(:model="RegistrationForm" ref="RegistrationForm" label-width="150px" :rules="rules")
-          el-form-item(prop="email" label="Email")
-            el-input(v-model="RegistrationForm.email")
-          el-form-item(prop="password" label="Password")
-            el-input(v-model="RegistrationForm.password" type="password")
-          el-form-item(prop="checkPass" label="Password Confirm")
-            el-input(v-model="RegistrationForm.checkPass" type="password")
-          el-form-item
-            el-button(type="primary" @click="submitForm('RegistrationForm')") Register
-            router-link(to="/login") Sign In
+<template>
+  <section>
+    <h1>Qwa!</h1>
+    <el-col :span=8 :offset=7>
+      <el-form :model="RegistrationForm" ref="RegistrationForm" labelWidth="150px" :rules="rules">
+        <el-form-item prop="email" label="email">
+          <el-input v-model="RegistrationForm.email"></el-input>
+        </el-form-item>
+        <el-form-item prop="password" label="password">
+          <el-input v-model="RegistrationForm.password" type="password"></el-input>
+        </el-form-item>
+        <el-form-item prop="checkPass" label="Password confirm">
+          <el-input v-model="RegistrationForm.checkPass" type="password"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" v-on:click.prevent="submitForm('RegistrationForm')">Register</el-button>
+        </el-form-item>
+      </el-form>
+    </el-col>
+  </section>
 </template>
 <script>
 import axios from 'axios'
+import ElForm from '../../../node_modules/element-ui/packages/form/src/form.vue';
+import ElFormItem from '../../../node_modules/element-ui/packages/form/src/form-item.vue';
+import ElInput from '../../../node_modules/element-ui/packages/input/src/input.vue';
 
 export default {
+  components: {
+    ElInput,
+    ElFormItem,
+    ElForm},
   data () {
     const validatePassword = (rule, password, callback) => {
       const validPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/
