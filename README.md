@@ -40,7 +40,7 @@ as `config.example.yaml`.
 
 Fill in all parameters in config's MySQL section. Config then should look like:
 
-```
+```yaml
 mysql:
   user: user
   password: testtest
