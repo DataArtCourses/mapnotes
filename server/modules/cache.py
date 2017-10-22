@@ -2,8 +2,10 @@ import pickle
 import asyncio
 import logging
 import aiomcache
+import os
 
 from .config import Config
+from .decorators import DummyValue
 
 loop = asyncio.get_event_loop()
 log = logging.getLogger('application')
@@ -23,6 +25,12 @@ class Cache:
         cls.mc = aiomcache.Client(host=Config.get('cache', 'host'),
                                   port=int(Config.get('cache', 'port')),
                                   loop=asyncio.get_event_loop())
+        if os.environ.get('DEBUG', False):
+            log.info('Debug mode for cache: dummyfying all methods.')
+            cls.set = lambda x, y, z: None
+            cls.get = lambda x: None
+            cls.add = lambda x, y, z: None
+            cls.delete = lambda x: None
         log.info('Connected to memcache')
 
     @classmethod
@@ -54,3 +62,4 @@ class Cache:
         if res:
             res = pickle.loads(res)
         return res
+

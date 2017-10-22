@@ -1,8 +1,8 @@
 <template lang="pug">
   #app
     navbar
-    router-view(v-loading.fullscreen.lock="this.$store.getters.isLoaded" 
-    element-loading-text="Loading..." 
+    router-view(v-loading.fullscreen.lock="this.$store.getters.isLoaded"
+    element-loading-text="Loading..."
     element-loading-spinner="el-icon-loading"
     element-loading-background="rgba(0, 0, 0, 0.8)")
   </div>
