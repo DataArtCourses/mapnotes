@@ -44,10 +44,10 @@ export default new Router({
     {
       path: '/map',
       name: 'Map',
-      component: lazyLoading('map/Map'),
-      meta: {
-        requiresAuth: true
-      }
+      component: lazyLoading('map/Map')
+      // meta: {
+      //   requiresAuth: true
+      // }
     },
     {
       path: '*',
