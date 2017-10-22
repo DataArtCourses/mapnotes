@@ -19,7 +19,6 @@ class Mailer:
 
     @staticmethod
     async def send_mail(subject, body, receiver, _charset='utf-8'):
-
         message = MIMEMultipart('alternative')
         message['From'] = Config.get('email', 'user')
         message['To'] = receiver
@@ -29,9 +28,14 @@ class Mailer:
         html = MIMEText(body, 'html', _charset=_charset)
         message.attach(html)
         message.attach(text)
-
-        await Mailer.server.send_message(message)
-        log.info('Sent email to %s', receiver)
+        try:
+            await Mailer.server.send_message(message)
+            log.info('Sent email to %s', receiver)
+        except aiosmtplib.SMTPException as e:
+            log.error('Error sending email to %s (%s)', receiver, e)
+            await Mailer.server.login(username=Config.get('email', 'user'),
+                                      password=Config.get('email', 'password'))
+            await Mailer.server.send_message(message)
 
     @staticmethod
     async def connect():
