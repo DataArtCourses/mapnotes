@@ -13,6 +13,7 @@
           el-input(type="phone" v-model="profileForm.phone")
         el-form-item(label="Bio")
           el-input(type="textarea" v-model="profileForm.bio")
+        el-button(type="primary" @click="saveEdit") Save
     div(v-else)
       img(:src="profileForm.avatar_url")
       p First name:
@@ -23,7 +24,7 @@
         span {{ profileForm.phone }}
       p Info:
         span {{ profileForm.bio }}
-      el-button(type="primary" @click="saveEdit") Save
+      
 </template>
 <script>
 export default {
@@ -44,7 +45,7 @@ export default {
       this.editForm = !this.editForm
     },
     saveEdit () {
-
+      this.editForm = !this.editForm
     }
   }
 }
