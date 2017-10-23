@@ -106,13 +106,13 @@ class Users(Base):
     async def update_profile(cls, user_id, first_name, last_name, bio, phone, avatar_url):
         query = (f"UPDATE `{cls.table_name}`"
                  "SET `first_name` = %s, `last_name` = %s, `bio` = %s, `phone` = %s, `avatar_url` = %s "
-                 "`WHERE `user_id` = %s"
+                 "WHERE `user_id` = %s"
                  )
         await cls.make_query(query=query, args=[first_name, last_name, bio, phone, avatar_url, user_id])
 
     @classmethod
     async def get_profile(cls, user_id):
-        query = (f"SELECT `first_name`, `last_name`, `bio`, `phone`"
+        query = (f"SELECT `first_name`, `last_name`, `bio`, `phone`, `avatar_url`"
                  f"FROM `{cls.table_name}` "
                  "WHERE `registered` = 1 AND `user_id` = %s"
                  )
