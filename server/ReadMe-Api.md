@@ -5,7 +5,7 @@
 |# | Endpoint                | Methods          | Detail                                  |
 ---|-------------------------| :--------------: |---------------------------------------- |
  1 | `/api`                  | GET              | [Main](#main)                           |
- 2 | `api/registration       | POST             | [Registration](#registration)           |
+ 2 | `api/registration`      | POST             | [Registration](#registration)           |
  3 | `api/login`             | POST             | [Login](#login)                         |
  4 | `api/users`             | GET              | [Users](#users-list)                    |        
  5 | `api/users/<user>`      | GET, POST        | [Take and change profile](#profile)     |
