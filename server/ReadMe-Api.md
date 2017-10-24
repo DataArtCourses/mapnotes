@@ -289,16 +289,16 @@ All other request should be response with status 405:
 **`POST, PUT, DELETE`** requests:
 
 
-## <a id="chats">`chats`</a> [&uarr;](#start)
+## <a id="chats">`api/chats`</a> [&uarr;](#start)
 
 **`GET`** response:
 
 
-## <a id="chat">`chats/<chat>`</a> [&uarr;](#start)
+## <a id="chat">`api/chats/<chat>`</a> [&uarr;](#start)
 
 **`POST, PUT, DELETE`** requests:
 
 
-## <a id="hepl">`help`</a> [&uarr;](#start)
+## <a id="hepl">`api/help`</a> [&uarr;](#start)
 
 **`GET`** response:
