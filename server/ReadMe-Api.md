@@ -2,22 +2,22 @@
 
 ## <a id="start">List of all endpoints</a>
 
-|# | Endpoint              | Methods          | Detail                                  |
----|-----------------------| :--------------: |---------------------------------------- |
- 1 | `/api`                | GET              | [Main](#main)                           |
- 2 | `registration`        | POST             | [Registration](#registration)           |
- 3 | `login`               | POST             | [Login](#login)                         |
- 4 | `users`               | GET              | [Users](#users-list)                    |        
- 5 | `users/<user>`        | GET, POST        | [Take and change profile](#profile)     |
- 6 | `pins`                | GET, POST        | [Pins list, add new](#pins-list)        |
- 7 | `pins/<pin>`          | GET, POST        | [Pin info, add comment or photo](#pin)  |
- 8 | `comments`            | GET, POST        | [Get comments](#comments-list)          |
- 9 | `comments/<comment>`  | PUT, DELETE      | [Comment add, edit, del](#comment)      |
- 10| `photos`              | GET              | [Get photos](#photos-list)              |
- 11| `photos/<photo>`      | GET, POST, DELETE| [Get,add, del photo](#photo)            |
- 12| `chats`               | GET, POST        | [Chats list, add new](#chats)           |
- 13| `chats/<chat>`        | GET, POST, DELETE| [Chat manipulations](#chat)             |
- 14| `help`                | GET              | [Help](#help)                           |    
+|# | Endpoint                | Methods          | Detail                                  |
+---|-------------------------| :--------------: |---------------------------------------- |
+ 1 | `/api`                  | GET              | [Main](#main)                           |
+ 2 | `api/registration       | POST             | [Registration](#registration)           |
+ 3 | `api/login`             | POST             | [Login](#login)                         |
+ 4 | `api/users`             | GET              | [Users](#users-list)                    |        
+ 5 | `api/users/<user>`      | GET, POST        | [Take and change profile](#profile)     |
+ 6 | `api/pins`              | GET, POST        | [Pins list, add new](#pins-list)        |
+ 7 | `api/pins/<pin>`        | GET, POST        | [Pin info, add comment or photo](#pin)  |
+ 8 | `api/comments`          | GET, POST        | [Get comments](#comments-list)          |
+ 9 | `api/comments/<comment>`| PUT, DELETE      | [Comment add, edit, del](#comment)      |
+ 10| `api/photos`            | GET              | [Get photos](#photos-list)              |
+ 11| `api/photos/<photo>`    | GET, POST, DELETE| [Get,add, del photo](#photo)            |
+ 12| `api/chats`             | GET, POST        | [Chats list, add new](#chats)           |
+ 13| `api/chats/<chat>`      | GET, POST, DELETE| [Chat manipulations](#chat)             |
+ 14| `api/help`              | GET              | [Help](#help)                           |    
 
 
 ## <a id="main">`api/`</a> [&uarr;](#start)
@@ -299,6 +299,6 @@ All other request should be response with status 405:
 **`POST, PUT, DELETE`** requests:
 
 
-## <a id="hepl">`api/help`</a> [&uarr;](#start)
+## <a id="help">`api/help`</a> [&uarr;](#start)
 
 **`GET`** response:
