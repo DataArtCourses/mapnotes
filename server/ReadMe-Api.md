@@ -11,7 +11,7 @@
  5 | `api/users/<user>`      | GET, POST        | [Take and change profile](#profile)     |
  6 | `api/pins`              | GET, POST        | [Pins list, add new](#pins-list)        |
  7 | `api/pins/<pin>`        | GET, POST        | [Pin info, add comment or photo](#pin)  |
- 8 | `api/comments`          | GET, POST        | [Get comments](#comments-list)          |
+ 8 | `api/comments`          | GET,             | [Get comments](#comments-list)          |
  9 | `api/comments/<comment>`| PUT, DELETE      | [Comment add, edit, del](#comment)      |
  10| `api/photos`            | GET              | [Get photos](#photos-list)              |
  11| `api/photos/<photo>`    | GET, POST, DELETE| [Get,add, del photo](#photo)            |
