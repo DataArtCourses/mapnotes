@@ -16,7 +16,8 @@
  10| `photos`              | GET              | [Get photos](#photos-list)              |
  11| `photos/<photo>`      | GET, POST, DELETE| [Get,add, del photo](#photo)            |
  12| `chats`               | GET, POST        | [Chats list, add new](#chats)           |
- 13| `chats/<chat>`        | GET, POST, DELETE| [Chat manipulations](#chat)             |      
+ 13| `chats/<chat>`        | GET, POST, DELETE| [Chat manipulations](#chat)             |
+ 14| `help`                | GET              | [Help](#help)                           |    
 
 
 ## <a id="main">`api/`</a> [&uarr;](#start)
@@ -297,3 +298,7 @@ All other request should be response with status 405:
 
 **`POST, PUT, DELETE`** requests:
 
+
+## <a id="hepl">`help`</a> [&uarr;](#start)
+
+**`GET`** response:
