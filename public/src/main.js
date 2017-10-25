@@ -14,9 +14,6 @@ Vue.config.productionTip = false;
 Vue.use(ElementUI);
 
 router.beforeEach((to, from, next) => {
-  setTimeout(() => {
-    store.commit('setLoading')
-  }, 500);
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (!getToken()) {
       next({
@@ -28,10 +25,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
-});
-
-router.afterEach((to, from) => {
-  store.commit('setLoading')
 });
 
 /* eslint-disable no-new */

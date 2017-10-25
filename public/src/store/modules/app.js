@@ -21,7 +21,7 @@ const mutations = {
   },
   [LOGOUT]: (state) => {
     delToken();
-    state.isAuth = false
+    state.isAuth = false;
   }
 };
 
