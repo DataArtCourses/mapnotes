@@ -3,12 +3,14 @@ import { setToken, getToken, delToken } from '../../utils/auth'
 
 const state = {
   isLoading: false,
-  isAuth: !!getToken()
+  isAuth: !!getToken(),
+  userName: 'user'
 };
 
 const getters = {
   isLoaded: (state) => { return state.isLoading },
-  isAuth: (state) => { return state.isAuth }
+  isAuth: (state) => { return state.isAuth },
+  getUserName: (state) => { return state.userName }
 };
 
 const mutations = {

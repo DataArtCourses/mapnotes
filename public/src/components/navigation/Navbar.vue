@@ -13,12 +13,12 @@
         <el-menu-item index="3" :route="{name: 'Map'}">
           Map
         </el-menu-item>
-        <el-menu-item index="3" :route="{name: 'Profile'}">
+        <el-menu-item index="3" :route="{name:'Profile', params: { id: `${this.$store.getters.getUserName}`}}">
           Profile
         </el-menu-item>
         <div class="profile-actions">
           <el-menu-item index="" disabled="">
-          Welcome back, {{ this.$store.email }}.
+          Welcome back, {{ this.$store.user_id }}.
         </el-menu-item>
         <el-menu-item index="3">
           <el-button type="primary" @click="logout()">

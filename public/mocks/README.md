@@ -28,36 +28,24 @@
 ]
 ```
 
-## Pins with content 
+## Pins 
 
 ```js
 [
   {
     'repeat(100)': {
      pinId: '{{ index(101) }}',
+     pinInfo: '{{lorem(5, "words")}}',
      pinLatLng: ['{{floating(46.45, 46.52, 4)}}', '{{floating(30.67, 30.77, 4)}}'],
      totalComments: '{{ integer(1, 10) }}',
      totalPhotos: '{{integer(5)}}',
-     pinStatus: '{{integer(1,3)}}',
-     comments: [{
-       'repeat(1, 10)': {
-       commetId: '{{objectId()}}',
-       commentBody: '{{lorem(1, "paragraphs")}}',
-       author: {
-         userId: '{{integer(1001, 1100)}}'
-          },
-       likes: '{{ integer() }}',
-       timeCreated: '{{date(new Date(2017, 9, 27), new Date(2017, 12, 15))}}'
-         }
-       }],
-      photoGalery: {
-        cover_1: '',
-        cover_2: '',
-        cover_3: '',
-        albumUrl: '/photos/search?photo={{index(101)}}'
-      }
+     pinStatus: '{{integer(1,3)}}'
     }
   }
 ]
+```
+
+## Pins content
+```js
 
 ```

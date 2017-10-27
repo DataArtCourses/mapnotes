@@ -8,7 +8,7 @@
  2 | `api/registration`      | POST             | [Registration](#registration)           |
  3 | `api/login`             | POST             | [Login](#login)                         |
  4 | `api/users`             | GET              | [Users](#users-list)                    |        
- 5 | `api/users/<user>`      | GET, POST        | [Take and change profile](#profile)     |
+ 5 | `api/users/<user>`      | GET, POST        | [Get and change profile](#profile)      |
  6 | `api/pins`              | GET, POST        | [Pins list, add new](#pins-list)        |
  7 | `api/pins/<pin>`        | GET, POST        | [Pin info, add comment or photo](#pin)  |
  8 | `api/comments`          | GET,             | [Get comments](#comments-list)          |
@@ -279,17 +279,25 @@ All other request should be response with status 405:
     "cover_1": "<url>",
     "cover_2": "<url>",
     "cover_3": "<url>",
-    "albumUrl": "<url>"
   }
 }
 ```
-
 
 ## <a id="comments-list">`api/comments`</a> [&uarr;](#start)
 
 **`GET`** response:
 
+For get all the comments from the pin, request should be:
 
+```http
+api/comments?pin=<pin>
+```
+
+For get all the comments from the photo, request should be:
+
+```http
+api/comments?photo=<photo>
+```
 
 ## <a id="comment">`api/comments/<comment>`</a> [&uarr;](#start)
 

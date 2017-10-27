@@ -1,14 +1,16 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-import app from './modules/app';
+import app from './modules/app'
+import map from './modules/map'
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   strict: true,
   modules: {
-    app
+    app,
+    map
   },
   store: {},
   getters: {},

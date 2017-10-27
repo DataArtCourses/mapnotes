@@ -35,9 +35,9 @@ export default new Router({
       }
     },
     {
-      path: '/profile',
+      path: '/profile/:id',
       name: 'Profile',
-      component: lazyLoading('profile/Profile'),
+      component: lazyLoading('users/Profile'),
       meta: {
         requiresAuth: true
       }
@@ -48,7 +48,15 @@ export default new Router({
       component: lazyLoading('map/Map'),
       meta: {
         requiresAuth: true
-      }
+      },
+      children: [
+        {
+          path: ':id',
+          meta: {
+            requiresAuth: true
+          }
+        }
+      ]
     },
     {
       path: '*',

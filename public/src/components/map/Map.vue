@@ -36,6 +36,10 @@
     },
 
     mounted () {
+      // pins loader
+      this.$store.dispatch('recivePins')
+      this.$store.dispatch('recivePinInfo', 101)
+
       // map settings
       this.map = L.map('map', {
         minZoom: 3,
