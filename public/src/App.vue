@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <navbar></navbar>
-    <router-view v-loading.fullscreen.lock="this.$store.getters.isLoaded" element-loading-text="Loading..." element-loading-background="rgba(0, 0, 0, 0.8)"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 <script>

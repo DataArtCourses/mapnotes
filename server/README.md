@@ -29,7 +29,8 @@
   "text": "Wellcome to the Mapfied. For detail info, please make GET request to api/help"
 }
 ```
-
+<details>
+<summary>Errors</summary>
 Any other methods response should be with status 405:
 
 ```json
@@ -37,6 +38,7 @@ Any other methods response should be with status 405:
   "text": "Method not allowed. For detail info, please make GET request to api/help"
 }
 ```
+</details>
 
 ## <a id="registration">`api/registration`</a> [&uarr;](#start)
 
@@ -48,20 +50,21 @@ Any other methods response should be with status 405:
   "password": "secret"
 }
 ```
+If registration is OK response should be:
 
+```json
+{
+  "text": "Some text"
+}
+```
+
+<details>
+<summary>Errors</summary>
 if this `email` is alredy exist in the base response should be with status `403`:
 
 ```json
 {
   "text": "this email already exist. Please try another one"
-}
-```
-
-If registration is OK:
-
-```json
-{
-  "text": "Some text"
 }
 ```
 
@@ -72,6 +75,7 @@ All other request should be response with status `405`:
   "text": "Method not allowed. For detail info, please make GET request to api/help"
 }
 ```
+</details>
 
 ## <a id="login">`api/login`</a> [&uarr;](#start)
 
@@ -95,6 +99,8 @@ Call back should be `jwtToken`
 }
 ```
 
+<details>
+<summary>Errors</summary>
 If password or email isn't correct response should be `401`:
 
 ```json
@@ -119,6 +125,7 @@ All other request should be response with status `405`:
   "text": "Method not allowed. For detail info, please make GET request to api/help"
 }
 ```
+</details>
 
 ## <a id="users-list">`api/users`</a> [&uarr;](#start)
 
@@ -127,21 +134,24 @@ All other request should be response with status `405`:
 ```json
 [
   {
-    "user_id": "some_id",
-    "user_avatar_url": "<url>",
-    "user_online": 1, // 1 - ONLINE, 0 - OFFLINE
-    "user_name": "User name"
+    "userId": "some_id",
+    "userFirstName": "User name",
+    "avatarUrl": "<url>",
+    "isActive": 1, // 1 - ONLINE, 0 - OFFLINE
+    "statusRelations": 1 // 0 - Without, 1 - Friends,
   },
   {
-    "user_id": "some_id",
-    "user_avatar_url": "<url>",
-    "user_online": 0, // 1 - ONLINE, 0 - OFFLINE
-    "user_name": "User name"
+    "userId": "some_id",
+    "userFirstName": "User name",
+    "avatarUrl": "<url>",
+    "isActive": 0, // 1 - ONLINE, 0 - OFFLINE
+    "statusRelations": 1 // 0 - Without, 1 - Friends
   }
   ...
 ]
 ```
-
+<details>
+<summary>Errors</summary>
 All other request should be response with status 405:
 
 ```json
@@ -149,6 +159,7 @@ All other request should be response with status 405:
   "text": "Method not allowed. For detail info, please make GET request to api/help"
 }
 ```
+</details>
 
 ## <a id="profile">`api/users/<user_id>`</a> [&uarr;](#start)
 
@@ -156,31 +167,44 @@ All other request should be response with status 405:
 
 ```json
 {
-  "user_info": {
-    "user_id": "some_id",
-    "user_avatar_url": "<url>",
-    "user_name": "User name",
-    "user_last_name": "Last Name",
-    "user_phone": "000000000000",
-    "bio": "User info"
-  },
-  "user_status": 1, // 1 - ONLINE, 0 - OFFLINE
+  "userId": "some_id",
+  "avatarUrl": "<url>",
+  "userFirstName": "User name",
+  "userSurname": "Last Name",
+  "phone": "000000000000",
+  "bio": "User info",
+  "friends": [
+    {
+      "userId": "some_id",
+      "userFirstName": "User_name",
+      "avatarUrl": "<url>"
+    },
+    {
+      "userId": "some_id",
+      "userFirstName": "User_name",
+      "avatarUrl": "<url>"
+    }
+    ...
+  ],
+  "isActive": 1, // 1 - ONLINE, 0 - OFFLINE
 }
 ```
 
-User can change own information by **`POST`** request
+User can change his own information by **`POST`** request
 
 ```json
 {
-  "user_id": "some_id",
-  "user_avatar_url": "<url>",
-  "user_name": "User name",
-  "user_last_name": "Last Name",
+  "userId": "some_id",
+  "avatarUrl": "<url>",
+  "userFirstName": "User name",
+  "userSurname": "Last Name",
   "bio": "User info",
-  "user_phone": "000000000000"
+  "phone": "000000000000"
 }
 ```
 
+<details>
+<summary>Error</summary>
 If `json` format isn't correct - `400`
 
 ```json
@@ -196,6 +220,7 @@ All other request should be response with status 405:
   "text": "Method not allowed. For detail info, please make GET request to api/help"
 }
 ```
+</details>
 
 ## <a id="pins-list">`api/pins`</a> [&uarr;](#start)
 
@@ -204,15 +229,13 @@ All other request should be response with status 405:
 ```json
 [
   {
-    "pin_info":
-    {
-      "pin_id": "some_id",
-      "pin_long_lat": [112.89, 13.88],
-      "total_comments": 10,
-      "total_photo": 20,
-      "likes": 0   // ?????? 
-    },
-    "pin_status": 0 // 0 - simple, 1 - hot, 2 - ...
+    "pinId": "some_id",
+    "pinInfo": "someInfo",
+    "pinLatLng": [112.89, 13.88],
+    "comments": 10,
+    "photos": 20,
+    "likes": 0,
+    "pinStatus": 0 // 0 - simple, 1 - hot, 2 - ...
   },
   ...
 ]
@@ -222,11 +245,11 @@ All other request should be response with status 405:
 
 ```json
 {
-  "pin_long_lat": [112.89, 13.88],
+  "pinLatLng": [112.89, 13.88],
   "comment": "Lorem Ipsum",
-  "comment_status": 0, // 0 - public, 1 - private
+  "commentStatus": 0, // 0 - public, 1 - private
   "photo": "url",
-  "photo_status": 0 // 0 - public, 1 - private
+  "photoStatus": 0 // 0 - public, 1 - private
 }
 ```
 
@@ -237,26 +260,26 @@ All other request should be response with status 405:
 
 ```json
 {
-  "pin_id": "some_id",
-  "pin_long_lat": [112.89, 13.88],
+  "pinId": "some_id",
+  "pinLatLng": [112.89, 13.88],
   "comments": [
     {
-      "commet_id": "some_id",
-      "comment_text": "Lorem ipsum",
+      "commetId": "some_id",
+      "commentBody": "Lorem ipsum",
       "author": {
         "name": "user_name",
-        "avatar_url": "<url>",
+        "avatarUrl": "<url>",
       },
-      "likes": 0,  // ????????
-      "time_created": "Summertimes"
+      "likes": 0,
+      "timeCreated": "Summertimes"
     },
   ...
   ],
-  "photo_galery": {
+  "photoGalery": {
     "cover_1": "<url>",
     "cover_2": "<url>",
     "cover_3": "<url>",
-    "album_url": "<url>"
+    "albumUrl": "<url>"
   }
 }
 ```
