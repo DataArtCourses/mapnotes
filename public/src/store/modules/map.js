@@ -28,8 +28,11 @@ const actions = {
   },
   async recivePinInfo ({ commit }, id) {
     let pins = await require('../../../mocks/_pins')
-    let pin = pins.filter(data => { return data.pinId === id })[0]
+    let pin = await pins.filter(data => { return data.pinId === id })[0]
     commit(SET_PIN_INFO, pin)
+  },
+  async addPin ({ commit }, pinInfo) {
+    commit(ADD_PIN, pinInfo)
   }
 }
 

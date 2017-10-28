@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <el-main>
     <h1>Qwa!</h1>
     <el-col :span=8 :offset=7>
       <el-form :model="RegistrationForm" ref="RegistrationForm" labelWidth="150px" :rules="rules">
@@ -17,7 +17,7 @@
         </el-form-item>
       </el-form>
     </el-col>
-  </section>
+  </el-main>
 </template>
 <script>
 import axios from 'axios'

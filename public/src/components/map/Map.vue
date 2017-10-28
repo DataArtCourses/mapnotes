@@ -1,5 +1,5 @@
 <template lang="pug">
-  .map-wrapper
+  el-main.map-wrapper
     #map
     .pin-sample(v-on:mousedown="pinTrackStart" v-on:mouseup="pinTrackEnd")
       img(src='../../assets/marker-icon.png' draggable="false")

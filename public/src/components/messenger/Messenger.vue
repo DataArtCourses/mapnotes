@@ -1,10 +1,10 @@
 <template lang="pug">
-  div(class=messenger)
-    div(class="out_messages")
+  el-main.messenger
+    div.out_messages
       div(v-for="message in messages" key="message.dateTime")
         p {{ message.text }}
         small {{ message.dateTime}}
-    div(class="input_message")
+    div.input_message
       input(type="text" v-model="new_message.text")
       button(@click="sendMessage()") Send
 </template>

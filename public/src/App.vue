@@ -1,16 +1,22 @@
-<template>
-  <div id="app">
-    <navbar></navbar>
-    <router-view></router-view>
-  </div>
+<template lang="pug">
+  #app
+    el-container
+      el-header
+        app-header
+      el-container
+        router-view
+      el-footer
+        app-footer
 </template>
 <script>
-import Navbar from './components/navigation/Navbar'
+import AppHeader from './components/layout/AppHeader'
+import AppFooter from './components/layout/AppFooter'
 
 export default {
   name: 'app',
   components: {
-    Navbar
+    AppHeader,
+    AppFooter
   }
 }
 </script>

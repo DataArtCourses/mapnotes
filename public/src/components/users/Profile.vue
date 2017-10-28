@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  el-main
     el-button(type="primary" @click="editMode") Edit
     div(v-if="editForm")
       el-form(ref="profileForm" :model="profileForm" label-width="120px")

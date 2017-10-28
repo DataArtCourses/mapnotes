@@ -9,22 +9,9 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/login',
-      name: 'Login',
-      component: lazyLoading('auth/Login')
-    },
-    {
       path: '/registration',
       name: 'Registration',
       component: lazyLoading('auth/Registration')
-    },
-    {
-      path: '/hello',
-      name: 'Hello',
-      component: lazyLoading('HelloWorld'),
-      meta: {
-        requiresAuth: true
-      }
     },
     {
       path: '/messenger',
@@ -60,7 +47,7 @@ export default new Router({
     },
     {
       path: '*',
-      redirect: '/hello'
+      redirect: '/map'
     }
   ],
   scrollBehavior (to, from, savedPosition) {
