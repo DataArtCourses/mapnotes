@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import app from './modules/app'
-import map from './modules/map'
+import { app, map, chat } from './modules'
 
 Vue.use(Vuex);
 
@@ -10,7 +9,8 @@ const store = new Vuex.Store({
   strict: true,
   modules: {
     app,
-    map
+    map,
+    chat
   },
   store: {},
   getters: {},

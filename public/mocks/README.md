@@ -45,7 +45,29 @@
 ]
 ```
 
-## Pins content
+## Pin content
 ```js
 
+```
+
+## Chats 
+
+```js
+[
+  {
+    'repeat(15)': {
+    chatId: '{{index(10)}}',
+    chatWith: {
+      userId: '{{ index(1001) }}',
+      userName: '{{ firstName() }}',
+      avatarUrl: 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png'
+    },
+    lastMessage: {
+      body: '{{lorem(3, "words")}}',
+      time: '{{date(new Date(2017, 10, 15), new Date(2017, 10, 30))}}'
+    },
+    unread: '{{ integer(0, 5) }}'
+   }
+  }
+]
 ```

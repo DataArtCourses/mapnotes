@@ -1,0 +1,197 @@
+[
+  {
+      "unread": 1,
+      "lastMessage": {
+      "time": "Sat Nov 18 2017 00:49:21 GMT+0000 (UTC)",
+      "body": "magna ullamco id"
+      },
+      "chatWith": {
+      "avatarUrl": "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",
+      "userName": "Selma",
+      "userId": 1001
+      },
+      "chatId": 10
+  },
+  {
+      "unread": 4,
+      "lastMessage": {
+      "time": "Mon Nov 27 2017 23:02:19 GMT+0000 (UTC)",
+      "body": "est ad laboris"
+      },
+      "chatWith": {
+      "avatarUrl": "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",
+      "userName": "Marlene",
+      "userId": 1002
+      },
+      "chatId": 11
+  },
+  {
+      "unread": 2,
+      "lastMessage": {
+      "time": "Sat Nov 18 2017 07:57:22 GMT+0000 (UTC)",
+      "body": "sunt elit ex"
+      },
+      "chatWith": {
+      "avatarUrl": "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",
+      "userName": "Bradley",
+      "userId": 1003
+      },
+      "chatId": 12
+  },
+  {
+      "unread": 5,
+      "lastMessage": {
+      "time": "Thu Nov 23 2017 01:10:06 GMT+0000 (UTC)",
+      "body": "ad exercitation dolore"
+      },
+      "chatWith": {
+      "avatarUrl": "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",
+      "userName": "Mercado",
+      "userId": 1004
+      },
+      "chatId": 13
+  },
+  {
+      "unread": 1,
+      "lastMessage": {
+      "time": "Fri Nov 24 2017 01:03:15 GMT+0000 (UTC)",
+      "body": "laboris minim incididunt"
+      },
+      "chatWith": {
+      "avatarUrl": "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",
+      "userName": "Leonor",
+      "userId": 1005
+      },
+      "chatId": 14
+  },
+  {
+      "unread": 2,
+      "lastMessage": {
+      "time": "Thu Nov 23 2017 10:05:00 GMT+0000 (UTC)",
+      "body": "minim amet cupidatat"
+      },
+      "chatWith": {
+      "avatarUrl": "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",
+      "userName": "Jefferson",
+      "userId": 1006
+      },
+      "chatId": 15
+  },
+  {
+      "unread": 4,
+      "lastMessage": {
+      "time": "Sun Nov 19 2017 18:47:34 GMT+0000 (UTC)",
+      "body": "id consectetur sint"
+      },
+      "chatWith": {
+      "avatarUrl": "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",
+      "userName": "Best",
+      "userId": 1007
+      },
+      "chatId": 16
+  },
+  {
+      "unread": 3,
+      "lastMessage": {
+      "time": "Wed Nov 29 2017 19:26:25 GMT+0000 (UTC)",
+      "body": "labore sit sunt"
+      },
+      "chatWith": {
+      "avatarUrl": "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",
+      "userName": "Copeland",
+      "userId": 1008
+      },
+      "chatId": 17
+  },
+  {
+      "unread": 3,
+      "lastMessage": {
+      "time": "Sat Nov 25 2017 00:40:53 GMT+0000 (UTC)",
+      "body": "incididunt fugiat tempor"
+      },
+      "chatWith": {
+      "avatarUrl": "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",
+      "userName": "Cohen",
+      "userId": 1009
+      },
+      "chatId": 18
+  },
+  {
+      "unread": 4,
+      "lastMessage": {
+      "time": "Tue Nov 28 2017 10:02:57 GMT+0000 (UTC)",
+      "body": "dolor mollit exercitation"
+      },
+      "chatWith": {
+      "avatarUrl": "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",
+      "userName": "Mae",
+      "userId": 1010
+      },
+      "chatId": 19
+  },
+  {
+      "unread": 2,
+      "lastMessage": {
+      "time": "Tue Nov 28 2017 00:40:11 GMT+0000 (UTC)",
+      "body": "Lorem et duis"
+      },
+      "chatWith": {
+      "avatarUrl": "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",
+      "userName": "Bianca",
+      "userId": 1011
+      },
+      "chatId": 20
+  },
+  {
+      "unread": 0,
+      "lastMessage": {
+      "time": "Fri Nov 24 2017 14:18:27 GMT+0000 (UTC)",
+      "body": "adipisicing minim id"
+      },
+      "chatWith": {
+      "avatarUrl": "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",
+      "userName": "Kim",
+      "userId": 1012
+      },
+      "chatId": 21
+  },
+  {
+      "unread": 0,
+      "lastMessage": {
+      "time": "Tue Nov 28 2017 18:46:55 GMT+0000 (UTC)",
+      "body": "non ullamco duis"
+      },
+      "chatWith": {
+      "avatarUrl": "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",
+      "userName": "Nell",
+      "userId": 1013
+      },
+      "chatId": 22
+  },
+  {
+      "unread": 1,
+      "lastMessage": {
+      "time": "Fri Nov 24 2017 05:26:47 GMT+0000 (UTC)",
+      "body": "minim quis anim"
+      },
+      "chatWith": {
+      "avatarUrl": "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",
+      "userName": "Aline",
+      "userId": 1014
+      },
+      "chatId": 23
+  },
+  {
+      "unread": 4,
+      "lastMessage": {
+      "time": "Wed Nov 29 2017 21:59:07 GMT+0000 (UTC)",
+      "body": "duis ea ad"
+      },
+      "chatWith": {
+      "avatarUrl": "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",
+      "userName": "Janet",
+      "userId": 1015
+      },
+      "chatId": 24
+  }
+]

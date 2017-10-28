@@ -3,8 +3,7 @@
     el-container
       el-header
         app-header
-      el-container
-        router-view
+      router-view
       el-footer
         app-footer
 </template>

@@ -6,7 +6,7 @@
             el-menu-item(index="1" :route="{name: 'Map'}") Map
             el-menu-item(index="2" :route="{name: 'Messenger'}") Messenger
             div(class="profile-actions")
-              el-menu-item(index="3" :route="{name:'Profile', params: { id: `${this.$store.getters.getUserId}`}}") Welcome back, {{ this.$store.getters.getUserName }}
+              el-menu-item(index="3" :route="{name:'Profile', params: { id: `${this.$store.getters.getUserId}`}}") Welcome back, {{ this.$store.getters.getProfile.firstName }}
               el-menu-item(index="4")
                 el-button(type="primary" @click="logout()") Logout
           div(v-else class="profile-actions")
@@ -35,14 +35,15 @@ export default {
   methods: {
     logout () {
       this.$store.dispatch('logout');
-      this.$router.push({ name: 'Registartion' });
+      this.$router.push({ name: 'Registration' });
     },
     submitForm () {
       axios.post('http://localhost:8000/api/login', { email: this.LoginForm.email, password: this.LoginForm.password })
       .then(response => {
         console.log(response)
         if (response.status === 200) {
-          this.$store.dispatch('login', {token: response.data.token, ch: this.LoginForm.checked});
+          this.$store.dispatch('login', {token: response.data.token, ch: this.LoginForm.checked})
+          this.$store.dispatch('reciveProfile', this.$store.getters.getUserId)
           this.$router.push({name: 'Map'})
         }
       })
