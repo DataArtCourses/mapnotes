@@ -28,7 +28,7 @@
 ]
 ```
 
-## Pins 
+## Pins `_pins.json`
 
 ```js
 [
@@ -50,7 +50,7 @@
 
 ```
 
-## Chats 
+## Chats `_chats.json`
 
 ```js
 [
