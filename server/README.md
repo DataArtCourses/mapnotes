@@ -2,22 +2,30 @@
 
 ## <a id="start">List of all endpoints</a>
 
-|# | Endpoint                | Methods          | Detail                                  |
----|-------------------------| :--------------: |---------------------------------------- |
- 1 | `/api`                  | GET              | [Main](#main)                           |
- 2 | `api/registration`      | POST             | [Registration](#registration)           |
- 3 | `api/login`             | POST             | [Login](#login)                         |
- 4 | `api/users`             | GET              | [Users](#users-list)                    |        
- 5 | `api/users/<user>`      | GET, POST        | [Get and change profile](#profile)      |
- 6 | `api/pins`              | GET, POST        | [Pins list, add new](#pins-list)        |
- 7 | `api/pins/<pin>`        | GET, POST        | [Pin info, add comment or photo](#pin)  |
- 8 | `api/comments`          | GET,             | [Get comments](#comments-list)          |
- 9 | `api/comments/<comment>`| PUT, DELETE      | [Comment add, edit, del](#comment)      |
- 10| `api/photos`            | GET              | [Get photos](#photos-list)              |
- 11| `api/photos/<photo>`    | GET, POST, DELETE| [Get,add, del photo](#photo)            |
- 12| `api/chats`             | GET, POST        | [Chats list, add new](#chats)           |
- 13| `api/chats/<chat>`      | GET, POST, DELETE| [Chat manipulations](#chat)             |
- 14| `api/help`              | GET              | [Help](#help)                           |    
+|# | Endpoint                       | Methods               | Detail                                               |
+---|--------------------------------| :-------------------: |----------------------------------------------------- |
+ 1 | `/api`                         | GET                   | [Main](#main)                                        |
+ 2 | `api/registration`             | POST                  | [Registration](#registration)                        |
+ 3 | `api/login`                    | POST                  | [Login](#login)                                      |
+ 4 | `api/users`                    | GET                   | [Users](#users-list)                                 |
+ 5 | `api/users/friends`            | GET, POST             | [Friends list, add friend](#friends-list)            |
+ 6 | `api/users/friends/<user>`     | DELETE                | [Delete friend](#delete-friends)                     |
+ 7 | `api/users/<user>`             | GET, POST, DELETE     | [Get and change profile, ban](#profile)              |
+ 8 | `api/users/<user>/comments`    | GET                   | [Get all user comments](#user-comments-list)         |
+ 9 | `api/users/<user>/photos`      | GET                   | [Get all user photos](#user-photos-list)             |
+ 10| `api/pins`                     | GET, POST             | [Pins list, add new](#pins-list)                     |
+ 11| `api/pins/<pin>`               | GET, POST             | [Pin info, add comment or photo](#pin)               |
+ 12| `api/pins/<pin>/likes`         | GET, POST             | [Get pin likes, add, remove like](#pin-likes)        |
+ 13| `api/pins/<pin>/comments`      | GET, POST             | [Get pin comments, add comment](#pin-comments)       |
+ 14| `api/pins/<pin>/photos`        | GET                   | [Get pin photos](#pin-photos)                        |
+ 15| `api/comments/<comment>`       | PUT, DELETE           | [Comment add, edit, del](#comment)                   |
+ 16| `api/comments/<comment>/likes` | GET, POST             | [Get comment likes, add, remove like](#comment-likes)|
+ 17| `api/photos/<photo>`           | GET, POST, DELETE     | [Get,add, del photo](#photo)                         |
+ 18| `api/photos/<photo>/likes`     | GET, POST             | [Get photo likes, add, remove like](#photo-likes)    |
+ 19| `api/photos/<photo>/comments`  | GET, POST             | [Get photo comments, add comment](#photo-comments)   |
+ 20| `api/chats`                    | GET, POST             | [Chats list, add new](#chats)                        |
+ 21| `api/chats/<chat>`             | GET, POST, PUT, DELETE| [Chat manipulations](#chat)                          |
+ 22| `api/help`                     | GET                   | [Help](#help)                                        |    
 
 
 ## <a id="main">`api/`</a> [&uarr;](#start)
@@ -161,7 +169,17 @@ All other request should be response with status 405:
 ```
 </details>
 
-## <a id="profile">`api/users/<user_id>`</a> [&uarr;](#start)
+## <a id="friends-list">`api/users/friends`</a> [&uarr;](#start)
+
+**`GET`** response:
+
+**`POST`** requests:
+
+## <a id="delete-friend">`api/users/friends/<user>`</a> [&uarr;](#start)
+
+**`DELETE`** requests:
+
+## <a id="profile">`api/users/<user>`</a> [&uarr;](#start)
 
 **`GET`** method response:
 
@@ -201,6 +219,24 @@ User can change his own information by **`POST`** request
   "bio": "User info",
   "phone": "000000000000"
 }
+```
+
+## <a id="user-comments-list">`api/<user>/comments`</a> [&uarr;](#start)
+
+**`GET`** response:
+
+For get all user comments, request should be:
+
+```http
+api/user/<user>/comments
+```
+
+## <a id="user-photos-list">`api/<user>/photos`</a> [&uarr;](#start)
+
+For get all user photos, request should be:
+
+```http
+api/users/<user>/photos
 ```
 
 <details>
@@ -254,7 +290,7 @@ All other request should be response with status 405:
 ```
 
 
-## <a id="pin-info">`api/pins/<pin>`</a> [&uarr;](#start)
+## <a id="pin">`api/pins/<pin>`</a> [&uarr;](#start)
 
 **`GET`** response:
 
@@ -282,22 +318,20 @@ All other request should be response with status 405:
   }
 }
 ```
+## <a id="pin-likes">`api/pins/<pin>/likes`</a> [&uarr;](#start)
 
-## <a id="comments-list">`api/comments`</a> [&uarr;](#start)
+**`GET`** requests:
 
-**`GET`** response:
+**`POST`** requests:
 
-For get all the comments from the pin, request should be:
+## <a id="pin-comments">`api/pins/<pin>/comments`</a>[&uarr;](#start)
 
-```http
-api/comments?pin=<pin>
-```
+**`GET`** requests:
 
-For get all the comments from the photo, request should be:
+## <a id="pin-photos">`api/pins/<pin>/photos`</a>[&uarr;](#start)
 
-```http
-api/comments?photo=<photo>
-```
+**`GET`** requests:
+
 
 ## <a id="comment">`api/comments/<comment>`</a> [&uarr;](#start)
 
@@ -306,10 +340,12 @@ api/comments?photo=<photo>
 
 **`POST, PUT, DELETE`** requests:
 
-
-## <a id="photos-list">`api/photos`</a> [&uarr;](#start)
+## <a id="comment-likes">`api/comments/<comment>/likes`</a> [&uarr;](#start)
 
 **`GET`** response:
+
+
+**`POST`** requests:
 
 
 ## <a id="photo">`api/photos/<photo>`</a> [&uarr;](#start)
