@@ -17,12 +17,20 @@ export default new Router({
       path: '/messenger',
       name: 'Messenger',
       component: lazyLoading('messenger/Messenger'),
+      children: [
+        {
+          path: ':chat_id',
+          meta: {
+            requiresAuth: true
+          }
+        }
+      ],
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: '/profile/:id',
+      path: '/profile/:user_id',
       name: 'Profile',
       component: lazyLoading('users/Profile'),
       meta: {
@@ -38,7 +46,7 @@ export default new Router({
       },
       children: [
         {
-          path: ':id',
+          path: ':pin_id',
           meta: {
             requiresAuth: true
           }

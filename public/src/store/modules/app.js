@@ -8,7 +8,7 @@ import { setToken, getToken, delToken } from '../../utils/auth'
 const state = {
   isLoading: false,
   isAuth: !!getToken(),
-  userId: 1001,
+  userId: 1100,
   profile: {}
 }
 
@@ -43,9 +43,9 @@ const actions = {
   async logout ({ commit }) {
     commit(LOGOUT)
   },
-  async reciveProfile ({ commit }, userId) {
-    let users = await require('../../../mocks/_users')
-    let userInfo = await users.filter(user => { return user.userId === userId })[0]
+  async reciveProfile ({ commit, state }) {
+    let users = await require('../../../mocks/_users.json')
+    let userInfo = users.filter(user => { return user.userId === state.userId })[0]
     commit(SET_PROFILE, userInfo)
   }
 }

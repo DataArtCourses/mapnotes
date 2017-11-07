@@ -71,3 +71,19 @@
   }
 ]
 ```
+
+## Chat `_chat<id>.json`
+
+```js
+[
+  {
+    'repeat(20)': {
+     message_id: '{{index(1)}}',
+     message_body: '{{ lorem(3, "sentences") }}',
+     user_id: '{{ random(1001, 1100) }}',
+     time: '{{date(new Date(2017, 9, 20), new Date(2017, 10, 8))}}',
+     status: 1
+    }
+  }
+]
+```
