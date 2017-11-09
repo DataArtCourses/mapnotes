@@ -47,6 +47,9 @@ const actions = {
       let chat = await require(`../../../mocks/_chat${chatId}.json`).sort((a, b) => { return Date.parse(a.time) - Date.parse(b.time) })
       commit(SET_CHAT_MESSAGES, { 'chat': chat, 'chatId': chatId })
     }
+  },
+  async sendMessage ({ commit }, info) {
+    commit(SEND_MESSAGE, info.message)
   }
 }
 

@@ -9,9 +9,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 import { getToken } from './utils/auth'
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
-Vue.use(ElementUI);
+Vue.use(ElementUI)
+Vue.use(require('vue-moment'))
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
