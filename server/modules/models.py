@@ -42,6 +42,7 @@ class Base(ABC):
                     await cur.execute(query, args)
                 except Exception as e:
                     log.error("SQL Error %s", e)
+                    await conn.commit()
                     return e
                 else:
                     if fetchone:

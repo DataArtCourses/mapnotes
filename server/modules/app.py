@@ -20,15 +20,13 @@ template_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'temp
 
 async def initialize(_):
     log.info('Initializing external services')
-    await asyncio.gather(Mailer.connect(),
-                         Base.connect(),
+    await asyncio.gather(Base.connect(),
                          Cache.connect())
     log.info('External services initialized')
 
 
 async def on_shutdown(_):
     log.info('Shutting down server...')
-    await Mailer.close()
     await Base.pool.close()
     await Cache.mc.close()
 

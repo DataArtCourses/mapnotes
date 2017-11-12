@@ -19,6 +19,11 @@ class Mailer:
 
     @staticmethod
     async def send_mail(subject, body, receiver, _charset='utf-8'):
+        log.info(f'Sending mail to {receiver}')
+        await Mailer.server.connect()
+        await Mailer.server.starttls()
+        await Mailer.server.login(username=Config.get('email', 'user'),
+                                  password=Config.get('email', 'password'))
         message = MIMEMultipart('alternative')
         message['From'] = Config.get('email', 'user')
         message['To'] = receiver
@@ -28,27 +33,6 @@ class Mailer:
         html = MIMEText(body, 'html', _charset=_charset)
         message.attach(html)
         message.attach(text)
-        try:
-            await Mailer.server.send_message(message)
-            log.info('Sent email to %s', receiver)
-        except aiosmtplib.SMTPException as e:
-            log.error('Error sending email to %s (%s)', receiver, e)
-            await Mailer.server.login(username=Config.get('email', 'user'),
-                                      password=Config.get('email', 'password'))
-            await Mailer.server.send_message(message)
-
-    @staticmethod
-    async def connect():
-        log.info('Creating SMTP server for Mailer')
-        await Mailer.server.connect()
-        await Mailer.server.starttls()
-        await Mailer.server.login(username=Config.get('email', 'user'),
-                                  password=Config.get('email', 'password'))
-        await Mailer.server.ehlo()
-        log.info('SMTP Server created')
-
-    @staticmethod
-    async def close():
-        log.info('Disconnecting SMTP server')
-        await Mailer.server.close()
-        log.info('SMTP server disconnected')
+        await Mailer.server.send_message(message)
+        log.info(f'Successfuly sent mail to {receiver}, shutting down SMTP')
+        Mailer.server.close()
