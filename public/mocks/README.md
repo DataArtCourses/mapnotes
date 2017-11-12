@@ -50,6 +50,37 @@
 
 ```
 
+## Pin gallery
+```js
+[
+  {
+    'repeat(20)': {
+     photoId: '{{index(1)}}',
+     photoUrl: 'http://lorempixel.com/600/480',
+     likes: '{{ integer(1, 10) }}',
+     liked: '{{ random(true, false) }}',
+     comments: [
+       {
+        'repeat(20)': {
+        liked: '{{ random(true, false) }}',
+        likes: '{{ integer(1, 10) }}',
+        time: '{{date(new Date(2017, 10, 15), new Date(2017, 10, 30))}}',
+        author: {
+          userName: '{{ firstName() }} {{ surname() }}',
+          avatarUrl: "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",
+          userId: '{{integer(1081, 1100)}}'
+        },
+        commentBody: '{{lorem(3, "sentences")}}',
+        commentId: '{{integer(1, 20)}}'
+       }
+      }
+     ]
+    }
+  }
+]
+```
+
+
 ## Chats `_chats.json`
 
 ```js

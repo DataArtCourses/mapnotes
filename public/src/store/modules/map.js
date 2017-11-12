@@ -2,7 +2,9 @@ import {
   SET_PINS,
   SET_PIN_INFO,
   ADD_PIN,
-  ADD_PIN_COMMENT
+  ADD_PIN_COMMENT,
+  SET_PIN_PHOTOS,
+  SET_PHOTO_INFO
 
 } from '../mutation-types'
 
@@ -10,29 +12,28 @@ const state = {
   coordinate: [],
   pins: [],
   pinInfo: {},
-  pinComments: [],
-  pinGallery: []
+  pinGallery: [],
+  photoInfo: {}
 }
 
 const getters = {
   getPins: (state) => state.pins,
-  getPinInfo: (state) => state.pinInfo,
-  getPinComments: (state) => state.pinComments,
-  getPinGallery: (state) => state.pinGallery
+  getPinInfo: (state) => { if (state.pinInfo) { return state.pinInfo } },
+  getPinGallery: (state) => state.pinGallery,
+  getPhotoInfo: (state) => state.photoInfo
 }
 
 const mutations = {
   [SET_PINS] (state, pins) { state.pins = pins },
-  [SET_PIN_INFO] (state, pin) {
-    state.pinInfo = pin.info
-    state.pinGallery = pin.photos
-    state.pinComments = pin.comments
-  },
+  [SET_PIN_INFO] (state, pin) { state.pinInfo = pin },
   [ADD_PIN] (state, pin) { state.pins = state.pins.push(pin) },
   [ADD_PIN_COMMENT] (state, comment) {
-    state.pinComments.push(comment)
-    state.pinInfo.comments = state.pinInfo.pinComments.shift().push(comment)
-  }
+    state.pinInfo.comments = state.pinInfo.comments.push(comment)
+  },
+  [SET_PIN_PHOTOS] (state, photos) {
+    state.pinGallery = photos
+  },
+  [SET_PHOTO_INFO] (state, photo) { state.photoInfo = photo }
 }
 
 const actions = {
@@ -42,11 +43,14 @@ const actions = {
   },
   async recivePinInfo ({ commit, getters }, id) {
     if (id) {
-      let pins = await require('../../../mocks/_pins')
-      let pin = await pins.filter(data => { return data.pinId === id })[0]
-      let comments = await require(`../../../mocks/_comments${id}.json`)
+      let pinInfo = await require(`../../../mocks/_pinInfo${id}.json`)[0]
+      commit(SET_PIN_INFO, pinInfo)
+    }
+  },
+  async recivePinPhotos ({ commit, getters }, id) {
+    if (id) {
       let photos = await require(`../../../mocks/_gallery${id}.json`)
-      commit(SET_PIN_INFO, {'info': pin, 'comments': comments, 'photos': photos})
+      commit(SET_PIN_PHOTOS, photos)
     }
   },
   async addPin ({ commit }, pinInfo) {
