@@ -8,14 +8,16 @@ export const CHANGE_PROFILE = 'CHANGE_PROFILE'
 export const SET_PINS = 'SET_PINS'
 export const SET_PIN_INFO = 'SET_PIN_INFO'
 export const ADD_PIN = 'ADD_PINS'
+export const SET_PHOTO_INFO = 'SET_PHOTO_INFO'
+export const ADD_PIN_COMMENT = 'ADD_PIN_COMMENT'
+export const ADD_PHOTO_COMMENT = 'ADD_PHOTO_COMMENT'
+export const EDIT_COMMENT = 'EDIT_COMMENT'
+export const DELET_COMMENT = 'DELETE_COMMENT'
+export const ADD_LIKE = 'ADD_LIKE'
 
 // users
 export const SET_USERS = 'SET_USERS'
 export const SET_USER_INFO = 'SET_USER_INFO'
-
-// photos
-export const SET_PIN_PHOTOS = 'SET_PIN_PHOTO'
-export const SET_PHOTO_INFO = 'SET_PHOTO_INFO'
 
 // chats
 export const SET_CHATS = 'SET_CHATS'

@@ -9,7 +9,7 @@
               b {{ chat.chatWith.userName }} 
             br
             span {{ chat.lastMessage.body }}
-            small {{ chat.lastMessage.time }}
+            small {{ chat.lastMessage.time | moment("from", "now", true) }}
 </template>
 <script>
 export default {

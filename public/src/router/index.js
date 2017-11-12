@@ -16,7 +16,7 @@ export default new Router({
     {
       path: '/messenger',
       name: 'Messenger',
-      component: lazyLoading('messenger/Messenger'),
+      component: lazyLoading('messenger/index'),
       children: [
         {
           path: ':chat_id',
@@ -40,7 +40,7 @@ export default new Router({
     {
       path: '/map',
       name: 'Map',
-      component: lazyLoading('map/Map'),
+      component: lazyLoading('map/index'),
       meta: {
         requiresAuth: true
       },

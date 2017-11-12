@@ -34,12 +34,11 @@
         mapOffset: null
       }
     },
-
-    mounted () {
+    beforeCreate () {
       // pins loader
       this.$store.dispatch('recivePins')
-      this.$store.dispatch('recivePinInfo', 101)
-
+    },
+    mounted () {
       // map settings
       this.map = L.map('map', {
         minZoom: 3,

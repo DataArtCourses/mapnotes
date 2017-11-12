@@ -9,6 +9,7 @@ import Chats from './Chats'
 import Chat from './Chat'
 
 export default {
+  name: 'messenger',
   components: {
     Chats,
     Chat

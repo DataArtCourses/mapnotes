@@ -1,6 +1,6 @@
 <template lang="pug">
   el-main(v-if="this.$route.params.chat_id").messenger
-    div#container
+    div#container-chat
       el-card(v-for="message in messages" key="message.message_id")
         p {{ message.message_body }}
         small {{ message.time | moment("from", "now", true) }}
@@ -26,6 +26,9 @@ export default {
   created () {
     this.fetchData()
   },
+  updated () {
+    this.scrollToEnd()
+  },
   watch: {
     '$route': 'fetchData'
   },
@@ -44,19 +47,20 @@ export default {
     },
     fetchData () {
       this.$store.dispatch('reciveChat', +this.$route.params.chat_id)
-      this.scrollToEnd()
     },
     scrollToEnd () {
       this.$nextTick(() => {
-        let container = this.$el.querySelector('#container')
-        container.scrollTop = container.scrollHeight
+        let container = this.$el.querySelector('#container-chat')
+        if (this.$route.params.chat_id) {
+          container.scrollTop = container.scrollHeight
+        }
       })
     }
   }
 }
 </script>
 <style lang="scss">
-#container {
+#container-chat {
   height: 550px;
   overflow-y: auto;
 }
