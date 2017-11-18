@@ -43,6 +43,10 @@ cors = aiohttp_cors.setup(application, defaults={
 })
 aiohttp_jinja2.setup(application, loader=jinja2.FileSystemLoader(template_folder))
 
+# Static files
+application.router.add_static('/static', os.path.join(template_folder, 'static'), show_index=True)
+application['static_root_url'] = '/static'
+
 # todo remove in PROD environment
 for route in routes:
     for method in ('get', 'post', 'delete', 'put'):
