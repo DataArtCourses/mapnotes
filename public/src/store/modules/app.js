@@ -8,7 +8,11 @@ import { setToken, getToken, delToken } from '../../utils/auth'
 const state = {
   isLoading: false,
   isAuth: !!getToken(),
-  userId: 1100,
+  userInfo: {
+    userId: 1100,
+    userName: 'Christina House',
+    avatarUrl: 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png'
+  },
   profile: {}
 }
 
@@ -16,7 +20,8 @@ const getters = {
   isLoaded: (state) => { return state.isLoading },
   isAuth: (state) => { return state.isAuth },
   getProfile: (state) => { return state.profile },
-  getUserId: (state) => { return state.userId }
+  getUserId: (state) => { return state.userInfo.userId },
+  getUserInfo: (state) => { return state.userInfo }
 }
 
 const mutations = {

@@ -5,7 +5,7 @@
         p {{ message.message_body }}
         small {{ message.time | moment("from", "now", true) }}
     el-footer.input_message  
-      textarea(rows="4" cols="120" v-model="message_body"  @keyup.enter="sendMessage")
+      textarea(rows="4" cols="120" v-model="messageBody"  @keyup.enter="sendMessage")
       button(@click="sendMessage") Send
   el-main(v-else)
     p Please choose the chat
@@ -15,7 +15,7 @@ export default {
   name: 'chat',
   data () {
     return {
-      message_body: ''
+      messageBody: ''
     }
   },
   computed: {
@@ -34,14 +34,14 @@ export default {
   },
   methods: {
     sendMessage () {
-      if (this.message_body) {
+      if (this.messageBody) {
         let message = {
-          message_body: this.message_body,
+          message_body: this.messageBody,
           time: Date.now(),
           user_id: this.$store.getters.getUserId
         }
         this.$store.dispatch('sendMessage', { message: message, chat_id: +this.$route.params.chat_id })
-        this.message_body = ''
+        this.messageBody = ''
         this.scrollToEnd()
       }
     },

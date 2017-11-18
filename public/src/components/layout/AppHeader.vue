@@ -6,7 +6,7 @@
             el-menu-item(index="1" :route="{name: 'Map'}") Map
             el-menu-item(index="2" :route="{name: 'Messenger'}") Messenger
             div(class="profile-actions")
-              el-menu-item(index="3" :route="{name:'Profile', params: { user_id: `${this.$store.getters.getUserId}`}}") Welcome back, {{ this.$store.getters.getProfile.firstName }}
+              el-menu-item(index="3" :route="{name:'Profile', params: { user_id: `${this.$store.getters.getUserId}`}}") Welcome back, {{ this.$store.getters.getUserInfo.userName }}
               el-menu-item(index="4")
                 el-button(type="primary" @click="logout") Logout
           div(v-else class="profile-actions")
