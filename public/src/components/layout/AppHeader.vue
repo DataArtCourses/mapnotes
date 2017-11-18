@@ -1,64 +1,130 @@
 <template lang="pug">
-    el-menu(mode="horizontal" :router="true")
-      el-row
-        el-col(:span="12" :offset="6")
-          div(v-if="this.$store.getters.isAuth")
-            el-menu-item(index="1" :route="{name: 'Map'}") Map
-            el-menu-item(index="2" :route="{name: 'Messenger'}") Messenger
-            div(class="profile-actions")
-              el-menu-item(index="3" :route="{name:'Profile', params: { user_id: `${this.$store.getters.getUserId}`}}") Welcome back, {{ this.$store.getters.getUserInfo.userName }}
-              el-menu-item(index="4")
-                el-button(type="primary" @click="logout") Logout
-          div(v-else class="profile-actions")
-            el-menu-item(index="1")
-              el-input(v-model="LoginForm.email" placeholder="e-mail")
-            el-menu-item(index="2")
-              el-input(type="password" v-model="LoginForm.password" placeholder="password")
-            el-menu-item(index="3") 
-              el-checkbox(v-model="LoginForm.checked") Remember me
-            el-menu-item(index="4")
-              el-button(type="primary" @click="submitForm('LoginForm')") Log in
+  el-menu.menu(mode="horizontal" :router="true")
+    div(v-if="this.$store.getters.isAuth")
+      el-row.bg(:gutter="10")
+        el-col(:xs="4" :sm="4" :md="3" :lg="3" :xl="3")
+          img.logo(src="../../assets/Mapified.png")
+        el-col.search(:xs="8" :sm="8" :md="7" :lg="7" :xl="7")
+          el-input(v-model='search', placeholder='search')
+            el-button(slot='append', icon='el-icon-search')
+        el-col.icons(:xs="1" :sm="1" :md="1" :lg="1" :xl="1" :offset="1")
+          div.cont
+            div.ch
+              el-menu-item(:route="{name: 'Map'}")
+                img(src='../../assets/pin.png')
+            div.ch
+              img.line(src='../../assets/line.png')
+            div.ch
+              el-menu-item(:route="{name: 'Friends'}")
+                img(src='../../assets/friends.png')
+            div.ch
+              img.line(src='../../assets/line.png')
+            div.ch
+              el-menu-item(:route="{name: 'Messenger'}")
+                img(src='../../assets/messages.png')
+            div.ch
+              img.line(src='../../assets/line.png')
+            div.ch
+              el-menu-item(:route="{name: 'Notifications'}")
+                img(src='../../assets/notifications.png')
+        el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1" :offset="4")
+          div.avatar
+            img(src='../../assets/avatar.png')
+        el-col(:xs="4" :sm="4" :md="3" :lg="3" :xl="3")
+          div(class="profile-actions")
+            el-menu-item.name(:route="{name:'Profile', params: { user_id: `${this.$store.getters.getUserId}`}}") Welcome back,
+        el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1" :offset="2")
+          el-menu-item
+            el-button.button_auth(type="primary" @click="logout") Logout
+    div(v-else class="profile-actions")
+      el-menu-item
+        el-input(v-model="LoginForm.email" placeholder="e-mail")
+      el-menu-item
+        el-input(type="password" v-model="LoginForm.password" placeholder="password")
+      el-menu-item
+        el-checkbox(v-model="LoginForm.checked") Remember me
+      el-menu-item
+        el-button(type="primary" @click="submitForm('LoginForm')") Log in
 </template>
 <script>
-import axios from 'axios'
+  import axios from 'axios'
 
-export default {
-  data () {
-    return {
-      LoginForm: {
-        email: '',
-        password: '',
-        checked: true
+  export default {
+    data () {
+      return {
+        LoginForm: {
+          email: '',
+          password: '',
+          checked: true
+        }
+      }
+    },
+    methods: {
+      logout () {
+        this.$store.dispatch('logout');
+        this.$router.push({ name: 'Registration' });
+      },
+      submitForm () {
+        axios.post('http://localhost:8000/api/login', { email: this.LoginForm.email, password: this.LoginForm.password })
+          .then(response => {
+            console.log(response)
+            if (response.status === 200) {
+              this.$store.dispatch('login', {token: response.data.token, ch: this.LoginForm.checked})
+              this.$router.push({name: 'Map'})
+            }
+          })
+          .catch(e => {
+            this.$message({
+              showClose: true,
+              type: 'error',
+              message: `${e.response ? e.response.data.error : e}`
+            })
+          })
       }
     }
-  },
-  methods: {
-    logout () {
-      this.$store.dispatch('logout');
-      this.$router.push({ name: 'Registration' });
-    },
-    submitForm () {
-      axios.post('http://localhost:8000/api/login', { email: this.LoginForm.email, password: this.LoginForm.password })
-      .then(response => {
-        console.log(response)
-        if (response.status === 200) {
-          this.$store.dispatch('login', {token: response.data.token, ch: this.LoginForm.checked})
-          this.$router.push({name: 'Map'})
-        }
-      })
-      .catch(e => {
-        this.$message({
-          showClose: true,
-          type: 'error',
-          message: `${e.response ? e.response.data.error : e}`
-        })
-      })
-    }
   }
-}
 </script>
 <style>
-  .profile-actions {
-    float: right;
+  .menu{
+    line-height: 0px;
+  }
+  .bg{
+    background-color: #151515;
+  }
+  .logo{
+    padding: 30px 0 20px 0;
+  }
+  .search{
+    padding-top: 17px;
+  }
+  .icons{
+    color: #fff;
+
+  }
+  .icon{
+    padding-top: 20px;
+  }
+  .cont {
+    display: flex;
+    justify-content: space-between;
+  }
+  .ch {
+    margin: 5px 2px;
+  }
+  .line{
+    margin-top: 15px;
+  }
+  .avatar{
+    padding-top: 17px;
+  }
+  .profile-actions{
+    margin-top: 10px;
+  }
+  .name{
+    font-size: 16px;
+    color: #fff;
+  }
+  .button_auth{
+    margin-top: 12px;
   }
 </style>
