@@ -11,9 +11,12 @@ export const ADD_PIN = 'ADD_PINS'
 export const SET_PHOTO_INFO = 'SET_PHOTO_INFO'
 export const SET_PIN_PHOTOS = 'SET_PIN_PHOTOS'
 export const ADD_PIN_COMMENT = 'ADD_PIN_COMMENT'
+export const ADD_PHOTO = 'ADD_PHOTO'
+export const DELETE_PIN_PHOTO = 'DELETE_PIN_PHOTO'
 export const ADD_PHOTO_COMMENT = 'ADD_PHOTO_COMMENT'
+export const DELETE_PHOTO_COMMENT = 'DELETE_PHOTO_COMMENT'
 export const EDIT_COMMENT = 'EDIT_COMMENT'
-export const DELET_COMMENT = 'DELETE_COMMENT'
+export const DELETE_PIN_COMMENT = 'DELETE_PIN_COMMENT'
 export const ADD_LIKE = 'ADD_LIKE'
 
 // users
