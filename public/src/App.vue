@@ -21,6 +21,9 @@ export default {
 </script>
 
 <style>
+  el-header{
+    height: 0px;
+  }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

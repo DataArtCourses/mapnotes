@@ -7,27 +7,31 @@
         el-col.search(:xs="8" :sm="8" :md="7" :lg="7" :xl="7")
           el-input(v-model='search', placeholder='search')
             el-button(slot='append', icon='el-icon-search')
-        el-col.icons(:xs="1" :sm="1" :md="1" :lg="1" :xl="1" :offset="1")
+        el-col.icons(:xs="4" :sm="4" :md="4" :lg="4" :xl="4" :offset="1")
           div.cont
-            div.ch
-              el-menu-item(:route="{name: 'Map'}")
-                img(src='../../assets/pin.png')
-            div.ch
-              img.line(src='../../assets/line.png')
-            div.ch
-              el-menu-item(:route="{name: 'Friends'}")
-                img(src='../../assets/friends.png')
-            div.ch
-              img.line(src='../../assets/line.png')
-            div.ch
-              el-menu-item(:route="{name: 'Messenger'}")
-                img(src='../../assets/messages.png')
-            div.ch
-              img.line(src='../../assets/line.png')
-            div.ch
-              el-menu-item(:route="{name: 'Notifications'}")
-                img(src='../../assets/notifications.png')
-        el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1" :offset="4")
+            el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1")
+              div.ch
+                el-menu-item(:route="{name: 'Map'}")
+                  img(src='../../assets/pin.png')
+              div.ch
+                img.line(src='../../assets/line.png')
+            el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1")
+              div.ch
+                el-menu-item(:route="{name: 'Friends'}")
+                  img(src='../../assets/friends.png')
+              div.ch
+                img.line(src='../../assets/line.png')
+            el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1")
+              div.ch
+                el-menu-item(:route="{name: 'Messenger'}")
+                  img(src='../../assets/messages.png')
+              div.ch
+                img.line(src='../../assets/line.png')
+            el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1")
+              div.ch
+                el-menu-item(:route="{name: 'Notifications'}")
+                  img(src='../../assets/notifications.png')
+        el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1" :offset="1")
           div.avatar
             img(src='../../assets/avatar.png')
         el-col(:xs="4" :sm="4" :md="3" :lg="3" :xl="3")

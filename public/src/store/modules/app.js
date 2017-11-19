@@ -3,11 +3,11 @@ import {
   LOGOUT,
   SET_PROFILE
 } from '../mutation-types'
-import { setToken, getToken, delToken } from '../../utils/auth'
+import { setToken, delToken } from '../../utils/auth'
 
 const state = {
   isLoading: false,
-  isAuth: !!getToken(),
+  isAuth: true,
   userInfo: {
     userId: 1100,
     userName: 'Christina House',
