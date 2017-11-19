@@ -1,5 +1,4 @@
 import {
-  SET_CENTER,
   SET_PINS,
   SET_PIN_INFO,
   ADD_PIN,
@@ -12,7 +11,7 @@ import {
 } from '../mutation-types'
 
 const state = {
-  centerMap: [46.444226, 30.727262],
+  centerMap: [Number(sessionStorage.getItem('centerMapLat')) || 46.444226, Number(sessionStorage.getItem('centerMapLng')) || 30.727262],
   pins: [],
   pinInfo: {},
   pinGallery: [],
@@ -28,10 +27,9 @@ const getters = {
 }
 
 const mutations = {
-  [SET_CENTER] (state, center) { state.centerMap = center },
   [SET_PINS] (state, pins) { state.pins = pins },
   [SET_PIN_INFO] (state, pin) { state.pinInfo = pin },
-  [ADD_PIN] (state, pin) { state.pins = state.pins.push(pin) },
+  [ADD_PIN] (state, pin) { state.pins.push(pin) },
   [ADD_PIN_COMMENT] (state, comment) { state.pinInfo.comments.push(comment) },
   [SET_PIN_PHOTOS] (state, photos) { state.pinGallery = photos },
   [ADD_PHOTO] (state, photo) { state.pinGallery.unshift(photo) },
@@ -40,18 +38,15 @@ const mutations = {
 }
 
 const actions = {
-  async setCenter ({ commit }, center) {
-    if (center) {
-      let lonLat = [center.lat, center.lng]
-      commit(SET_CENTER, lonLat)
-    }
-  },
   async recivePins ({ commit }) {
-    let pins = await require('../../../mocks/_pins')
+    let pins = await require('../../../mocks/_pins.json')
     commit(SET_PINS, pins)
   },
   async addPin ({ commit }, pinInfo) {
     if (pinInfo) {
+      pinInfo['totalComments'] = 1
+      pinInfo['totalPhotos'] = 0
+      console.log(pinInfo)
       commit(ADD_PIN, pinInfo)
     }
   },

@@ -6,7 +6,13 @@
         v-marker(v-for="(c, index) in pins" v-if="c !== null" :lat-lng="[c.location.lat, c.location.lng]" :key="index" :icon='icon')
           v-popup(:content="`<a href='/map/${c.pinId}'>PinInfo</a><br><b>Comments: ${c.totalComments}</b><br><b>Photos: ${c.totalPhotos}</b>`")
     el-button(@click="addPin" type="danger" icon="el-icon-plus")
-    el-dialog
+    el-dialog(title="Add pin" width="50%" top="40vh" :visible.sync="enterPin" v-if="enterPin")
+      el-form
+        el-form-item(lable="Pin Info" prop="info")
+          el-input(v-model="pinInfo.comment" type="textarea")
+        el-form-item
+          el-button(type="primary" @click="sendPin") Add
+          el-button(type="default" @click="enterPin = false; pinInfo = {location: {}, comment: ''}") Cansel
 </template>
 <script>
 import Vue2Leaflet from 'vue2-leaflet'
@@ -31,14 +37,17 @@ export default {
       ))
     return {
       icon,
+      map: {},
       minZoom: 3,
       maxZoom: 18,
       zoom: 12,
       attribution: `&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors`,
       addPinOn: false,
       enterPin: false,
-      pinComment: '',
-      pinLatLng: []
+      pinInfo: {
+        location: {},
+        comment: ''
+      }
     }
   },
   computed: {
@@ -50,17 +59,35 @@ export default {
     }
   },
   mounted () {
-    this.$refs.leafletMap.mapObject.on('drag', (e) => {
-      let center = this.$refs.leafletMap.mapObject.getCenter()
-      this.$store.dispatch('setCenter', center)
+    // for remember centerMap location
+    this.map = this.$refs.leafletMap.mapObject
+    this.map.on('drag', (e) => {
+      let center = this.map.getCenter()
+      sessionStorage.setItem('centerMapLat', center.lat)
+      sessionStorage.setItem('centerMapLng', center.lng)
     })
-    this.$refs.leafletMap.mapObject.on('click', (e) => {
-      if (this.addPinOn) console.log(e.latlng)
+    // for catch coordinates of the pin
+    this.map.on('click', (e) => {
+      if (this.addPinOn) {
+        this.pinInfo.location = {
+          lat: e.latlng.lat,
+          lng: e.latlng.lng
+        }
+        this.enterPin = true
+      }
     })
   },
   methods: {
     addPin () {
       this.addPinOn = !this.addPinOn
+    },
+    sendPin () {
+      // checking if all info entered and commit Pin
+      if (this.enterPin && this.pinInfo) {
+        this.$store.dispatch('addPin', this.pinInfo)
+        this.pinInfo = {location: {}, comment: ''}
+        this.enterPin = false
+      }
     }
   },
   beforeCreate () {
