@@ -1,4 +1,5 @@
 import {
+  SET_CENTER,
   SET_PINS,
   SET_PIN_INFO,
   ADD_PIN,
@@ -11,7 +12,7 @@ import {
 } from '../mutation-types'
 
 const state = {
-  coordinate: [],
+  centerMap: [46.444226, 30.727262],
   pins: [],
   pinInfo: {},
   pinGallery: [],
@@ -20,12 +21,14 @@ const state = {
 
 const getters = {
   getPins: (state) => state.pins,
+  getCenter: (state) => state.centerMap,
   getPinInfo: (state) => { if (state.pinInfo) { return state.pinInfo } },
   getPinGallery: (state) => state.pinGallery,
   getPhotoInfo: (state) => state.photoInfo
 }
 
 const mutations = {
+  [SET_CENTER] (state, center) { state.centerMap = center },
   [SET_PINS] (state, pins) { state.pins = pins },
   [SET_PIN_INFO] (state, pin) { state.pinInfo = pin },
   [ADD_PIN] (state, pin) { state.pins = state.pins.push(pin) },
@@ -37,6 +40,12 @@ const mutations = {
 }
 
 const actions = {
+  async setCenter ({ commit }, center) {
+    if (center) {
+      let lonLat = [center.lat, center.lng]
+      commit(SET_CENTER, lonLat)
+    }
+  },
   async recivePins ({ commit }) {
     let pins = await require('../../../mocks/_pins')
     commit(SET_PINS, pins)

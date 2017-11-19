@@ -1,1102 +1,1102 @@
 [
   {
-    "pinStatus": 2,
-    "totalPhotos": 5,
-    "totalComments": 3,
-    "pinLatLng": [
-      "46.4789",
-      "30.7233"
-    ],
-    "pinInfo": "esse commodo reprehenderit labore ut",
-    "pinId": 101
+    "pinId": 101,
+    "pinInfo": "sunt minim amet nostrud laboris",
+    "location": {
+      "lat": 46.4947,
+      "lng": 30.7205
+    },
+    "totalComments": 10,
+    "totalPhotos": 10,
+    "pinStatus": 2
   },
   {
-    "pinStatus": 2,
-    "totalPhotos": 8,
+    "pinId": 102,
+    "pinInfo": "proident ea consectetur cupidatat tempor",
+    "location": {
+      "lat": 46.4852,
+      "lng": 30.687
+    },
     "totalComments": 8,
-    "pinLatLng": [
-      "46.4722",
-      "30.6913"
-    ],
-    "pinInfo": "ipsum in adipisicing dolor ex",
-    "pinId": 102
-  },
-  {
-    "pinStatus": 1,
     "totalPhotos": 8,
-    "totalComments": 10,
-    "pinLatLng": [
-      "46.4882",
-      "30.6893"
-    ],
-    "pinInfo": "reprehenderit proident officia et cupidatat",
-    "pinId": 103
+    "pinStatus": 2
   },
   {
-    "pinStatus": 3,
+    "pinId": 103,
+    "pinInfo": "qui magna adipisicing id amet",
+    "location": {
+      "lat": 46.4646,
+      "lng": 30.7137
+    },
+    "totalComments": 9,
     "totalPhotos": 10,
-    "totalComments": 5,
-    "pinLatLng": [
-      "46.4568",
-      "30.6832"
-    ],
-    "pinInfo": "laboris mollit qui exercitation do",
-    "pinId": 104
+    "pinStatus": 1
   },
   {
-    "pinStatus": 1,
-    "totalPhotos": 5,
-    "totalComments": 3,
-    "pinLatLng": [
-      "46.4749",
-      "30.7068"
-    ],
-    "pinInfo": "officia cupidatat velit ipsum magna",
-    "pinId": 105
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 5,
-    "totalComments": 6,
-    "pinLatLng": [
-      "46.4986",
-      "30.7409"
-    ],
-    "pinInfo": "irure Lorem magna aliqua magna",
-    "pinId": 106
-  },
-  {
-    "pinStatus": 2,
-    "totalPhotos": 8,
-    "totalComments": 6,
-    "pinLatLng": [
-      "46.5122",
-      "30.7227"
-    ],
-    "pinInfo": "adipisicing ad occaecat dolor nisi",
-    "pinId": 107
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 10,
-    "totalComments": 10,
-    "pinLatLng": [
-      "46.5139",
-      "30.7676"
-    ],
-    "pinInfo": "voluptate ut eiusmod ut enim",
-    "pinId": 108
-  },
-  {
-    "pinStatus": 2,
+    "pinId": 104,
+    "pinInfo": "esse enim fugiat eiusmod sint",
+    "location": {
+      "lat": 46.4501,
+      "lng": 30.7021
+    },
+    "totalComments": 2,
     "totalPhotos": 9,
-    "totalComments": 10,
-    "pinLatLng": [
-      "46.4617",
-      "30.7409"
-    ],
-    "pinInfo": "tempor consequat dolor pariatur enim",
-    "pinId": 109
+    "pinStatus": 2
   },
   {
-    "pinStatus": 3,
-    "totalPhotos": 7,
-    "totalComments": 6,
-    "pinLatLng": [
-      "46.4569",
-      "30.6956"
-    ],
-    "pinInfo": "aliqua cupidatat reprehenderit aliqua sit",
-    "pinId": 110
-  },
-  {
-    "pinStatus": 2,
-    "totalPhotos": 10,
+    "pinId": 105,
+    "pinInfo": "mollit minim quis ipsum sit",
+    "location": {
+      "lat": 46.4934,
+      "lng": 30.7155
+    },
     "totalComments": 1,
-    "pinLatLng": [
-      "46.4641",
-      "30.6978"
-    ],
-    "pinInfo": "culpa tempor pariatur ex dolore",
-    "pinId": 111
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 8,
-    "totalComments": 8,
-    "pinLatLng": [
-      "46.4504",
-      "30.6947"
-    ],
-    "pinInfo": "cillum in pariatur exercitation commodo",
-    "pinId": 112
-  },
-  {
-    "pinStatus": 3,
     "totalPhotos": 9,
-    "totalComments": 1,
-    "pinLatLng": [
-      "46.4867",
-      "30.7158"
-    ],
-    "pinInfo": "quis fugiat tempor enim est",
-    "pinId": 113
+    "pinStatus": 1
   },
   {
-    "pinStatus": 2,
-    "totalPhotos": 10,
-    "totalComments": 1,
-    "pinLatLng": [
-      "46.469",
-      "30.7205"
-    ],
-    "pinInfo": "commodo commodo qui nisi ullamco",
-    "pinId": 114
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 5,
+    "pinId": 106,
+    "pinInfo": "fugiat culpa non consequat reprehenderit",
+    "location": {
+      "lat": 46.453,
+      "lng": 30.7389
+    },
     "totalComments": 7,
-    "pinLatLng": [
-      "46.4791",
-      "30.7054"
-    ],
-    "pinInfo": "aliqua ullamco est voluptate excepteur",
-    "pinId": 115
+    "totalPhotos": 9,
+    "pinStatus": 1
   },
   {
-    "pinStatus": 1,
-    "totalPhotos": 6,
-    "totalComments": 8,
-    "pinLatLng": [
-      "46.465",
-      "30.7605"
-    ],
-    "pinInfo": "occaecat quis aliquip officia cillum",
-    "pinId": 116
-  },
-  {
-    "pinStatus": 2,
-    "totalPhotos": 10,
-    "totalComments": 10,
-    "pinLatLng": [
-      "46.4899",
-      "30.761"
-    ],
-    "pinInfo": "sit eiusmod minim tempor nulla",
-    "pinId": 117
-  },
-  {
-    "pinStatus": 2,
-    "totalPhotos": 10,
-    "totalComments": 5,
-    "pinLatLng": [
-      "46.4794",
-      "30.6936"
-    ],
-    "pinInfo": "tempor fugiat enim cupidatat culpa",
-    "pinId": 118
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 5,
+    "pinId": 107,
+    "pinInfo": "nulla pariatur fugiat laboris amet",
+    "location": {
+      "lat": 46.4899,
+      "lng": 30.6865
+    },
     "totalComments": 2,
-    "pinLatLng": [
-      "46.4525",
-      "30.6935"
-    ],
-    "pinInfo": "occaecat eu sunt mollit consequat",
-    "pinId": 119
+    "totalPhotos": 10,
+    "pinStatus": 1
   },
   {
-    "pinStatus": 2,
-    "totalPhotos": 9,
+    "pinId": 108,
+    "pinInfo": "consequat mollit mollit do velit",
+    "location": {
+      "lat": 46.4905,
+      "lng": 30.7478
+    },
+    "totalComments": 6,
+    "totalPhotos": 10,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 109,
+    "pinInfo": "aute labore duis veniam cillum",
+    "location": {
+      "lat": 46.4778,
+      "lng": 30.7644
+    },
     "totalComments": 1,
-    "pinLatLng": [
-      "46.4823",
-      "30.7654"
-    ],
-    "pinInfo": "quis laboris enim mollit mollit",
-    "pinId": 120
-  },
-  {
-    "pinStatus": 1,
     "totalPhotos": 9,
-    "totalComments": 5,
-    "pinLatLng": [
-      "46.4669",
-      "30.7017"
-    ],
-    "pinInfo": "ut nostrud Lorem minim velit",
-    "pinId": 121
+    "pinStatus": 3
   },
   {
-    "pinStatus": 3,
-    "totalPhotos": 8,
-    "totalComments": 4,
-    "pinLatLng": [
-      "46.5164",
-      "30.7424"
-    ],
-    "pinInfo": "reprehenderit qui labore reprehenderit veniam",
-    "pinId": 122
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 9,
-    "totalComments": 10,
-    "pinLatLng": [
-      "46.4645",
-      "30.7291"
-    ],
-    "pinInfo": "laborum in amet amet aute",
-    "pinId": 123
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 9,
-    "totalComments": 5,
-    "pinLatLng": [
-      "46.492",
-      "30.6708"
-    ],
-    "pinInfo": "velit aliquip pariatur veniam consequat",
-    "pinId": 124
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 10,
-    "totalComments": 6,
-    "pinLatLng": [
-      "46.5013",
-      "30.7298"
-    ],
-    "pinInfo": "elit dolore minim veniam mollit",
-    "pinId": 125
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 10,
+    "pinId": 110,
+    "pinInfo": "duis non occaecat est Lorem",
+    "location": {
+      "lat": 46.4952,
+      "lng": 30.6966
+    },
     "totalComments": 8,
-    "pinLatLng": [
-      "46.5188",
-      "30.6828"
-    ],
-    "pinInfo": "velit deserunt consequat culpa cillum",
-    "pinId": 126
-  },
-  {
-    "pinStatus": 3,
     "totalPhotos": 7,
-    "totalComments": 5,
-    "pinLatLng": [
-      "46.4653",
-      "30.6908"
-    ],
-    "pinInfo": "reprehenderit dolor nulla ad amet",
-    "pinId": 127
+    "pinStatus": 3
   },
   {
-    "pinStatus": 2,
-    "totalPhotos": 9,
-    "totalComments": 3,
-    "pinLatLng": [
-      "46.4741",
-      "30.6878"
-    ],
-    "pinInfo": "laborum excepteur occaecat reprehenderit irure",
-    "pinId": 128
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 7,
-    "totalComments": 6,
-    "pinLatLng": [
-      "46.4877",
-      "30.7618"
-    ],
-    "pinInfo": "cupidatat irure exercitation ex tempor",
-    "pinId": 129
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 9,
-    "totalComments": 10,
-    "pinLatLng": [
-      "46.4559",
-      "30.685"
-    ],
-    "pinInfo": "commodo est nostrud occaecat ea",
-    "pinId": 130
-  },
-  {
-    "pinStatus": 2,
+    "pinId": 111,
+    "pinInfo": "fugiat exercitation reprehenderit occaecat reprehenderit",
+    "location": {
+      "lat": 46.5068,
+      "lng": 30.7345
+    },
+    "totalComments": 2,
     "totalPhotos": 10,
-    "totalComments": 6,
-    "pinLatLng": [
-      "46.4593",
-      "30.7013"
-    ],
-    "pinInfo": "et in ullamco sint ullamco",
-    "pinId": 131
+    "pinStatus": 1
   },
   {
-    "pinStatus": 2,
-    "totalPhotos": 5,
+    "pinId": 112,
+    "pinInfo": "excepteur eu ullamco consectetur non",
+    "location": {
+      "lat": 46.4609,
+      "lng": 30.7694
+    },
     "totalComments": 9,
-    "pinLatLng": [
-      "46.4841",
-      "30.7359"
-    ],
-    "pinInfo": "et ex cupidatat consectetur in",
-    "pinId": 132
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 10,
-    "totalComments": 5,
-    "pinLatLng": [
-      "46.4654",
-      "30.7067"
-    ],
-    "pinInfo": "irure reprehenderit consectetur et minim",
-    "pinId": 133
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 5,
-    "totalComments": 4,
-    "pinLatLng": [
-      "46.4992",
-      "30.7532"
-    ],
-    "pinInfo": "sunt cillum ullamco culpa officia",
-    "pinId": 134
-  },
-  {
-    "pinStatus": 1,
     "totalPhotos": 8,
-    "totalComments": 3,
-    "pinLatLng": [
-      "46.4521",
-      "30.7317"
-    ],
-    "pinInfo": "reprehenderit excepteur labore deserunt esse",
-    "pinId": 135
+    "pinStatus": 1
   },
   {
-    "pinStatus": 2,
-    "totalPhotos": 5,
-    "totalComments": 3,
-    "pinLatLng": [
-      "46.4601",
-      "30.7557"
-    ],
-    "pinInfo": "occaecat mollit sunt esse deserunt",
-    "pinId": 136
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 5,
-    "totalComments": 9,
-    "pinLatLng": [
-      "46.511",
-      "30.725"
-    ],
-    "pinInfo": "laboris quis dolor pariatur ex",
-    "pinId": 137
-  },
-  {
-    "pinStatus": 2,
-    "totalPhotos": 10,
+    "pinId": 113,
+    "pinInfo": "eiusmod reprehenderit duis do non",
+    "location": {
+      "lat": 46.4896,
+      "lng": 30.707
+    },
     "totalComments": 7,
-    "pinLatLng": [
-      "46.4573",
-      "30.7531"
-    ],
-    "pinInfo": "quis voluptate est nulla ut",
-    "pinId": 138
+    "totalPhotos": 7,
+    "pinStatus": 2
   },
   {
-    "pinStatus": 1,
+    "pinId": 114,
+    "pinInfo": "aute et do cillum cupidatat",
+    "location": {
+      "lat": 46.4716,
+      "lng": 30.7627
+    },
+    "totalComments": 2,
+    "totalPhotos": 7,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 115,
+    "pinInfo": "nisi deserunt et anim anim",
+    "location": {
+      "lat": 46.4933,
+      "lng": 30.7298
+    },
+    "totalComments": 4,
     "totalPhotos": 10,
-    "totalComments": 6,
-    "pinLatLng": [
-      "46.4732",
-      "30.7434"
-    ],
-    "pinInfo": "ex reprehenderit amet ipsum nostrud",
-    "pinId": 139
+    "pinStatus": 3
   },
   {
-    "pinStatus": 3,
-    "totalPhotos": 9,
-    "totalComments": 5,
-    "pinLatLng": [
-      "46.4909",
-      "30.69"
-    ],
-    "pinInfo": "consectetur exercitation veniam ipsum adipisicing",
-    "pinId": 140
+    "pinId": 116,
+    "pinInfo": "exercitation id ad aliqua qui",
+    "location": {
+      "lat": 46.4769,
+      "lng": 30.6799
+    },
+    "totalComments": 2,
+    "totalPhotos": 10,
+    "pinStatus": 3
   },
   {
-    "pinStatus": 3,
-    "totalPhotos": 6,
-    "totalComments": 6,
-    "pinLatLng": [
-      "46.5112",
-      "30.7503"
-    ],
-    "pinInfo": "et aliquip deserunt tempor esse",
-    "pinId": 141
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 6,
+    "pinId": 117,
+    "pinInfo": "elit enim in non est",
+    "location": {
+      "lat": 46.4963,
+      "lng": 30.685
+    },
     "totalComments": 8,
-    "pinLatLng": [
-      "46.5071",
-      "30.7157"
-    ],
-    "pinInfo": "reprehenderit eiusmod qui do officia",
-    "pinId": 142
-  },
-  {
-    "pinStatus": 2,
-    "totalPhotos": 10,
-    "totalComments": 10,
-    "pinLatLng": [
-      "46.4939",
-      "30.6767"
-    ],
-    "pinInfo": "commodo consectetur fugiat exercitation incididunt",
-    "pinId": 143
-  },
-  {
-    "pinStatus": 2,
     "totalPhotos": 9,
-    "totalComments": 4,
-    "pinLatLng": [
-      "46.4903",
-      "30.749"
-    ],
-    "pinInfo": "veniam exercitation laboris ex labore",
-    "pinId": 144
+    "pinStatus": 2
   },
   {
-    "pinStatus": 2,
-    "totalPhotos": 6,
-    "totalComments": 6,
-    "pinLatLng": [
-      "46.4671",
-      "30.7445"
-    ],
-    "pinInfo": "veniam aliqua voluptate proident adipisicing",
-    "pinId": 145
+    "pinId": 118,
+    "pinInfo": "ad proident deserunt mollit et",
+    "location": {
+      "lat": 46.469,
+      "lng": 30.6732
+    },
+    "totalComments": 5,
+    "totalPhotos": 5,
+    "pinStatus": 2
   },
   {
-    "pinStatus": 3,
-    "totalPhotos": 6,
+    "pinId": 119,
+    "pinInfo": "dolore aliqua dolore duis anim",
+    "location": {
+      "lat": 46.4782,
+      "lng": 30.6959
+    },
+    "totalComments": 2,
+    "totalPhotos": 9,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 120,
+    "pinInfo": "excepteur magna voluptate laboris non",
+    "location": {
+      "lat": 46.5002,
+      "lng": 30.6711
+    },
     "totalComments": 1,
-    "pinLatLng": [
-      "46.5076",
-      "30.7084"
-    ],
-    "pinInfo": "proident id irure Lorem excepteur",
-    "pinId": 146
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 8,
-    "totalComments": 8,
-    "pinLatLng": [
-      "46.4504",
-      "30.7078"
-    ],
-    "pinInfo": "proident sunt est nulla dolor",
-    "pinId": 147
-  },
-  {
-    "pinStatus": 2,
-    "totalPhotos": 5,
-    "totalComments": 4,
-    "pinLatLng": [
-      "46.5005",
-      "30.7291"
-    ],
-    "pinInfo": "eu cupidatat in esse consequat",
-    "pinId": 148
-  },
-  {
-    "pinStatus": 2,
     "totalPhotos": 6,
-    "totalComments": 3,
-    "pinLatLng": [
-      "46.5169",
-      "30.717"
-    ],
-    "pinInfo": "sit excepteur ullamco cupidatat nisi",
-    "pinId": 149
+    "pinStatus": 1
   },
   {
-    "pinStatus": 3,
-    "totalPhotos": 8,
-    "totalComments": 1,
-    "pinLatLng": [
-      "46.4715",
-      "30.7613"
-    ],
-    "pinInfo": "ad adipisicing laborum excepteur reprehenderit",
-    "pinId": 150
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 10,
-    "totalComments": 4,
-    "pinLatLng": [
-      "46.498",
-      "30.7545"
-    ],
-    "pinInfo": "laborum minim consectetur sint quis",
-    "pinId": 151
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 9,
-    "totalComments": 6,
-    "pinLatLng": [
-      "46.4543",
-      "30.7323"
-    ],
-    "pinInfo": "labore nulla consequat ipsum eiusmod",
-    "pinId": 152
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 10,
-    "totalComments": 5,
-    "pinLatLng": [
-      "46.4709",
-      "30.7285"
-    ],
-    "pinInfo": "reprehenderit nostrud dolore dolore quis",
-    "pinId": 153
-  },
-  {
-    "pinStatus": 2,
-    "totalPhotos": 8,
-    "totalComments": 4,
-    "pinLatLng": [
-      "46.472",
-      "30.754"
-    ],
-    "pinInfo": "consectetur ex quis et duis",
-    "pinId": 154
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 10,
-    "totalComments": 9,
-    "pinLatLng": [
-      "46.4883",
-      "30.7485"
-    ],
-    "pinInfo": "officia in eiusmod esse in",
-    "pinId": 155
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 9,
-    "totalComments": 3,
-    "pinLatLng": [
-      "46.5126",
-      "30.7646"
-    ],
-    "pinInfo": "culpa excepteur esse elit commodo",
-    "pinId": 156
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 7,
-    "totalComments": 5,
-    "pinLatLng": [
-      "46.4976",
-      "30.689"
-    ],
-    "pinInfo": "id tempor exercitation nostrud enim",
-    "pinId": 157
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 7,
-    "totalComments": 4,
-    "pinLatLng": [
-      "46.4805",
-      "30.7095"
-    ],
-    "pinInfo": "aliqua laboris minim ipsum laborum",
-    "pinId": 158
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 6,
-    "totalComments": 6,
-    "pinLatLng": [
-      "46.5187",
-      "30.7191"
-    ],
-    "pinInfo": "fugiat pariatur aute ut duis",
-    "pinId": 159
-  },
-  {
-    "pinStatus": 2,
-    "totalPhotos": 5,
-    "totalComments": 2,
-    "pinLatLng": [
-      "46.4853",
-      "30.7546"
-    ],
-    "pinInfo": "magna dolor excepteur esse reprehenderit",
-    "pinId": 160
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 10,
-    "totalComments": 9,
-    "pinLatLng": [
-      "46.4705",
-      "30.6809"
-    ],
-    "pinInfo": "officia eiusmod exercitation proident nostrud",
-    "pinId": 161
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 8,
-    "totalComments": 3,
-    "pinLatLng": [
-      "46.4567",
-      "30.7523"
-    ],
-    "pinInfo": "Lorem ad proident elit officia",
-    "pinId": 162
-  },
-  {
-    "pinStatus": 2,
-    "totalPhotos": 6,
-    "totalComments": 2,
-    "pinLatLng": [
-      "46.5148",
-      "30.7056"
-    ],
-    "pinInfo": "aliquip veniam deserunt aliqua ipsum",
-    "pinId": 163
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 5,
-    "totalComments": 5,
-    "pinLatLng": [
-      "46.4777",
-      "30.7541"
-    ],
-    "pinInfo": "sit exercitation proident elit aliquip",
-    "pinId": 164
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 9,
-    "totalComments": 2,
-    "pinLatLng": [
-      "46.499",
-      "30.7619"
-    ],
-    "pinInfo": "ad consectetur commodo velit eiusmod",
-    "pinId": 165
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 9,
-    "totalComments": 5,
-    "pinLatLng": [
-      "46.5013",
-      "30.7198"
-    ],
-    "pinInfo": "ipsum deserunt in deserunt magna",
-    "pinId": 166
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 8,
-    "totalComments": 6,
-    "pinLatLng": [
-      "46.4599",
-      "30.7005"
-    ],
-    "pinInfo": "quis excepteur mollit anim labore",
-    "pinId": 167
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 10,
-    "totalComments": 8,
-    "pinLatLng": [
-      "46.4709",
-      "30.723"
-    ],
-    "pinInfo": "elit ipsum tempor exercitation dolore",
-    "pinId": 168
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 10,
-    "totalComments": 4,
-    "pinLatLng": [
-      "46.5007",
-      "30.6763"
-    ],
-    "pinInfo": "ad quis amet sint eu",
-    "pinId": 169
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 6,
-    "totalComments": 1,
-    "pinLatLng": [
-      "46.4977",
-      "30.6916"
-    ],
-    "pinInfo": "magna cupidatat non irure laboris",
-    "pinId": 170
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 10,
-    "totalComments": 10,
-    "pinLatLng": [
-      "46.4946",
-      "30.6819"
-    ],
-    "pinInfo": "esse enim amet minim consequat",
-    "pinId": 171
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 5,
-    "totalComments": 5,
-    "pinLatLng": [
-      "46.4563",
-      "30.7407"
-    ],
-    "pinInfo": "qui in sunt fugiat deserunt",
-    "pinId": 172
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 9,
-    "totalComments": 1,
-    "pinLatLng": [
-      "46.4539",
-      "30.6982"
-    ],
-    "pinInfo": "exercitation ea dolore deserunt proident",
-    "pinId": 173
-  },
-  {
-    "pinStatus": 2,
-    "totalPhotos": 9,
-    "totalComments": 2,
-    "pinLatLng": [
-      "46.5116",
-      "30.7315"
-    ],
-    "pinInfo": "qui dolore sunt veniam exercitation",
-    "pinId": 174
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 5,
-    "totalComments": 4,
-    "pinLatLng": [
-      "46.4579",
-      "30.7521"
-    ],
-    "pinInfo": "nisi exercitation labore velit occaecat",
-    "pinId": 175
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 10,
-    "totalComments": 2,
-    "pinLatLng": [
-      "46.5149",
-      "30.7251"
-    ],
-    "pinInfo": "excepteur in velit quis sint",
-    "pinId": 176
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 6,
-    "totalComments": 3,
-    "pinLatLng": [
-      "46.5079",
-      "30.733"
-    ],
-    "pinInfo": "consequat cillum ea id est",
-    "pinId": 177
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 7,
-    "totalComments": 4,
-    "pinLatLng": [
-      "46.4697",
-      "30.6787"
-    ],
-    "pinInfo": "cillum culpa consectetur ex commodo",
-    "pinId": 178
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 8,
-    "totalComments": 6,
-    "pinLatLng": [
-      "46.4516",
-      "30.7101"
-    ],
-    "pinInfo": "in non do aute culpa",
-    "pinId": 179
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 5,
-    "totalComments": 2,
-    "pinLatLng": [
-      "46.4812",
-      "30.7236"
-    ],
-    "pinInfo": "eiusmod sunt est voluptate dolore",
-    "pinId": 180
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 10,
-    "totalComments": 5,
-    "pinLatLng": [
-      "46.4792",
-      "30.7367"
-    ],
-    "pinInfo": "labore amet veniam voluptate dolore",
-    "pinId": 181
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 7,
-    "totalComments": 10,
-    "pinLatLng": [
-      "46.5119",
-      "30.6742"
-    ],
-    "pinInfo": "est amet ut id esse",
-    "pinId": 182
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 10,
-    "totalComments": 4,
-    "pinLatLng": [
-      "46.5134",
-      "30.7448"
-    ],
-    "pinInfo": "reprehenderit dolor sit aute quis",
-    "pinId": 183
-  },
-  {
-    "pinStatus": 2,
-    "totalPhotos": 5,
-    "totalComments": 3,
-    "pinLatLng": [
-      "46.4504",
-      "30.6773"
-    ],
-    "pinInfo": "labore laborum in dolore qui",
-    "pinId": 184
-  },
-  {
-    "pinStatus": 2,
-    "totalPhotos": 5,
-    "totalComments": 9,
-    "pinLatLng": [
-      "46.459",
-      "30.7656"
-    ],
-    "pinInfo": "dolore cillum voluptate esse irure",
-    "pinId": 185
-  },
-  {
-    "pinStatus": 2,
-    "totalPhotos": 6,
-    "totalComments": 1,
-    "pinLatLng": [
-      "46.4763",
-      "30.7565"
-    ],
-    "pinInfo": "tempor qui Lorem in velit",
-    "pinId": 186
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 8,
-    "totalComments": 6,
-    "pinLatLng": [
-      "46.5184",
-      "30.7207"
-    ],
-    "pinInfo": "minim aute sit est duis",
-    "pinId": 187
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 8,
-    "totalComments": 8,
-    "pinLatLng": [
-      "46.4932",
-      "30.7488"
-    ],
-    "pinInfo": "commodo culpa anim cupidatat cupidatat",
-    "pinId": 188
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 7,
-    "totalComments": 8,
-    "pinLatLng": [
-      "46.4812",
-      "30.7207"
-    ],
-    "pinInfo": "eiusmod sint reprehenderit commodo incididunt",
-    "pinId": 189
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 10,
-    "totalComments": 3,
-    "pinLatLng": [
-      "46.4569",
-      "30.685"
-    ],
-    "pinInfo": "duis do consequat amet ipsum",
-    "pinId": 190
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 7,
+    "pinId": 121,
+    "pinInfo": "enim Lorem qui commodo cupidatat",
+    "location": {
+      "lat": 46.5096,
+      "lng": 30.7627
+    },
     "totalComments": 7,
-    "pinLatLng": [
-      "46.5133",
-      "30.7652"
-    ],
-    "pinInfo": "magna aliquip sunt laboris mollit",
-    "pinId": 191
+    "totalPhotos": 9,
+    "pinStatus": 2
   },
   {
-    "pinStatus": 1,
+    "pinId": 122,
+    "pinInfo": "sit aute cillum qui nisi",
+    "location": {
+      "lat": 46.5139,
+      "lng": 30.7652
+    },
+    "totalComments": 4,
+    "totalPhotos": 10,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 123,
+    "pinInfo": "incididunt ea nisi consequat ea",
+    "location": {
+      "lat": 46.5054,
+      "lng": 30.7081
+    },
+    "totalComments": 1,
     "totalPhotos": 7,
-    "totalComments": 2,
-    "pinLatLng": [
-      "46.4555",
-      "30.691"
-    ],
-    "pinInfo": "tempor velit ut duis ipsum",
-    "pinId": 192
+    "pinStatus": 3
   },
   {
-    "pinStatus": 2,
-    "totalPhotos": 5,
-    "totalComments": 2,
-    "pinLatLng": [
-      "46.4941",
-      "30.6709"
-    ],
-    "pinInfo": "excepteur consectetur eu ut elit",
-    "pinId": 193
-  },
-  {
-    "pinStatus": 2,
-    "totalPhotos": 7,
-    "totalComments": 9,
-    "pinLatLng": [
-      "46.4824",
-      "30.7356"
-    ],
-    "pinInfo": "in laborum aute irure ipsum",
-    "pinId": 194
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 5,
+    "pinId": 124,
+    "pinInfo": "excepteur commodo eiusmod qui labore",
+    "location": {
+      "lat": 46.4866,
+      "lng": 30.748
+    },
     "totalComments": 6,
-    "pinLatLng": [
-      "46.5127",
-      "30.6946"
-    ],
-    "pinInfo": "nostrud deserunt sit do dolore",
-    "pinId": 195
+    "totalPhotos": 8,
+    "pinStatus": 1
   },
   {
-    "pinStatus": 3,
-    "totalPhotos": 10,
-    "totalComments": 4,
-    "pinLatLng": [
-      "46.4961",
-      "30.7117"
-    ],
-    "pinInfo": "officia in labore ea reprehenderit",
-    "pinId": 196
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 9,
-    "totalComments": 4,
-    "pinLatLng": [
-      "46.4724",
-      "30.7108"
-    ],
-    "pinInfo": "proident consequat id non laboris",
-    "pinId": 197
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 9,
-    "totalComments": 3,
-    "pinLatLng": [
-      "46.4651",
-      "30.7517"
-    ],
-    "pinInfo": "tempor proident quis magna in",
-    "pinId": 198
-  },
-  {
-    "pinStatus": 1,
-    "totalPhotos": 10,
-    "totalComments": 3,
-    "pinLatLng": [
-      "46.4841",
-      "30.7113"
-    ],
-    "pinInfo": "ex tempor ea occaecat eu",
-    "pinId": 199
-  },
-  {
-    "pinStatus": 3,
-    "totalPhotos": 5,
+    "pinId": 125,
+    "pinInfo": "cupidatat laboris officia Lorem reprehenderit",
+    "location": {
+      "lat": 46.5036,
+      "lng": 30.6729
+    },
     "totalComments": 10,
-    "pinLatLng": [
-      "46.4943",
-      "30.7561"
-    ],
-    "pinInfo": "proident commodo nulla dolor dolore",
-    "pinId": 200
+    "totalPhotos": 9,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 126,
+    "pinInfo": "esse est qui duis duis",
+    "location": {
+      "lat": 46.4596,
+      "lng": 30.7404
+    },
+    "totalComments": 3,
+    "totalPhotos": 6,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 127,
+    "pinInfo": "eiusmod proident cupidatat do nostrud",
+    "location": {
+      "lat": 46.4773,
+      "lng": 30.7359
+    },
+    "totalComments": 8,
+    "totalPhotos": 7,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 128,
+    "pinInfo": "culpa amet pariatur nisi cupidatat",
+    "location": {
+      "lat": 46.4768,
+      "lng": 30.7528
+    },
+    "totalComments": 7,
+    "totalPhotos": 9,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 129,
+    "pinInfo": "commodo aute et reprehenderit anim",
+    "location": {
+      "lat": 46.4816,
+      "lng": 30.6724
+    },
+    "totalComments": 7,
+    "totalPhotos": 10,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 130,
+    "pinInfo": "ea fugiat tempor fugiat officia",
+    "location": {
+      "lat": 46.4968,
+      "lng": 30.7235
+    },
+    "totalComments": 8,
+    "totalPhotos": 10,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 131,
+    "pinInfo": "duis mollit eu anim magna",
+    "location": {
+      "lat": 46.4621,
+      "lng": 30.6887
+    },
+    "totalComments": 5,
+    "totalPhotos": 10,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 132,
+    "pinInfo": "sunt ad dolore non pariatur",
+    "location": {
+      "lat": 46.455,
+      "lng": 30.7432
+    },
+    "totalComments": 5,
+    "totalPhotos": 7,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 133,
+    "pinInfo": "duis aliquip dolore labore non",
+    "location": {
+      "lat": 46.5004,
+      "lng": 30.6883
+    },
+    "totalComments": 5,
+    "totalPhotos": 5,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 134,
+    "pinInfo": "mollit do anim et amet",
+    "location": {
+      "lat": 46.5184,
+      "lng": 30.698
+    },
+    "totalComments": 7,
+    "totalPhotos": 9,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 135,
+    "pinInfo": "est voluptate commodo reprehenderit culpa",
+    "location": {
+      "lat": 46.4512,
+      "lng": 30.6831
+    },
+    "totalComments": 5,
+    "totalPhotos": 10,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 136,
+    "pinInfo": "tempor nostrud Lorem reprehenderit adipisicing",
+    "location": {
+      "lat": 46.5168,
+      "lng": 30.7612
+    },
+    "totalComments": 7,
+    "totalPhotos": 5,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 137,
+    "pinInfo": "qui occaecat consequat mollit qui",
+    "location": {
+      "lat": 46.5073,
+      "lng": 30.7345
+    },
+    "totalComments": 5,
+    "totalPhotos": 10,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 138,
+    "pinInfo": "excepteur exercitation esse culpa minim",
+    "location": {
+      "lat": 46.4981,
+      "lng": 30.7082
+    },
+    "totalComments": 1,
+    "totalPhotos": 5,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 139,
+    "pinInfo": "ex ex enim id eu",
+    "location": {
+      "lat": 46.4698,
+      "lng": 30.748
+    },
+    "totalComments": 7,
+    "totalPhotos": 10,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 140,
+    "pinInfo": "ipsum dolor velit ad ex",
+    "location": {
+      "lat": 46.4501,
+      "lng": 30.7163
+    },
+    "totalComments": 3,
+    "totalPhotos": 8,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 141,
+    "pinInfo": "officia consequat voluptate eu sunt",
+    "location": {
+      "lat": 46.5002,
+      "lng": 30.6887
+    },
+    "totalComments": 6,
+    "totalPhotos": 8,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 142,
+    "pinInfo": "ipsum excepteur ut enim sunt",
+    "location": {
+      "lat": 46.488,
+      "lng": 30.6934
+    },
+    "totalComments": 7,
+    "totalPhotos": 8,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 143,
+    "pinInfo": "excepteur esse laborum fugiat id",
+    "location": {
+      "lat": 46.4674,
+      "lng": 30.7316
+    },
+    "totalComments": 3,
+    "totalPhotos": 7,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 144,
+    "pinInfo": "elit exercitation quis est pariatur",
+    "location": {
+      "lat": 46.4614,
+      "lng": 30.7418
+    },
+    "totalComments": 5,
+    "totalPhotos": 7,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 145,
+    "pinInfo": "sit reprehenderit aliqua ea culpa",
+    "location": {
+      "lat": 46.5005,
+      "lng": 30.6762
+    },
+    "totalComments": 2,
+    "totalPhotos": 9,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 146,
+    "pinInfo": "officia elit labore excepteur pariatur",
+    "location": {
+      "lat": 46.4567,
+      "lng": 30.7037
+    },
+    "totalComments": 7,
+    "totalPhotos": 8,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 147,
+    "pinInfo": "fugiat dolor aliquip occaecat amet",
+    "location": {
+      "lat": 46.4616,
+      "lng": 30.738
+    },
+    "totalComments": 6,
+    "totalPhotos": 8,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 148,
+    "pinInfo": "laborum velit ea ullamco mollit",
+    "location": {
+      "lat": 46.5014,
+      "lng": 30.7261
+    },
+    "totalComments": 10,
+    "totalPhotos": 6,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 149,
+    "pinInfo": "ex esse ut anim mollit",
+    "location": {
+      "lat": 46.5057,
+      "lng": 30.7195
+    },
+    "totalComments": 2,
+    "totalPhotos": 10,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 150,
+    "pinInfo": "adipisicing adipisicing et dolore sunt",
+    "location": {
+      "lat": 46.517,
+      "lng": 30.729
+    },
+    "totalComments": 2,
+    "totalPhotos": 8,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 151,
+    "pinInfo": "occaecat id consectetur fugiat cillum",
+    "location": {
+      "lat": 46.4608,
+      "lng": 30.6716
+    },
+    "totalComments": 10,
+    "totalPhotos": 7,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 152,
+    "pinInfo": "proident veniam pariatur dolore qui",
+    "location": {
+      "lat": 46.4672,
+      "lng": 30.747
+    },
+    "totalComments": 9,
+    "totalPhotos": 7,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 153,
+    "pinInfo": "exercitation aute pariatur aute do",
+    "location": {
+      "lat": 46.5113,
+      "lng": 30.7193
+    },
+    "totalComments": 3,
+    "totalPhotos": 5,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 154,
+    "pinInfo": "magna ad in veniam mollit",
+    "location": {
+      "lat": 46.4899,
+      "lng": 30.7043
+    },
+    "totalComments": 3,
+    "totalPhotos": 10,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 155,
+    "pinInfo": "adipisicing tempor est ad ea",
+    "location": {
+      "lat": 46.4817,
+      "lng": 30.7692
+    },
+    "totalComments": 10,
+    "totalPhotos": 9,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 156,
+    "pinInfo": "dolor excepteur fugiat dolore culpa",
+    "location": {
+      "lat": 46.4894,
+      "lng": 30.7576
+    },
+    "totalComments": 7,
+    "totalPhotos": 9,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 157,
+    "pinInfo": "occaecat commodo minim ut eu",
+    "location": {
+      "lat": 46.4872,
+      "lng": 30.7397
+    },
+    "totalComments": 5,
+    "totalPhotos": 5,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 158,
+    "pinInfo": "ipsum consequat proident reprehenderit sunt",
+    "location": {
+      "lat": 46.472,
+      "lng": 30.6991
+    },
+    "totalComments": 5,
+    "totalPhotos": 10,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 159,
+    "pinInfo": "dolore officia fugiat ut ipsum",
+    "location": {
+      "lat": 46.5121,
+      "lng": 30.7343
+    },
+    "totalComments": 3,
+    "totalPhotos": 6,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 160,
+    "pinInfo": "proident proident do incididunt elit",
+    "location": {
+      "lat": 46.5114,
+      "lng": 30.7621
+    },
+    "totalComments": 4,
+    "totalPhotos": 6,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 161,
+    "pinInfo": "nulla in nostrud nisi eiusmod",
+    "location": {
+      "lat": 46.4784,
+      "lng": 30.7581
+    },
+    "totalComments": 4,
+    "totalPhotos": 5,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 162,
+    "pinInfo": "tempor sunt dolor elit ea",
+    "location": {
+      "lat": 46.5187,
+      "lng": 30.7011
+    },
+    "totalComments": 3,
+    "totalPhotos": 8,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 163,
+    "pinInfo": "nostrud ut sit culpa exercitation",
+    "location": {
+      "lat": 46.5034,
+      "lng": 30.7631
+    },
+    "totalComments": 3,
+    "totalPhotos": 10,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 164,
+    "pinInfo": "consectetur ex ex nisi tempor",
+    "location": {
+      "lat": 46.4648,
+      "lng": 30.7406
+    },
+    "totalComments": 10,
+    "totalPhotos": 9,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 165,
+    "pinInfo": "amet id consectetur non aute",
+    "location": {
+      "lat": 46.5158,
+      "lng": 30.7642
+    },
+    "totalComments": 9,
+    "totalPhotos": 6,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 166,
+    "pinInfo": "quis labore nulla aute culpa",
+    "location": {
+      "lat": 46.4955,
+      "lng": 30.7088
+    },
+    "totalComments": 9,
+    "totalPhotos": 9,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 167,
+    "pinInfo": "sint ullamco amet commodo sunt",
+    "location": {
+      "lat": 46.469,
+      "lng": 30.7656
+    },
+    "totalComments": 4,
+    "totalPhotos": 9,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 168,
+    "pinInfo": "officia ad consequat fugiat adipisicing",
+    "location": {
+      "lat": 46.4512,
+      "lng": 30.7201
+    },
+    "totalComments": 7,
+    "totalPhotos": 7,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 169,
+    "pinInfo": "dolore ut officia exercitation occaecat",
+    "location": {
+      "lat": 46.4811,
+      "lng": 30.7186
+    },
+    "totalComments": 4,
+    "totalPhotos": 9,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 170,
+    "pinInfo": "esse sit amet excepteur tempor",
+    "location": {
+      "lat": 46.4767,
+      "lng": 30.7369
+    },
+    "totalComments": 2,
+    "totalPhotos": 5,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 171,
+    "pinInfo": "laborum aliqua velit elit tempor",
+    "location": {
+      "lat": 46.4684,
+      "lng": 30.6764
+    },
+    "totalComments": 1,
+    "totalPhotos": 7,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 172,
+    "pinInfo": "fugiat qui deserunt sunt Lorem",
+    "location": {
+      "lat": 46.5173,
+      "lng": 30.7334
+    },
+    "totalComments": 5,
+    "totalPhotos": 6,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 173,
+    "pinInfo": "ea consectetur eu esse tempor",
+    "location": {
+      "lat": 46.4987,
+      "lng": 30.7579
+    },
+    "totalComments": 6,
+    "totalPhotos": 5,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 174,
+    "pinInfo": "irure proident ea voluptate cupidatat",
+    "location": {
+      "lat": 46.4511,
+      "lng": 30.7483
+    },
+    "totalComments": 3,
+    "totalPhotos": 10,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 175,
+    "pinInfo": "fugiat elit esse minim ex",
+    "location": {
+      "lat": 46.5192,
+      "lng": 30.7524
+    },
+    "totalComments": 4,
+    "totalPhotos": 10,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 176,
+    "pinInfo": "occaecat et nisi veniam veniam",
+    "location": {
+      "lat": 46.495,
+      "lng": 30.7445
+    },
+    "totalComments": 2,
+    "totalPhotos": 8,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 177,
+    "pinInfo": "nulla dolore fugiat adipisicing exercitation",
+    "location": {
+      "lat": 46.4518,
+      "lng": 30.7495
+    },
+    "totalComments": 8,
+    "totalPhotos": 9,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 178,
+    "pinInfo": "id deserunt nostrud sint ipsum",
+    "location": {
+      "lat": 46.516,
+      "lng": 30.7114
+    },
+    "totalComments": 10,
+    "totalPhotos": 6,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 179,
+    "pinInfo": "ex excepteur reprehenderit esse id",
+    "location": {
+      "lat": 46.4905,
+      "lng": 30.6742
+    },
+    "totalComments": 9,
+    "totalPhotos": 10,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 180,
+    "pinInfo": "consequat sint irure proident amet",
+    "location": {
+      "lat": 46.4808,
+      "lng": 30.7556
+    },
+    "totalComments": 2,
+    "totalPhotos": 9,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 181,
+    "pinInfo": "qui anim eu sunt exercitation",
+    "location": {
+      "lat": 46.461,
+      "lng": 30.7325
+    },
+    "totalComments": 5,
+    "totalPhotos": 8,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 182,
+    "pinInfo": "id ipsum pariatur sit dolore",
+    "location": {
+      "lat": 46.4888,
+      "lng": 30.7476
+    },
+    "totalComments": 6,
+    "totalPhotos": 8,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 183,
+    "pinInfo": "eu sit deserunt tempor veniam",
+    "location": {
+      "lat": 46.4661,
+      "lng": 30.7557
+    },
+    "totalComments": 8,
+    "totalPhotos": 8,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 184,
+    "pinInfo": "exercitation id nisi voluptate sint",
+    "location": {
+      "lat": 46.5031,
+      "lng": 30.7334
+    },
+    "totalComments": 7,
+    "totalPhotos": 5,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 185,
+    "pinInfo": "consequat velit reprehenderit nostrud quis",
+    "location": {
+      "lat": 46.5161,
+      "lng": 30.7247
+    },
+    "totalComments": 3,
+    "totalPhotos": 8,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 186,
+    "pinInfo": "commodo ullamco nostrud occaecat sit",
+    "location": {
+      "lat": 46.5176,
+      "lng": 30.738
+    },
+    "totalComments": 10,
+    "totalPhotos": 7,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 187,
+    "pinInfo": "esse do ea ut non",
+    "location": {
+      "lat": 46.4547,
+      "lng": 30.685
+    },
+    "totalComments": 10,
+    "totalPhotos": 6,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 188,
+    "pinInfo": "est excepteur quis non nisi",
+    "location": {
+      "lat": 46.5132,
+      "lng": 30.7577
+    },
+    "totalComments": 4,
+    "totalPhotos": 6,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 189,
+    "pinInfo": "occaecat duis deserunt fugiat pariatur",
+    "location": {
+      "lat": 46.4587,
+      "lng": 30.7298
+    },
+    "totalComments": 4,
+    "totalPhotos": 5,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 190,
+    "pinInfo": "irure magna do et fugiat",
+    "location": {
+      "lat": 46.4677,
+      "lng": 30.6803
+    },
+    "totalComments": 4,
+    "totalPhotos": 7,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 191,
+    "pinInfo": "cupidatat quis sit ut veniam",
+    "location": {
+      "lat": 46.502,
+      "lng": 30.7558
+    },
+    "totalComments": 4,
+    "totalPhotos": 10,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 192,
+    "pinInfo": "eiusmod tempor Lorem tempor exercitation",
+    "location": {
+      "lat": 46.4503,
+      "lng": 30.7579
+    },
+    "totalComments": 4,
+    "totalPhotos": 6,
+    "pinStatus": 3
+  },
+  {
+    "pinId": 193,
+    "pinInfo": "reprehenderit duis excepteur duis irure",
+    "location": {
+      "lat": 46.456,
+      "lng": 30.6883
+    },
+    "totalComments": 4,
+    "totalPhotos": 9,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 194,
+    "pinInfo": "Lorem duis aliquip incididunt enim",
+    "location": {
+      "lat": 46.5081,
+      "lng": 30.701
+    },
+    "totalComments": 5,
+    "totalPhotos": 9,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 195,
+    "pinInfo": "sit fugiat nisi deserunt mollit",
+    "location": {
+      "lat": 46.472,
+      "lng": 30.7053
+    },
+    "totalComments": 8,
+    "totalPhotos": 6,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 196,
+    "pinInfo": "est in minim commodo sunt",
+    "location": {
+      "lat": 46.464,
+      "lng": 30.7441
+    },
+    "totalComments": 4,
+    "totalPhotos": 9,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 197,
+    "pinInfo": "commodo aute ad cupidatat mollit",
+    "location": {
+      "lat": 46.4881,
+      "lng": 30.7578
+    },
+    "totalComments": 2,
+    "totalPhotos": 5,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 198,
+    "pinInfo": "nulla dolor qui dolor qui",
+    "location": {
+      "lat": 46.4511,
+      "lng": 30.7394
+    },
+    "totalComments": 9,
+    "totalPhotos": 6,
+    "pinStatus": 2
+  },
+  {
+    "pinId": 199,
+    "pinInfo": "duis amet dolore ullamco excepteur",
+    "location": {
+      "lat": 46.4551,
+      "lng": 30.7134
+    },
+    "totalComments": 8,
+    "totalPhotos": 9,
+    "pinStatus": 1
+  },
+  {
+    "pinId": 200,
+    "pinInfo": "Lorem laboris adipisicing dolore duis",
+    "location": {
+      "lat": 46.5075,
+      "lng": 30.7225
+    },
+    "totalComments": 1,
+    "totalPhotos": 7,
+    "pinStatus": 2
   }
 ]

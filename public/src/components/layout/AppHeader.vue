@@ -3,7 +3,8 @@
     div(v-if="this.$store.getters.isAuth")
       el-row.bg(:gutter="10")
         el-col(:xs="4" :sm="4" :md="3" :lg="3" :xl="3")
-          img.logo(src="../../assets/Mapified.png")
+          router-link(:to="{name: 'Map'}")
+            img.logo(src="../../assets/Mapified.png")
         el-col.search(:xs="8" :sm="8" :md="7" :lg="7" :xl="7")
           el-input(v-model='search', placeholder='search')
             el-button(slot='append', icon='el-icon-search')
@@ -11,43 +12,43 @@
           div.cont
             el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1")
               div.ch
-                el-menu-item(:route="{name: 'Map'}")
+                el-menu-item(:route="{name: 'Map'}" index="1")
                   img(src='../../assets/pin.png')
               div.ch
                 img.line(src='../../assets/line.png')
             el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1")
               div.ch
-                el-menu-item(:route="{name: 'Friends'}")
+                el-menu-item(:route="{name: 'Friends'}" index="2")
                   img(src='../../assets/friends.png')
               div.ch
                 img.line(src='../../assets/line.png')
             el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1")
               div.ch
-                el-menu-item(:route="{name: 'Messenger'}")
+                el-menu-item(:route="{name: 'Messenger'}" index="3")
                   img(src='../../assets/messages.png')
               div.ch
                 img.line(src='../../assets/line.png')
             el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1")
               div.ch
-                el-menu-item(:route="{name: 'Notifications'}")
+                el-menu-item(:route="{name: 'Notifications'}" index="4")
                   img(src='../../assets/notifications.png')
         el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1" :offset="1")
           div.avatar
             img(src='../../assets/avatar.png')
         el-col(:xs="4" :sm="4" :md="3" :lg="3" :xl="3")
           div(class="profile-actions")
-            el-menu-item.name(:route="{name:'Profile', params: { user_id: `${this.$store.getters.getUserId}`}}") Welcome back,
+            el-menu-item.name(:route="{name:'Profile', params: { user_id: `${this.$store.getters.getUserId}`}}" index="5")  Welcome back, {{  this.$store.getters.getUserInfo.userName }}
         el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1" :offset="2")
-          el-menu-item
+          el-menu-item(index="6")
             el-button.button_auth(type="primary" @click="logout") Logout
     div(v-else class="profile-actions")
-      el-menu-item
-        el-input(v-model="LoginForm.email" placeholder="e-mail")
-      el-menu-item
+      el-menu-item(index="1")
+        el-input(v-model="LoginForm.email" placeholder="e-mail" )
+      el-menu-item(index="2")
         el-input(type="password" v-model="LoginForm.password" placeholder="password")
-      el-menu-item
+      el-menu-item(index="3")
         el-checkbox(v-model="LoginForm.checked") Remember me
-      el-menu-item
+      el-menu-item(index="4")
         el-button(type="primary" @click="submitForm('LoginForm')") Log in
 </template>
 <script>
@@ -60,7 +61,8 @@
           email: '',
           password: '',
           checked: true
-        }
+        },
+        search: ''
       }
     },
     methods: {

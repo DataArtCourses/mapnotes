@@ -5,6 +5,7 @@ export const SET_PROFILE = 'SET_PROFILE'
 export const CHANGE_PROFILE = 'CHANGE_PROFILE'
 
 // map
+export const SET_CENTER = 'SET_CENTER'
 export const SET_PINS = 'SET_PINS'
 export const SET_PIN_INFO = 'SET_PIN_INFO'
 export const ADD_PIN = 'ADD_PINS'

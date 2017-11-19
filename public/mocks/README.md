@@ -56,15 +56,22 @@
   {
     'repeat(20)': {
      photoId: '{{index(1)}}',
+     photoInfo: '{{ lorem(1, "sentences") }}',
      photoUrl: 'http://lorempixel.com/600/480',
      likes: '{{ integer(1, 10) }}',
      liked: '{{ random(true, false) }}',
+     created: '{{date(new Date(2017, 10, 15), new Date(2017, 10, 30))}}',
+     author: {
+       userId: '{{ integer(1050, 1100) }}',
+       userName: '{{ firstName() }} {{ surname() }}',
+       avatarUrl: 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png'
+     },
      comments: [
        {
         'repeat(20)': {
         liked: '{{ random(true, false) }}',
         likes: '{{ integer(1, 10) }}',
-        time: '{{date(new Date(2017, 10, 15), new Date(2017, 10, 30))}}',
+        created: '{{date(new Date(2017, 10, 15), new Date(2017, 10, 30))}}',
         author: {
           userName: '{{ firstName() }} {{ surname() }}',
           avatarUrl: "http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png",

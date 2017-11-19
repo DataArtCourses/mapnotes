@@ -133,7 +133,8 @@ export default {
       return this.getPhotoInfo
     },
     pinComments () {
-      return this.getPinInfo.comments.sort((a, b) => Date.parse(b.created) - Date.parse(a.created)).slice(0, 3)
+      let comments = this.getPinInfo.comments.slice()
+      return comments.sort((a, b) => Date.parse(b.created) - Date.parse(a.created)).slice(0, 3)
     },
     changeId () {
       if (!this.dialogPhotoVisible) {

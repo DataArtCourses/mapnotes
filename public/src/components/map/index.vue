@@ -1,16 +1,17 @@
 <template lang="pug">
   el-container
-    map-main
+    map-alternative
     pin-info
 </template>
 <script>
-import MapMain from './MapMain'
+// import MapMain from './MapMain'
+import MapAlternative from './MapAlternative'
 import PinInfo from './PinInfo'
 
 export default {
   name: 'map',
   components: {
-    MapMain,
+    MapAlternative,
     PinInfo
   }
 }

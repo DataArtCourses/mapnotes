@@ -1,7 +1,7 @@
 <template>
   <el-main>
     <h1>Qwa!</h1>
-    <el-col :span=8 :offset=7>
+    <el-col :span="8" :offset="7">
       <el-form :model="RegistrationForm" ref="RegistrationForm" labelWidth="150px" :rules="rules">
         <el-form-item prop="email" label="email">
           <el-input v-model="RegistrationForm.email"></el-input>
