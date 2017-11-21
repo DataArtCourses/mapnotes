@@ -92,7 +92,8 @@ class Users(Base):
                  "`bio` TEXT,"
                  "`registered` INT(1) DEFAULT 0,"
                  "`phone` VARCHAR(20) NOT NULL DEFAULT '',"
-                 "`avatar_url` VARCHAR(255) NOT NULL DEFAULT '',"
+                 "`avatar_url` VARCHAR(255) NOT NULL DEFAULT "
+                 "'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png',"
                  f"PRIMARY KEY({cls.pk}))"
                  )
         log.info('Creating table %s', cls.table_name)
@@ -196,16 +197,96 @@ class Users(Base):
 class Pins(Base):
 
     table_name = 'map_pins'
-    pk = 'id'
+    pk = 'pin_id'
+    fields = {'user_id', 'lat', 'lng'}
 
     @classmethod
     async def create_table(cls):
         query = (f"CREATE TABLE IF NOT EXISTS `{cls.table_name}`("
-                 "`id` INT NOT NULL AUTO_INCREMENT,"
-                 "`user_id` INT REFERENCES `users`(`id`),"
-                 "`position` CHAR(32) NOT NULL,"
-                 "`private` BOOLEAN NOT NULL,"
+                 "`pin_id` INT NOT NULL AUTO_INCREMENT,"
+                 "`user_id` INT REFERENCES `users`(`user_id`),"
+                 "`lat` DECIMAL(10, 8) NOT NULL,"
+                 "`lng` DECIMAL(11, 8) NOT NULL,"
                  f"PRIMARY KEY({cls.pk}))"
+                 )
+        log.info('Creating table %s', cls.table_name)
+        try:
+            await cls.make_query(query=query, fetchone=True)
+        except Exception as e:
+            log.error('Error creating table %s with %s', cls.table_name, e)
+        else:
+            log.info('Successfuly created table %s', cls.table_name)
+
+    @classmethod
+    async def create_pin(cls, user_id, lat, lng):
+        query_insert = (f"INSERT INTO `{cls.table_name}`"
+                 "(user_id, lat, lng) VALUES"
+                 "(%s, %s, %s)"
+                 )
+        await cls.make_query(query=query_insert, args=[user_id, lat, lng])
+        log.info("User %s successfuly add pin", user_id)
+        query_recive = (f"SELECT LAST_INSERT_ID() as pin_id")
+        res = await cls.make_query(query=query_recive, fetchone=True)
+        return res
+
+    @classmethod
+    async def get_pins(cls, user_id):
+        query = (
+                f"SELECT pin_id, lat, lng FROM `{cls.table_name}` "
+                 )
+        pins = await cls.make_query(query=query)
+        log.info("User %s successfuly get pins", user_id)
+        return pins
+
+
+class PinComments(Base):
+
+    table_name = 'pin_comments'
+
+    @classmethod
+    async def create_table(cls):
+        query = (f"CREATE TABLE IF NOT EXISTS `{cls.table_name}`("
+                 "`comment_id` INT NOT NULL AUTO_INCREMENT,"
+                 "`pin_id` INT NOT NULL REFERENCES `map_pins`(`pin_id`),"
+                 "`photo_id` INT REFERENCES `pin_photos`(`photo_id`),"
+                 "`sender` INT NOT NULL REFERENCES `users`(`user_id`),"
+                 "`status` INT(1) DEFAULT 0,"
+                 "`comment_body` VARCHAR(400) NOT NULL,"
+                 "`date` DATETIME DEFAULT NOW(),"
+                 "PRIMARY KEY(`comment_id`))"
+                 )
+        log.info('Creating table %s', cls.table_name)
+        try:
+            await cls.make_query(query=query, fetchone=True)
+        except Exception as e:
+            log.error('Error creating table %s with %s', cls.table_name, e)
+        else:
+            log.info('Successfuly created table %s', cls.table_name)
+
+        @classmethod
+        async def create_comment(cls, user_id, pin_id, comment_body, status, photo_id=None):
+            query = (f"INSERT INTO `{cls.table_name}`"
+                     "(user_id, pin_id, comment_body, status, photo_id) VALUES"
+                     "(%s, %s, %s, %s, %s, %s)"
+                     )
+            await cls.make_query(query=query, args=[user_id, pin_id, comment_body, status, photo_id])
+            log.info("User %s successfuly add comment", user_id)
+            return None
+
+class PinPhotos(Base):
+
+    table_name = 'pin_photos'
+
+    @classmethod
+    async def create_table(cls):
+        query = (f"CREATE TABLE IF NOT EXISTS `{cls.table_name}`("
+                 "`photo_id` INT NOT NULL AUTO_INCREMENT,"
+                 "`pin_id` INT NOT NULL REFERENCES `map_pins`(`pin_id`),"
+                 "`sender` INT NOT NULL REFERENCES `users`(`user_id`),"
+                 "`status` INT NOT NULL DEFAULT 0,"
+                 "`photo_url` VARCHAR(400) NOT NULL,"
+                 "`date` DATETIME DEFAULT NOW(),"
+                 "PRIMARY KEY(`photo_id`))"
                  )
         log.info('Creating table %s', cls.table_name)
         try:
@@ -223,10 +304,10 @@ class Chats(Base):
     @classmethod
     async def create_table(cls):
         query = (f"CREATE TABLE IF NOT EXISTS `{cls.table_name}`("
-                 "`id` INT NOT NULL AUTO_INCREMENT,"
-                 "`user_1` INT REFERENCES `users`(`id`),"
-                 "`user_2` INT REFERENCES `users`(`id`),"
-                 "PRIMARY KEY(`id`),"
+                 "`chat_id` INT NOT NULL AUTO_INCREMENT,"
+                 "`user_1` INT REFERENCES `users`(`user_id`),"
+                 "`user_2` INT REFERENCES `users`(`user_id`),"
+                 "PRIMARY KEY(`chat_id`),"
                  "KEY(`user_1`, `user_2`))"
                  )
         log.info('Creating table %s', cls.table_name)
@@ -238,32 +319,10 @@ class Chats(Base):
             log.info('Successfuly created table %s', cls.table_name)
 
 
+
 class ChatMessages(Base):
 
     table_name = 'chat_message'
-
-    @classmethod
-    async def create_table(cls):
-        query = (f"CREATE TABLE IF NOT EXISTS `{cls.table_name}`("
-                 "`id` INT NOT NULL AUTO_INCREMENT,"
-                 "`chat_id` INT NOT NULL REFERENCES `chat`(`id`),"
-                 "`sender` INT REFERENCES `users`(`id`),"
-                 "`message` TEXT,"
-                 "`date` DATETIME DEFAULT NOW(),"
-                 "PRIMARY KEY(`id`))"
-                 )
-        log.info('Creating table %s', cls.table_name)
-        try:
-            await cls.make_query(query=query, fetchone=True)
-        except Exception as e:
-            log.error('Error creating table %s with %s', cls.table_name, e)
-        else:
-            log.info('Successfuly created table %s', cls.table_name)
-
-
-class PinMessages(Base):
-
-    table_name = 'pin_message'
 
     @classmethod
     async def create_table(cls):

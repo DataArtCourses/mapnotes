@@ -2,8 +2,8 @@ import asyncio
 import logging
 import argparse
 
-from server.modules.models import (
-    Base, Users, Pins, Chats, PinMessages, ChatMessages
+from modules.models import (
+    Base, Users, Pins, PinComments, PinPhotos, Chats, ChatMessages
 )
 
 log = logging.getLogger('application')
@@ -19,7 +19,8 @@ async def db_import():
     await Pins.create_table()
     await Chats.create_table()
     await ChatMessages.create_table()
-    await PinMessages.create_table()
+    await PinComments.create_table()
+    await PinPhotos.create_table()
     log.info('Done creating database')
 
 
@@ -31,7 +32,8 @@ async def drop_tables():
         Pins.drop_table(),
         ChatMessages.drop_table(),
         Chats.drop_table(),
-        PinMessages.drop_table()
+        PinComments.drop_table(),
+        PinPhotos.drop_table()
     )
     logging.debug('Done deleting tables')
 

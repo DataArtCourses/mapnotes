@@ -32,4 +32,6 @@ class LoginView(BaseView):
             }
             jwt_token = jwt.encode(payload, Config.get('application', 'salt'), 'HS256')
             log.info('User %s has logged in', user['email'])
-            return json_response({'token': jwt_token.decode('utf-8')})
+            return json_response(
+                {'token': jwt_token.decode('utf-8'), 'user': user['user_id'], 'user_email': user['email']}
+            )
