@@ -1,27 +1,30 @@
+import { BASE_API_URL, service } from '../../utils/fetch'
+
 import {
   LOGIN,
   LOGOUT,
   SET_PROFILE
 } from '../mutation-types'
-import { setToken, delToken } from '../../utils/auth'
+import { setToken, delToken, getToken, getuUserId } from '../../utils/auth'
 
 const state = {
   isLoading: false,
-  isAuth: true,
-  userInfo: {
-    userId: 1100,
-    userName: 'Christina House',
-    avatarUrl: 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png'
-  },
-  profile: {}
+  isAuth: !!getToken(),
+  userId: Number(getuUserId()) || 0,
+  profile: {
+    first_name: '',
+    last_name: '',
+    bio: '',
+    phone: '',
+    avatar_url: ''
+  }
 }
 
 const getters = {
   isLoaded: (state) => { return state.isLoading },
   isAuth: (state) => { return state.isAuth },
   getProfile: (state) => { return state.profile },
-  getUserId: (state) => { return state.userInfo.userId },
-  getUserInfo: (state) => { return state.userInfo }
+  getUserId: (state) => { return state.userId }
 }
 
 const mutations = {
@@ -29,7 +32,8 @@ const mutations = {
     state.isLoading = !state.isLoading
   },
   [LOGIN] (state, token) {
-    setToken(token.token, token.ch)
+    setToken(token.token, token.userId, token.ch)
+    state.userId = token.userId
     state.isAuth = true
   },
   [LOGOUT] (state) {
@@ -43,15 +47,16 @@ const mutations = {
 
 const actions = {
   async login ({ commit }, token) {
-    commit(LOGIN, token)
+    commit(LOGIN, await token)
   },
   async logout ({ commit }) {
     commit(LOGOUT)
   },
   async reciveProfile ({ commit, state }) {
-    let users = await require('../../../mocks/_users.json')
-    let userInfo = users.filter(user => { return user.userId === state.userId })[0]
-    commit(SET_PROFILE, userInfo)
+    if (state.userId > 0) {
+      let user = await service.get(`${BASE_API_URL}/profile/${state.userId}`)
+      commit(SET_PROFILE, user.data)
+    }
   }
 }
 

@@ -1,11 +1,13 @@
 {
   "name": "mapnotes",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A Vue.js project",
-  "author": "Nikita <rotar.nick13@gmail.com>",
+  "author": "Iegor Timukhin <timukhin@ukr.net>",
+  "homepage": "https://github.com/DataArtCourses/mapnotes",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
+    "deploy": "node ./node_modules/vue-gh-pages/index.js",
     "start": "npm run dev",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src"
@@ -14,6 +16,7 @@
     "axios": "^0.16.2",
     "leaflet": "^1.2.0",
     "vue": "^2.4.2",
+    "vue-gh-pages": "^1.6.4",
     "vue-moment": "^2.2.0",
     "vue-router": "^2.7.0",
     "vue2-leaflet": "0.0.57",

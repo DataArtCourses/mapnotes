@@ -1,26 +1,20 @@
-<template>
-  <el-main>
-    <h1>Qwa!</h1>
-    <el-col :span="8" :offset="7">
-      <el-form :model="RegistrationForm" ref="RegistrationForm" labelWidth="150px" :rules="rules">
-        <el-form-item prop="email" label="email">
-          <el-input v-model="RegistrationForm.email"></el-input>
-        </el-form-item>
-        <el-form-item prop="password" label="Password">
-          <el-input v-model="RegistrationForm.password" type="password"></el-input>
-        </el-form-item>
-        <el-form-item prop="checkPass" label="Password confirm">
-          <el-input v-model="RegistrationForm.checkPass" type="password"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" v-on:click.prevent="submitForm('RegistrationForm')">Register</el-button>
-        </el-form-item>
-      </el-form>
-    </el-col>
-  </el-main>
+<template lang="pug">
+  el-main
+    h1 Registration
+    el-col(:span="8" :offset="7")
+      el-form(:model="RegistrationForm" ref="RegistrationForm" labelWidth="150px" :rules="rules")
+        el-form-item(prop="email" label="email")
+          el-input(v-model="RegistrationForm.email")
+        el-form-item(prop="password" label="Password")
+          el-input(v-model="RegistrationForm.password" type="password")
+        el-form-item(prop="checkPass" label="Password confirm")
+          el-input(v-model="RegistrationForm.checkPass" type="password")
+        el-form-item
+          el-button(type="primary" v-on:click.prevent="submitForm('RegistrationForm')") Register</el-button>
 </template>
 <script>
 import axios from 'axios'
+import { BASE_API_URL } from '../../utils/fetch'
 
 export default {
   data () {
@@ -66,8 +60,8 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          axios.post('http://localhost:8000/api/register', { email: this.RegistrationForm.email, password: this.RegistrationForm.password }).then(response => {
-            console.log(response);
+          axios.post(`${BASE_API_URL}/register`, { email: this.RegistrationForm.email, password: this.RegistrationForm.password })
+          .then(response => {
             if (response.status === 200) {
               this.$message({
                 'type': 'success',

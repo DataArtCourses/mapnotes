@@ -6,7 +6,6 @@ import lazyLoading from './lazyLoading'
 Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
   routes: [
     {
       path: '/registration',
@@ -21,12 +20,12 @@ export default new Router({
         {
           path: ':chat_id',
           meta: {
-  //          requiresAuth: true
+            requiresAuth: true
           }
         }
       ],
       meta: {
-  //      requiresAuth: true
+        requiresAuth: true
       }
     },
     {
@@ -34,7 +33,7 @@ export default new Router({
       name: 'Profile',
       component: lazyLoading('users/Profile'),
       meta: {
-   //     requiresAuth: true
+        requiresAuth: true
       }
     },
     {
@@ -42,13 +41,13 @@ export default new Router({
       name: 'Map',
       component: lazyLoading('map/index'),
       meta: {
- //       requiresAuth: true
+        requiresAuth: true
       },
       children: [
         {
           path: ':pin_id',
           meta: {
- //           requiresAuth: true
+            requiresAuth: true
           }
         }
       ]

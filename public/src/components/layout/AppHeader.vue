@@ -34,14 +34,14 @@
                   img(src='../../assets/notifications.png')
         el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1" :offset="1")
           div.avatar
-            img(src='../../assets/avatar.png')
+            img(:src="userInfo ? userInfo.avatar_url : 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png'")
         el-col(:xs="4" :sm="4" :md="3" :lg="3" :xl="3")
           div(class="profile-actions")
-            el-menu-item.name(:route="{name:'Profile', params: { user_id: `${this.$store.getters.getUserId}`}}" index="5")  Welcome back, {{  this.$store.getters.getUserInfo.userName }}
+            el-menu-item.name(:route="{name:'Profile', params: { user_id: `${this.$store.getters.getUserId}`}}" index="5")  Welcome back, {{ userInfo.profile }}
         el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1" :offset="2")
           el-menu-item(index="6")
             el-button.button_auth(type="primary" @click="logout") Logout
-    div(v-else class="profile-actions")
+    div.profile-actions(v-else)
       el-menu-item(index="1")
         el-input(v-model="LoginForm.email" placeholder="e-mail" )
       el-menu-item(index="2")
@@ -52,43 +52,50 @@
         el-button(type="primary" @click="submitForm('LoginForm')") Log in
 </template>
 <script>
-  import axios from 'axios'
+import axios from 'axios'
+import { BASE_API_URL } from '../../utils/fetch'
 
-  export default {
-    data () {
-      return {
-        LoginForm: {
-          email: '',
-          password: '',
-          checked: true
-        },
-        search: ''
-      }
-    },
-    methods: {
-      logout () {
-        this.$store.dispatch('logout');
-        this.$router.push({ name: 'Registration' });
+export default {
+  data () {
+    return {
+      LoginForm: {
+        email: '',
+        password: '',
+        checked: true
       },
-      submitForm () {
-        axios.post('http://localhost:8000/api/login', { email: this.LoginForm.email, password: this.LoginForm.password })
-          .then(response => {
-            console.log(response)
-            if (response.status === 200) {
-              this.$store.dispatch('login', {token: response.data.token, ch: this.LoginForm.checked})
-              this.$router.push({name: 'Map'})
-            }
+      search: ''
+    }
+  },
+  methods: {
+    logout () {
+      this.$store.dispatch('logout');
+      this.$router.push({ name: 'Registration' });
+    },
+    submitForm () {
+      axios.post(`${BASE_API_URL}/login`, { email: this.LoginForm.email, password: this.LoginForm.password })
+        .then(response => {
+          if (response.status === 200) {
+            this.$store.dispatch('login', {userId: response.data.user_id, token: response.data.token, ch: this.LoginForm.checked})
+            this.$nextTick(() => this.$router.push({name: 'Map'}))
+          }
+        })
+        .catch(e => {
+          this.$message({
+            showClose: true,
+            type: 'error',
+            message: `${e.response ? e.response.data.error : e}`
           })
-          .catch(e => {
-            this.$message({
-              showClose: true,
-              type: 'error',
-              message: `${e.response ? e.response.data.error : e}`
-            })
-          })
+        })
+    }
+  },
+  computed: {
+    userInfo () {
+      if (this.$store.getters.getProfile && this.$store.getters.isAuth) {
+        return this.$store.getters.getProfile
       }
     }
   }
+}
 </script>
 <style>
   .menu{

@@ -2,9 +2,9 @@ import axios from 'axios'
 import { Message } from 'element-ui'
 
 import store from '../store'
-import getToken from './auth'
+import { getToken } from './auth'
 
-const BASE_API_URL = 'http://localhost:8000/api';
+const BASE_API_URL = 'https://powerful-basin-58499.herokuapp.com/api';
 
 const service = axios.create({
   baseURL: BASE_API_URL,
