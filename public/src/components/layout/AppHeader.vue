@@ -45,7 +45,7 @@
       el-menu-item(index="1")
         el-input(v-model="LoginForm.email" placeholder="e-mail" )
       el-menu-item(index="2")
-        el-input(type="password" v-model="LoginForm.password" placeholder="password")
+        el-input(type="password" v-model="LoginForm.password" placeholder="password" @keyup.enter="submitForm('LoginForm')")
       el-menu-item(index="3")
         el-checkbox(v-model="LoginForm.checked") Remember me
       el-menu-item(index="4")
@@ -77,6 +77,7 @@ export default {
           if (response.status === 200) {
             this.$store.dispatch('login', {userId: response.data.user_id, token: response.data.token, ch: this.LoginForm.checked})
             this.$nextTick(() => this.$router.push({name: 'Map'}))
+            this.$store.dispatch('reciveProfile')
           }
         })
         .catch(e => {

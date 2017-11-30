@@ -59,7 +59,7 @@ const actions = {
     }
   },
   async sendProfile ({ commit, state }, profile) {
-    if (state.userId > 0 && profile !== {}) {
+    if (state.userId > 0) {
       let user = await service.post(`${BASE_API_URL}/profile/${state.userId}`, profile)
       if (user.status === 200) {
         commit(SET_PROFILE, profile)
