@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Message } from 'element-ui'
 
 import store from '../store'
-import { getToken } from './auth'
+import { getToken, delToken } from './auth'
 
 const BASE_API_URL = 'https://powerful-basin-58499.herokuapp.com/api';
 
@@ -31,7 +31,8 @@ service.interceptors.response.use(
       message: error.message,
       type: 'error',
       duration: 5 * 1000
-    });
+    })
+    if (error.message === 'Token is invalid') delToken()
     return Promise.reject(error)
   }
 );

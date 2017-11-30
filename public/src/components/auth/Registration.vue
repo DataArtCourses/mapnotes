@@ -74,6 +74,11 @@ export default {
               message: `${e.response ? e.response.data.error : e}`
             })
           })
+          this.RegistrationForm = {
+            email: '',
+            password: '',
+            checkPass: ''
+          }
         } else {
           console.log('error submit!!');
           return false

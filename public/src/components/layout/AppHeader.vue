@@ -34,7 +34,7 @@
                   img(src='../../assets/notifications.png')
         el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1" :offset="1")
           div.avatar
-            el-menu-item(:route="{name:'Profile', params: { user_id: `${this.$store.getters.getUserId}`}}")
+            el-menu-item(:route="{name:'Profile', params: { user_id: `${this.$store.getters.getUserId}`}}" index="5")
               img(:src="userInfo ? userInfo.avatar_url : 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png'")
         el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1" :offset="5")
           el-button.button_auth(type="primary" @click="logout") Logout
@@ -44,7 +44,7 @@
       el-menu-item(index="2")
         el-input(type="password" v-model="LoginForm.password" placeholder="password" @keyup.enter="submitForm('LoginForm')")
       el-menu-item(index="3")
-        el-checkbox(v-model="LoginForm.checked") Remember me
+        el-checkbox(v-model="checked") Remember me
       el-menu-item(index="4")
         el-button(type="primary" @click="submitForm('LoginForm')") Log in
 </template>
@@ -57,9 +57,9 @@ export default {
     return {
       LoginForm: {
         email: '',
-        password: '',
-        checked: true
+        password: ''
       },
+      checked: true,
       search: ''
     }
   },
@@ -72,9 +72,13 @@ export default {
       axios.post(`${BASE_API_URL}/login`, { email: this.LoginForm.email, password: this.LoginForm.password })
         .then(response => {
           if (response.status === 200) {
-            this.$store.dispatch('login', {userId: response.data.user_id, token: response.data.token, ch: this.LoginForm.checked})
-            this.$nextTick(() => this.$router.push({name: 'Map'}))
-            this.$store.dispatch('reciveProfile')
+            this.$store.dispatch('login', {userId: response.data.user_id, token: response.data.token, ch: this.checked})
+            this.LoginForm.email = ''
+            this.LoginForm.password = ''
+            this.$nextTick(() => {
+              this.$store.dispatch('reciveProfile')
+              this.$router.push({name: 'Map'})
+            })
           }
         })
         .catch(e => {

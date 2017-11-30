@@ -1,7 +1,7 @@
 <template lang="pug">
   el-main
     div(v-if="editForm")
-      el-form(ref="profile" :model="profile" label-width="120px")
+      el-form(ref="profile" :model="profile" label-width="80px")
         el-button(type="primary" @click="saveEdit") Save
         el-form-item(label="Avatar")
           el-input(type="url" v-model="profile.avatar_url")
@@ -14,16 +14,21 @@
         el-form-item(label="Bio")
           el-input(type="textarea" v-model="profile.bio")
     div(v-else)
-      img(:src="profileForm.avatar_url || 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png'")
-      el-button(type="primary" @click="editMode") Edit
-      p First name: 
-        span {{ profileForm.first_name }}
-      p Surname: 
-        span {{ profileForm.last_name }}
-      p Phone: 
-        span {{ profileForm.phone }}
-      p Info: 
-        span {{ profileForm.bio }}
+     el-row
+        el-col(:span="8" :offset="8")
+          el-card
+            img(:src="profileForm.avatar_url || 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png'")
+            br
+            el-button(type="primary" @click="editMode" icon="el-icon-edit") Edit
+            div(style="text-align: left;")
+              p First name: 
+                span {{ profileForm.first_name }}
+              p Surname: 
+                span {{ profileForm.last_name }}
+              p Phone: 
+                span {{ profileForm.phone }}
+              p Info: 
+                span {{ profileForm.bio }}
       
 </template>
 <script>
