@@ -94,7 +94,6 @@ export default {
     }
   },
   beforeCreate () {
-    this.$store.dispatch('reciveProfile')
     // pins loader
     this.$store.dispatch('recivePins')
   }

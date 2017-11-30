@@ -28,8 +28,8 @@ const getters = {
 }
 
 const mutations = {
-  setLoading (state) {
-    state.isLoading = !state.isLoading
+  setLoading (state, toggle) {
+    state.isLoading = toggle
   },
   [LOGIN] (state, token) {
     setToken(token.token, token.userId, token.ch)
@@ -56,6 +56,14 @@ const actions = {
     if (state.userId > 0) {
       let user = await service.get(`${BASE_API_URL}/profile/${state.userId}`)
       commit(SET_PROFILE, user.data)
+    }
+  },
+  async sendProfile ({ commit, state }, profile) {
+    if (state.userId > 0 && profile !== {}) {
+      let user = await service.post(`${BASE_API_URL}/profile/${state.userId}`, profile)
+      if (user.status === 200) {
+        commit(SET_PROFILE, profile)
+      }
     }
   }
 }

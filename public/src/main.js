@@ -15,6 +15,7 @@ Vue.use(ElementUI)
 Vue.use(require('vue-moment'))
 
 router.beforeEach((to, from, next) => {
+  store.commit('setLoading', true)
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (!getToken()) {
       next({
@@ -26,7 +27,11 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
-});
+})
+
+router.afterEach((to, from) => {
+  store.commit('setLoading', false)
+})
 
 /* eslint-disable no-new */
 new Vue({

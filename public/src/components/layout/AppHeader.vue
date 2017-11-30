@@ -34,10 +34,10 @@
                   img(src='../../assets/notifications.png')
         el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1" :offset="1")
           div.avatar
-            img(:src="userInfo ? userInfo.avatar_url : 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png'")
+            img(:src="userInfo ? userInfo.avatar_url : 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png'" width="45px")
         el-col(:xs="4" :sm="4" :md="3" :lg="3" :xl="3")
           div(class="profile-actions")
-            el-menu-item.name(:route="{name:'Profile', params: { user_id: `${this.$store.getters.getUserId}`}}" index="5")  Welcome back, {{ userInfo.profile }}
+            el-menu-item.name(:route="{name:'Profile', params: { user_id: `${this.$store.getters.getUserId}`}}" index="5")  Welcome back, {{ userInfo.first_name }}
         el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1" :offset="2")
           el-menu-item(index="6")
             el-button.button_auth(type="primary" @click="logout") Logout
@@ -89,11 +89,16 @@ export default {
     }
   },
   computed: {
-    userInfo () {
-      if (this.$store.getters.getProfile && this.$store.getters.isAuth) {
-        return this.$store.getters.getProfile
+    userInfo: {
+      get () {
+        if (this.$store.getters.getProfile && this.$store.getters.isAuth) {
+          return this.$store.getters.getProfile
+        }
       }
     }
+  },
+  beforeCreate () {
+    this.$store.dispatch('reciveProfile')
   }
 }
 </script>
