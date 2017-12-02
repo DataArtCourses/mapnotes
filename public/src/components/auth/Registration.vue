@@ -20,7 +20,7 @@ export default {
   data () {
     const validatePassword = (rule, password, callback) => {
       const validPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/
-      if (password !== this.RegistrationForm.checkPass || password.length < 8 || password.length > 16) {
+      if (password !== this.RegistrationForm.checkPass && (password.length < 8 || password.length > 16)) {
         callback(new Error('Password must be from 8 to 16 chars'))
       } else if (!validPassword.test(password)) {
         callback(new Error('Password must have digits and letters'))

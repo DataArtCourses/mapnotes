@@ -1,7 +1,7 @@
 <template lang="pug">
   el-main.map-wrapper
     v-map#map(ref="leafletMap" :minZoom="minZoom" :maxZoom="maxZoom" :center="center" :zoom="zoom")
-      v-tilelayer(:url="url", :attribution="attribution")  // for https -> https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+      v-tilelayer(:url="url", :attribution="attribution")
       v-marker-cluster
         v-marker(v-for="(c, index) in pins" v-if="c !== null" :lat-lng="[c.location.lat, c.location.lng]" :key="index" :icon='icon')
           v-popup(:content="`<a href='#map/${c.pinId}'>PinInfo</a><br><b>Comments: ${c.totalComments}</b><br><b>Photos: ${c.totalPhotos}</b>`")
