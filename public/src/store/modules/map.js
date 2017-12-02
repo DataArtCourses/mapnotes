@@ -1,3 +1,5 @@
+import { BASE_API_URL, service } from '../../utils/fetch'
+
 import {
   SET_PINS,
   SET_PIN_INFO,
@@ -39,14 +41,16 @@ const mutations = {
 
 const actions = {
   async recivePins ({ commit }) {
-    let pins = await require('../../../mocks/_pins.json')
-    commit(SET_PINS, pins)
+    let pins = await service.get(`${BASE_API_URL}/pins`)
+    commit(SET_PINS, pins.data)
   },
-  async addPin ({ commit }, pinInfo) {
+  async addPin ({ commit, getters }, pinInfo) {
     if (pinInfo) {
+      let pinId = await service.post(`${BASE_API_URL}/pins`, pinInfo)
       pinInfo['totalComments'] = 1
       pinInfo['totalPhotos'] = 0
-      console.log(pinInfo)
+      pinInfo['pinStatus'] = 0
+      pinInfo['pinId'] = pinId.data.pinId
       commit(ADD_PIN, pinInfo)
     }
   },
