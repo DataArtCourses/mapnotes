@@ -1,19 +1,19 @@
 <template lang="pug">
-  el-aside(width="450px" style="background-color: rgb(238, 241, 246)" v-if="this.$route.params.pin_id && getPinInfo.comments")
+  el-aside(width="450px" style="background-color: rgb(238, 241, 246)" v-if="this.$route.params.pin_id")
     h1 Pin Info: {{ getPinInfo.pinInfo }}
     el-carousel(height="150px" trigger="click")
-      el-carousel-item(v-for="item in getPinInfo.hover" :key="item")
+      el-carousel-item(v-for="item in getPinInfo.hover" :key="item.photoId")
         a(@click="getPhotos")
-          img(:src="item")
+          img(:src="item.photoUrl")
     span Photos: {{ getPinInfo.totalPhotos }} 
     el-button(type="primary" @click="dialogAddPhoto=true") Add photo
       i(class="el-icon-upload el-icon-right")
-    span Comments: {{ getPinInfo.comments.length }}
+    span Comments: {{ getPinInfo.totalComments }}
     el-main
       ul.comments
-        li(v-for="comment in pinComments" :key="comment.author.userId")
+        li(v-for="(comment, index) in pinComments" :key="index")
           router-link(:to="`/profile/${comment.author.userId}`")
-            img.circle(:src="comment.author.avatarUrl" width="40px")
+            img.circle(:src="comment.author.avatarUrl ||'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png'" width="40px")
             span {{ comment.author.userName }} 
           el-button(type="text" v-if="comment.author.userId === getUserId")
             i(class="el-icon-edit")
@@ -27,7 +27,7 @@
           a(@click="" v-else) Like
       el-button(type="text" @click="dialogCommentsVisible = true") All comments
     el-footer
-        el-input(type="textarea" :rows="2" v-model="commentBody"  @keyup.enter="sendComment" placeholder="Enter text...")
+        el-input(type="textarea" :rows="2" v-model.trim="commentBody"  @keyup.enter="sendComment" placeholder="Enter text...")
         el-button(@click="sendComment") Send
     el-dialog(title="Photos Gallery" width="90%" top="1vh" :visible.sync="dialogGalleryVisible" v-if="dialogGalleryVisible")
       el-header
@@ -45,7 +45,7 @@
           img(:src="photo.photoUrl")
           br
           router-link(:to="`/profile/${photo.author.userId}`")
-            img.circle(:src="photo.author.avatarUrl" width="40px")
+            img.circle(:src="photo.author.avatarUrl || 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png'" width="40px")
             span {{ photo.author.userName }}    
           span Likes: {{ photo.likes }}    
           a(@click="" v-if='photo.liked') Unlike   
@@ -59,9 +59,9 @@
         el-card
           span Comments
           ul.comments.scroll
-            li(v-for="comment in photo.comments" :key="comment.author.userId")
+            li(v-for="(comment, index) in photo.comments" :key="index")
               router-link(:to="`/profile/${comment.author.userId}`")
-                img.circle(:src="comment.author.avatarUrl" width="40px")
+                img.circle(:src="comment.author.avatarUrl || 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png'" width="40px")
                 span {{ comment.author.userName }} 
               el-button(type="text" v-if="comment.author.userId === getUserId")
                 i(class="el-icon-edit")
@@ -74,14 +74,14 @@
               a(@click="" v-if='comment.liked') Unlike
               a(@click="" v-else) Like
         el-footer
-            el-input(type="textarea" :rows="2" v-model="commentBody"  @keyup.enter="" placeholder="Enter text...")
+            el-input(type="textarea" :rows="2" v-model.trim="commentBody"  @keyup.enter="" placeholder="Enter text...")
             el-button(@click="sendComment") Send
     el-dialog(title="Comments" width="90%" top="1vh" :visible.sync="dialogCommentsVisible" v-if="dialogCommentsVisible")
       el-main
         ul.comments
-        li(v-for="comment in getPinInfo.comments" :key="comment.author.userId")
+        li(v-for="(comment, index) in getPinInfo.comments" :key="index")
           router-link(:to="`/profile/${comment.author.userId}`")
-            img.circle(:src="comment.author.avatarUrl" width="40px")
+            img.circle(:src="comment.author.avatarUrl || 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png'" width="40px")
             span {{ comment.author.userName }} 
           el-button(type="text" v-if="comment.author.userId === getUserId")
             i(class="el-icon-edit")
@@ -94,14 +94,14 @@
           a(@click="" v-if='comment.liked') Unlike
           a(@click="" v-else) Like
         el-footer
-          el-input(type="textarea" :rows="2" v-model="commentBody"  @keyup.enter="sendComment" placeholder="Enter text...")
+          el-input(type="textarea" :rows="2" v-model.trim="commentBody"  @keyup.enter="sendComment" placeholder="Enter text...")
           el-button(@click="sendComment") Send
     el-dialog(title="Add photo" width="50%" top="40vh" :visible.sync="dialogAddPhoto" v-if="dialogAddPhoto")
       el-form
         el-form-item(lable="Photo Url" prop="url")
-          el-input(v-model="photoUrl")
+          el-input(v-model.trim="photoUrl")
         el-form-item(lable="Photo Info" prop="info")
-          el-input(v-model="photoInfo" type="textarea")
+          el-input(v-model.trim="photoInfo" type="textarea")
         el-form-item
           el-button(type="primary" @click="sendPhoto") Add
           el-button(type="default" @click="dialogAddPhoto = false; photoUrl = ''") Cansel
@@ -133,8 +133,9 @@ export default {
       return this.getPhotoInfo
     },
     pinComments () {
-      let comments = this.getPinInfo.comments.slice()
-      return comments.sort((a, b) => Date.parse(b.created) - Date.parse(a.created)).slice(0, 3)
+      if (this.getPinInfo && this.getPinInfo.comments) {
+        return this.getPinInfo.comments.slice(0, 3)
+      }
     },
     changeId () {
       if (!this.dialogPhotoVisible) {
@@ -149,36 +150,34 @@ export default {
       this.dialogPhotoVisible = true
     },
     getPhotos () {
-      this.$store.dispatch('recivePinPhotos', +this.$route.params.pin_id)
       this.dialogGalleryVisible = true
     },
     sendComment () {
       if (this.commentBody) {
         let comment = {
           commentBody: this.commentBody,
-          created: new Date(),
-          author: this.$store.getters.getUserInfo,
+          author: {
+            userId: this.$store.getters.getUserId,
+            avatarUrl: this.$store.getters.getProfile.avatar_url,
+            userName: this.$store.getters.getProfile.first_name + ' ' + this.$store.getters.getProfile.last_name
+          },
           likes: 0,
           liked: false,
           photoId: this.photoId
         }
-        this.$store.dispatch('sendComment', { comment: comment, pin_id: +this.$route.params.pin_id })
-        this.commentBody = ''
+        this.$nextTick(() => {
+          this.$store.dispatch('sendComment', { comment: comment, pin_id: +this.$route.params.pin_id })
+          this.commentBody = ''
+        })
       }
     },
     sendPhoto () {
       if (this.photoUrl && this.photoInfo) {
-        let info = {
-          comments: [],
-          likes: 0,
-          liked: false,
-          created: new Date(),
-          author: this.$store.getters.getUserInfo,
-          photoUrl: this.photoUrl,
-          photoInfo: this.photoInfo,
-          photoId: this.getPinGallery.length + 1
-        }
-        this.$store.dispatch('sendPhoto', { photoInfo: info, pin_id: +this.$route.params.pin_id })
+        this.$store.dispatch('sendPhoto', {
+          photo_url: this.photoUrl,
+          photo_info: this.photoInfo,
+          pin_id: +this.$route.params.pin_id
+        })
         this.photoUrl = ''
         this.photoInfo = ''
         this.dialogAddPhoto = false

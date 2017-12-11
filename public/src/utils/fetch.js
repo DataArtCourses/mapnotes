@@ -4,7 +4,7 @@ import { Message } from 'element-ui'
 import store from '../store'
 import { getToken, delToken } from './auth'
 
-const BASE_API_URL = 'https://powerful-basin-58499.herokuapp.com/api';
+const BASE_API_URL = 'https://powerful-basin-58499.herokuapp.com/api'
 
 const service = axios.create({
   baseURL: BASE_API_URL,

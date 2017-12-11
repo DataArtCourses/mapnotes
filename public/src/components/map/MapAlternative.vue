@@ -4,13 +4,13 @@
       v-tilelayer(:url="url", :attribution="attribution")
       v-marker-cluster
         v-marker(v-for="(c, index) in pins" v-if="c !== null" :lat-lng="[c.location.lat, c.location.lng]" :key="index" :icon='icon')
-          v-popup(:content="`<a href='#map/${c.pinId}'>PinInfo</a><br><b>Comments: ${c.totalComments}</b><br><b>Photos: ${c.totalPhotos}</b>`")
+          v-popup(:content="`<a href=${'/map/' + c.pinId}>Info</a><br><b>Comments: ${c.totalComments}</b><br><b>Photos: ${c.totalPhotos}</b>`")
     span ADD PIN:  
       el-button(@click="addPinOn = !addPinOn" :type="addPinOn ? 'success' : 'danger'")  {{ addPinOn ? 'ON' : 'OFF' }}
     el-dialog(title="Add pin" width="50%" top="40vh" :visible.sync="enterPin" v-if="enterPin")
       el-form
         el-form-item(lable="Pin Info" prop="info")
-          el-input(v-model="pinInfo.comment" type="textarea")
+          el-input(v-model.trim="pinInfo.comment" type="textarea")
         el-form-item
           el-button(type="primary" @click="sendPin") Add
           el-button(type="default" @click="enterPin = false; pinInfo = {location: {}, comment: ''}") Cansel

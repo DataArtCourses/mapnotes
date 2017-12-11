@@ -30,13 +30,17 @@ const getters = {
 
 const mutations = {
   [SET_PINS] (state, pins) { state.pins = pins },
-  [SET_PIN_INFO] (state, pin) { state.pinInfo = pin },
+  [SET_PIN_INFO] (state, {id, comments, hover}) {
+    state.pinInfo = state.pins.filter(data => data.pinId === id)[0]
+    state.pinInfo['comments'] = comments
+    state.pinInfo['hover'] = hover
+  },
   [ADD_PIN] (state, pin) { state.pins.push(pin) },
-  [ADD_PIN_COMMENT] (state, comment) { state.pinInfo.comments.push(comment) },
+  [ADD_PIN_COMMENT] (state, comment) { state.pinInfo.comments.unshift(comment) },
   [SET_PIN_PHOTOS] (state, photos) { state.pinGallery = photos },
   [ADD_PHOTO] (state, photo) { state.pinGallery.unshift(photo) },
   [SET_PHOTO_INFO] (state, photo) { state.photoInfo = photo },
-  [ADD_PHOTO_COMMENT] (state, comment) { state.photoInfo.comments.push(comment) }
+  [ADD_PHOTO_COMMENT] (state, comment) { state.photoInfo.comments.unshift(comment) }
 }
 
 const actions = {
@@ -56,31 +60,40 @@ const actions = {
   },
   async recivePinInfo ({ commit, getters }, id) {
     if (id) {
-      let pinInfo = await require(`../../../mocks/_pinInfo${id}.json`)[0]
-      commit(SET_PIN_INFO, pinInfo)
+      let comments = await service.get(`${BASE_API_URL}/pins/${id}/comments`)
+      let photos = await service.get(`${BASE_API_URL}/pins/${id}/photos`)
+      commit(SET_PIN_INFO, { 'id': id, 'comments': comments.data, 'hover': photos.data.slice(0, 3) })
+      commit(SET_PIN_PHOTOS, photos.data)
     }
   },
-  async recivePinPhotos ({ commit, getters }, id) {
+  async recivePhotoInfo ({ commit }, id) {
     if (id) {
-      let photos = await require(`../../../mocks/_gallery${id}.json`)
-      commit(SET_PIN_PHOTOS, photos)
-    }
-  },
-  async recivePhotoInfo ({ commit, getters }, id) {
-    if (id) {
-      let photo = getters.getPinGallery.filter(data => data.photoId === id)[0]
-      commit(SET_PHOTO_INFO, photo)
+      let photo = await service.get(`${BASE_API_URL}/photos/${id}`)
+      console.log(photo)
+      commit(SET_PHOTO_INFO, photo.data)
     }
   },
   async sendComment ({ commit }, pinInfo) {
+    let forSend = {body: pinInfo.comment.commentBody}
     if (pinInfo.comment.photoId === 0) {
+      forSend['pin_id'] = pinInfo.pin_id
+      let post = await service.post(`${BASE_API_URL}/comments`, forSend)
+      pinInfo.comment['commentId'] = post.data.commentId
+      pinInfo.comment['created'] = post.data.created
       commit(ADD_PIN_COMMENT, pinInfo.comment)
     } else {
+      forSend['photo_id'] = pinInfo.comment.photoId
+      let post = await service.post(`${BASE_API_URL}/comments`, forSend)
+      pinInfo.comment['commentId'] = post.data.commentId
+      pinInfo.comment['created'] = post.data.created
       commit(ADD_PHOTO_COMMENT, pinInfo.comment)
     }
   },
   async sendPhoto ({ commit }, photo) {
-    commit(ADD_PHOTO, photo.photoInfo)
+    let post = await service.post(`${BASE_API_URL}/photos`, photo)
+    photo['photoId'] = post.data.photoId
+    photo['created'] = post.data.created
+    commit(ADD_PHOTO, photo)
   }
 }
 

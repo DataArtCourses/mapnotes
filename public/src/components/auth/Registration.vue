@@ -4,11 +4,13 @@
     el-col(:span="8" :offset="7")
       el-form(:model="RegistrationForm" ref="RegistrationForm" labelWidth="150px" :rules="rules")
         el-form-item(prop="email" label="email")
-          el-input(v-model="RegistrationForm.email")
+          el-input(v-model.trim="RegistrationForm.email")
+        el-form-item(prop="firstName" label="First Name")
+          el-input(v-model.trim="RegistrationForm.firstName")
         el-form-item(prop="password" label="Password")
-          el-input(v-model="RegistrationForm.password" type="password")
+          el-input(v-model.trim="RegistrationForm.password" type="password")
         el-form-item(prop="checkPass" label="Password confirm")
-          el-input(v-model="RegistrationForm.checkPass" type="password")
+          el-input(v-model.trim="RegistrationForm.checkPass" type="password")
         el-form-item
           el-button(type="primary" v-on:click.prevent="submitForm('RegistrationForm')") Register</el-button>
 </template>
@@ -27,17 +29,28 @@ export default {
       } else {
         callback()
       }
-    };
+    }
     const validateConf = (rule, value, callback) => {
       if (value !== this.RegistrationForm.password) {
         callback(new Error('Two inputs don\'t match!'))
       } else {
         callback()
       }
-    };
+    }
+    const validateName = (rule, name, callback) => {
+      const validName = /^[A-Za-z]+$/
+      if (name !== '' && (name.length < 4 || name.length > 40)) {
+        callback(new Error('First Name must be from 4 to 40 chars'))
+      } else if (name !== '' && !validName.test(name)) {
+        callback(new Error('First Name must have only letters'))
+      } else {
+        callback()
+      }
+    }
     return {
       RegistrationForm: {
         email: '',
+        firstName: '',
         password: '',
         checkPass: ''
       },
@@ -45,6 +58,10 @@ export default {
         email: [
           { required: true, message: 'Please input email address', trigger: 'blur' },
           { type: 'email', message: 'Please input correct email address', trigger: 'blur,change' }
+        ],
+        firstName: [
+          { required: true, message: 'Please input correct First Name', trigger: 'blur' },
+          { type: 'text', validator: validateName, trigger: 'blur,change' }
         ],
         password: [
           { required: true, message: 'Please input the password', trigger: 'blur' },
@@ -61,7 +78,11 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          axios.post(`${BASE_API_URL}/register`, { email: this.RegistrationForm.email, password: this.RegistrationForm.password })
+          axios.post(`${BASE_API_URL}/register`, {
+            email: this.RegistrationForm.email,
+            password: this.RegistrationForm.password,
+            first_name: this.RegistrationForm.firstName
+          })
           .then(response => {
             if (response.status === 200) {
               this.$message({
@@ -77,6 +98,7 @@ export default {
           })
           this.RegistrationForm = {
             email: '',
+            firstName: '',
             password: '',
             checkPass: ''
           }

@@ -1,18 +1,18 @@
 <template lang="pug">
   el-main
     div(v-if="editForm")
-      el-form(ref="profile" :model="profile" label-width="80px")
+      el-form(ref="profile" :model="profile" label-width="100px")
         el-button(type="primary" @click="saveEdit") Save
         el-form-item(label="Avatar")
-          el-input(type="url" v-model="profile.avatar_url")
+          el-input(type="url" v-model.trim="profile.avatar_url")
         el-form-item(label="First Name")
-          el-input(type="text" v-model="profile.first_name")
+          el-input(type="text" v-model.trim="profile.first_name")
         el-form-item(label="Surname")
-          el-input(type="text" v-model="profile.last_name")
+          el-input(type="text" v-model.trim="profile.last_name")
         el-form-item(label="Phone")
-          el-input(type="phone" v-model="profile.phone")
+          el-input(type="phone" v-model.trim="profile.phone")
         el-form-item(label="Bio")
-          el-input(type="textarea" v-model="profile.bio")
+          el-input(type="textarea" v-model.trim="profile.bio")
     div(v-else)
      el-row
         el-col(:span="8" :offset="8")

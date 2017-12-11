@@ -35,14 +35,14 @@
         el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1" :offset="1")
           div.avatar
             el-menu-item(:route="{name:'Profile', params: { user_id: `${this.$store.getters.getUserId}`}}" index="5")
-              img(:src="userInfo.avatar_url ? userInfo.avatar_url : 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png'")
+              img(:src="userInfo.avatar_url || 'http://dsi-vd.github.io/patternlab-vd/images/fpo_avatar.png'")
         el-col(:xs="1" :sm="1" :md="1" :lg="1" :xl="1" :offset="5")
           el-button.button_auth(type="primary" @click="logout") Logout
     div.profile-actions(v-else)
       el-menu-item(index="1")
-        el-input(v-model="LoginForm.email" placeholder="e-mail" )
+        el-input(v-model.trim="LoginForm.email" placeholder="e-mail" )
       el-menu-item(index="2")
-        el-input(type="password" v-model="LoginForm.password" placeholder="password" @keyup.enter="submitForm('LoginForm')")
+        el-input(type="password" v-model.trim="LoginForm.password" placeholder="password" @keyup.enter="submitForm('LoginForm')")
       el-menu-item(index="3")
         el-checkbox(v-model="checked") Remember me
       el-menu-item(index="4")
